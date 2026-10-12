@@ -237,6 +237,27 @@ html{scroll-behavior:smooth}
 .personagem .ate b,.personagem .got b{font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:2px}
 .personagem .ate b{color:var(--ember)}
 .personagem .got b{color:var(--ice)}
+.personagem .morte{font-size:.9rem}
+.personagem .morte b{font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:2px;color:var(--ember)}
+.evento-botao{font:inherit;font-size:.78rem;font-family:var(--display);letter-spacing:.06em;padding:3px 10px;border-radius:999px;border:1px solid var(--ember);background:rgba(209,69,47,.12);color:var(--ember);cursor:pointer;margin-top:4px;display:inline-block}
+.evento-botao:hover{background:var(--ember);color:var(--on-ink)}
+.evento-botao:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.dialogo{position:fixed;inset:0;z-index:60;background:rgba(5,4,5,.88);display:grid;place-items:center;padding:24px 16px;overflow:auto}
+.dialogo-caixa{position:relative;width:min(100%,640px);max-height:calc(100vh - 48px);overflow:auto;background:var(--surface);border:1px solid var(--ember);border-radius:8px;padding:24px 24px 20px;box-shadow:0 20px 60px rgba(0,0,0,.7),0 0 30px rgba(209,69,47,.2);display:grid;gap:12px}
+.dialogo-caixa h3{font-size:1.3rem;color:var(--fg);padding-right:40px}
+.dialogo-caixa h4{color:var(--ember);margin-top:4px}
+.dialogo-caixa .fechar{position:absolute;top:12px;right:12px;font:inherit;font-size:1.4rem;line-height:1;background:var(--surface-2);color:var(--fg);border:1px solid var(--line);border-radius:50%;width:36px;height:36px;cursor:pointer}
+.dialogo-caixa .fechar:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.evento-meta{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px 16px}
+.evento-meta dt{font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.evento-meta dd{margin:0;font-size:.92rem}
+.evento-mortos{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.evento-mortos button{font:inherit;text-align:left;background:var(--surface-2);border:1px solid var(--line);border-radius:6px;padding:8px 12px;color:var(--fg);cursor:pointer;width:100%;display:flex;gap:10px;align-items:center}
+.evento-mortos button:hover{border-color:var(--gold)}
+.evento-mortos button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.evento-mortos img{width:36px;height:36px;border-radius:50%;object-fit:cover;object-position:top;border:2px solid var(--ember);flex:none}
+.evento-mortos small{color:var(--muted);font-size:.85rem}
+.evento-dragoes{font-size:.9rem;color:var(--muted)}
 .estado{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);line-height:1.3}
 .estado-morto{color:var(--ember);border-color:var(--ember)}
 .estado-sumido{color:var(--gold);border-color:var(--gold)}
@@ -800,6 +821,12 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
       <button class="filtro" type="button" data-lado="negros" aria-pressed="false">Negros</button>
       <button class="filtro" type="button" data-lado="outros" aria-pressed="false">Outros</button>
     </div>
+    <div class="grupo-filtro" id="filtro-estado-p">
+      <span class="rotulo">Situação</span>
+      <button class="filtro" type="button" data-estado="todos" aria-pressed="true">Todos</button>
+      <button class="filtro" type="button" data-estado="vivo" aria-pressed="false">Vivos</button>
+      <button class="filtro" type="button" data-estado="morto" aria-pressed="false">Mortos</button>
+    </div>
     <div class="grupo-filtro">
       <label class="rotulo" for="seletor-casa">Casa</label>
       <select class="seletor" id="seletor-casa"><option value="todas">Todas</option></select>
@@ -807,7 +834,7 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
     <span class="contagem" id="contagem-p"></span>
   </div>
   <div class="personagens" id="lista-personagens"><!-- pre:personagens -->
-<article class="personagem" id="personagem-rhaenyra-targaryen" data-lado="negros" data-casa="Targaryen">
+<article class="personagem" id="personagem-rhaenyra-targaryen" data-lado="negros" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/rhaenyra-targaryen.webp" data-nome="Rhaenyra Targaryen" data-ep="A rainha dos Negros" aria-label="Ampliar foto de Rhaenyra Targaryen"><img class="foto" src="img/rhaenyra-targaryen.webp" width="56" height="56" loading="lazy" alt="Rhaenyra Targaryen em A Casa do Dragão"></button><div><h3>Rhaenyra Targaryen</h3><p class="ep">A rainha dos Negros</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -816,9 +843,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Toma Porto Real e senta no Trono de Ferro (T3E2). Executa Otto, serve ratos aos nobres, manda matar o Alto Septão e prende a própria Baela.</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Ancestral direta de Daenerys, Viserys III e Rhaegar. O arco da rainha aclamada que o povo passa a temer antecipa Daenerys em Porto Real (T8).</p>
     </article>
-    <article class="personagem" id="personagem-daemon-targaryen" data-lado="negros" data-casa="Targaryen">
+    <article class="personagem" id="personagem-daemon-targaryen" data-lado="negros" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/daemon-targaryen.webp" data-nome="Daemon Targaryen" data-ep="O Príncipe Rebelde" aria-label="Ampliar foto de Daemon Targaryen"><img class="foto" src="img/daemon-targaryen.webp" width="56" height="56" loading="lazy" alt="Daemon Targaryen em A Casa do Dragão"></button><div><h3>Daemon Targaryen</h3><p class="ep">O Príncipe Rebelde</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -827,9 +855,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Toma a cidade com Luthor Largent, decapita Jasper Wylde, comanda o cerco de Tumbleton e esconde de Rhaenyra que Rhaena montava Sheepstealer (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Ancestral direto de Daenerys e Jon Snow. Nos livros, a espada dele, Irmã Negra, acaba com o Corvo de Sangue.</p>
     </article>
-    <article class="personagem" id="personagem-viserys-i-targaryen" data-lado="outros" data-casa="Targaryen">
+    <article class="personagem" id="personagem-viserys-i-targaryen" data-lado="outros" data-casa="Targaryen" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/viserys-i-targaryen.webp" data-nome="Viserys I Targaryen" data-ep="O rei que dividiu o reino" aria-label="Ampliar foto de Viserys I Targaryen"><img class="foto" src="img/viserys-i-targaryen.webp" width="56" height="56" loading="lazy" alt="Viserys I Targaryen em A Casa do Dragão"></button><div><h3>Viserys I Targaryen</h3><p class="ep">O rei que dividiu o reino</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -838,9 +867,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Morre no fim da T1 depois de confundir a profecia na cabeça de Alicent.</p>
+      <p class="morte"><b>Como morreu</b>T1E8 · Fortaleza Vermelha, Porto Real. Na cama, consumido pela doença. As últimas palavras, sobre a profecia de Aegon, Alicent entende como um pedido para coroar o filho dela. </p>
       <p class="got"><b>Em Game of Thrones</b>Conta a Rhaenyra o sonho de Aegon: é a profecia do Príncipe Prometido que Melisandre persegue.</p>
     </article>
-    <article class="personagem" id="personagem-jacaerys-velaryon" data-lado="negros" data-casa="Velaryon (Strong)">
+    <article class="personagem" id="personagem-jacaerys-velaryon" data-lado="negros" data-casa="Velaryon (Strong)" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/jacaerys-velaryon.webp" data-nome="Jacaerys Velaryon" data-ep="Jace, herdeiro de Rhaenyra" aria-label="Ampliar foto de Jacaerys Velaryon"><img class="foto" src="img/jacaerys-velaryon.webp" width="56" height="56" loading="lazy" alt="Jacaerys Velaryon em A Casa do Dragão"></button><div><h3>Jacaerys Velaryon</h3><p class="ep">Jace, herdeiro de Rhaenyra</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Velaryon (Strong)</span>
@@ -849,9 +879,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Prende a mãe em Pedra do Dragão para lutar no lugar dela. Vermax é abatido por um escorpião e Jace morre sob as flechas da Triarquia na Goela (T3E1).</p>
+      <p class="morte"><b>Como morreu</b>T3E1 · A Goela. Um escorpião da Triarquia acerta Vermax, que afunda. Jace sobe à tona e é morto pelas flechas dos besteiros. <button class="evento-botao" type="button" data-evento="goela">⚔ Batalha da Goela</button></p>
       <p class="got"><b>Em Game of Thrones</b>Fecha o Pacto de Gelo e Fogo com Cregan Stark; a união Stark e Targaryen só acontece com Jon Snow.</p>
     </article>
-    <article class="personagem" id="personagem-lucerys-velaryon" data-lado="negros" data-casa="Velaryon (Strong)">
+    <article class="personagem" id="personagem-lucerys-velaryon" data-lado="negros" data-casa="Velaryon (Strong)" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/lucerys-velaryon.webp" data-nome="Lucerys Velaryon" data-ep="Luke" aria-label="Ampliar foto de Lucerys Velaryon"><img class="foto" src="img/lucerys-velaryon.webp" width="56" height="56" loading="lazy" alt="Lucerys Velaryon em A Casa do Dragão"></button><div><h3>Lucerys Velaryon</h3><p class="ep">Luke</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Velaryon (Strong)</span>
@@ -860,9 +891,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Morto por Vhagar sobre Ponta Tempestade (T1E10). A morte dele começa a guerra.</p>
+      <p class="morte"><b>Como morreu</b>T1E10 · Céu de Ponta Tempestade. Vhagar, fora do controle de Aemond, alcança Arrax na tempestade e devora dragão e cavaleiro. <button class="evento-botao" type="button" data-evento="ponta-tempestade">⚔ Perseguição sobre Ponta Tempestade</button></p>
       <p class="got"><b>Em Game of Thrones</b>Cai sobre o castelo de Robert, Stannis e Gendry.</p>
     </article>
-    <article class="personagem" id="personagem-baela-targaryen" data-lado="negros" data-casa="Targaryen">
+    <article class="personagem" id="personagem-baela-targaryen" data-lado="negros" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/baela-targaryen.webp" data-nome="Baela Targaryen" data-ep="Filha de Daemon e Laena" aria-label="Ampliar foto de Baela Targaryen"><img class="foto" src="img/baela-targaryen.webp" width="56" height="56" loading="lazy" alt="Baela Targaryen em A Casa do Dragão"></button><div><h3>Baela Targaryen</h3><p class="ep">Filha de Daemon e Laena</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -871,9 +903,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Salva Jace uma vez na Goela e leva o corpo dele a Pedra do Dragão. Acaba detida por Rhaenyra (T3E8).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Nos livros, casa com Alyn Velaryon; os Velaryon da época de GoT descendem dela.</p>
     </article>
-    <article class="personagem" id="personagem-rhaena-targaryen" data-lado="negros" data-casa="Targaryen">
+    <article class="personagem" id="personagem-rhaena-targaryen" data-lado="negros" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/rhaena-targaryen.webp" data-nome="Rhaena Targaryen" data-ep="Filha de Daemon e Laena" aria-label="Ampliar foto de Rhaena Targaryen"><img class="foto" src="img/rhaena-targaryen.webp" width="56" height="56" loading="lazy" alt="Rhaena Targaryen em A Casa do Dragão"></button><div><h3>Rhaena Targaryen</h3><p class="ep">Filha de Daemon e Laena</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -882,9 +915,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Reivindica o dragão selvagem Sheepstealer sem dominá-lo; na Goela ele ataca os dois lados e custa Vermax. Foge do Vale, é capturada e levada a Porto Real (T3E7). Herda o papel de Nettles, cortada dos livros.</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Os ovos que levou ao Vale na T2 podem ser os de Daenerys (veja Dragões).</p>
     </article>
-    <article class="personagem" id="personagem-aegon-o-jovem-e-viserys" data-lado="negros" data-casa="Targaryen">
+    <article class="personagem" id="personagem-aegon-o-jovem-e-viserys" data-lado="negros" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><div class="foto foto-vazia" aria-hidden="true">AJ</div><div><h3>Aegon, o Jovem, e Viserys</h3><p class="ep">Filhos de Rhaenyra e Daemon</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -893,9 +927,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Escondidos no Vale com Jeyne Arryn desde a T2.</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Aegon III será rei. Viserys II é o ancestral direto de Daenerys e Jon Snow (veja a linhagem).</p>
     </article>
-    <article class="personagem" id="personagem-rhaenys-targaryen" data-lado="negros" data-casa="Targaryen">
+    <article class="personagem" id="personagem-rhaenys-targaryen" data-lado="negros" data-casa="Targaryen" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/rhaenys-targaryen.webp" data-nome="Rhaenys Targaryen" data-ep="A Rainha Que Nunca Foi" aria-label="Ampliar foto de Rhaenys Targaryen"><img class="foto" src="img/rhaenys-targaryen.webp" width="56" height="56" loading="lazy" alt="Rhaenys Targaryen em A Casa do Dragão"></button><div><h3>Rhaenys Targaryen</h3><p class="ep">A Rainha Que Nunca Foi</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -904,9 +939,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Morre em Rook's Rest, cercada por Vhagar e Sunfyre (T2E4).</p>
+      <p class="morte"><b>Como morreu</b>T2E4 · Rook's Rest. Cercada no ar por Vhagar e Sunfyre, escolhe lutar em vez de fugir e cai com Meleys. <button class="evento-botao" type="button" data-evento="rooks-rest">⚔ Batalha de Rook's Rest</button></p>
       <p class="got"><b>Em Game of Thrones</b>Filha de uma Baratheon: o cruzamento de sangue que Robert reivindica.</p>
     </article>
-    <article class="personagem" id="personagem-corlys-velaryon" data-lado="negros" data-casa="Velaryon">
+    <article class="personagem" id="personagem-corlys-velaryon" data-lado="negros" data-casa="Velaryon" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/corlys-velaryon.webp" data-nome="Corlys Velaryon" data-ep="A Serpente do Mar" aria-label="Ampliar foto de Corlys Velaryon"><img class="foto" src="img/corlys-velaryon.webp" width="56" height="56" loading="lazy" alt="Corlys Velaryon em A Casa do Dragão"></button><div><h3>Corlys Velaryon</h3><p class="ep">A Serpente do Mar</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Velaryon</span>
@@ -915,9 +951,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Perde Maré Alta, naufraga, chama os filhos de Rhaenyra de bastardos, é capturado por Jon Roxton, perde um dedo e é libertado por Daeron e Gwayne (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Driftmark fica ao lado de Pedra do Dragão, base de Stannis e Daenerys.</p>
     </article>
-    <article class="personagem" id="personagem-alyn-de-hull" data-lado="negros" data-casa="Velaryon">
+    <article class="personagem" id="personagem-alyn-de-hull" data-lado="negros" data-casa="Velaryon" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/alyn-de-hull.webp" data-nome="Alyn de Hull" data-ep="Herdeiro de Driftmark" aria-label="Ampliar foto de Alyn de Hull"><img class="foto" src="img/alyn-de-hull.webp" width="56" height="56" loading="lazy" alt="Alyn de Hull em A Casa do Dragão"></button><div><h3>Alyn de Hull</h3><p class="ep">Herdeiro de Driftmark</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Velaryon</span>
@@ -926,9 +963,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Mata Sharako Lohar na Goela, é nomeado herdeiro por Corlys e mata o Alto Septão a mando de Rhaenyra (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Nos livros, Alyn Velaryon vira o grande almirante Targaryen e casa com Baela.</p>
     </article>
-    <article class="personagem" id="personagem-addam-de-hull" data-lado="negros" data-casa="Velaryon">
+    <article class="personagem" id="personagem-addam-de-hull" data-lado="negros" data-casa="Velaryon" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/addam-de-hull.webp" data-nome="Addam de Hull" data-ep="Semente de dragão" aria-label="Ampliar foto de Addam de Hull"><img class="foto" src="img/addam-de-hull.webp" width="56" height="56" loading="lazy" alt="Addam de Hull em A Casa do Dragão"></button><div><h3>Addam de Hull</h3><p class="ep">Semente de dragão</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Velaryon</span>
@@ -938,8 +976,9 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
       </div>
       <p class="ate"><b>Até o fim da T3</b>Armado cavaleiro por Daemon, nunca legitimado por Rhaenyra; caça Aemond com Baela (T3).</p>
       
+      
     </article>
-    <article class="personagem" id="personagem-mysaria" data-lado="negros" data-casa="Sem casa">
+    <article class="personagem" id="personagem-mysaria" data-lado="negros" data-casa="Sem casa" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/mysaria.webp" data-nome="Mysaria" data-ep="O Verme Branco" aria-label="Ampliar foto de Mysaria"><img class="foto" src="img/mysaria.webp" width="56" height="56" loading="lazy" alt="Mysaria em A Casa do Dragão"></button><div><h3>Mysaria</h3><p class="ep">O Verme Branco</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Sem casa</span>
@@ -948,9 +987,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Mestra dos sussurros de Rhaenyra; descobre a gravidez de Helaena; é demitida e expulsa da cidade (T3E8).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Faz o papel de Varys: mestre dos sussurros de origem humilde, vindo de Essos.</p>
     </article>
-    <article class="personagem" id="personagem-hugh-hammer" data-lado="negros" data-casa="Sem casa">
+    <article class="personagem" id="personagem-hugh-hammer" data-lado="negros" data-casa="Sem casa" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/hugh-hammer.webp" data-nome="Hugh Hammer" data-ep="Semente de dragão, ferreiro" aria-label="Ampliar foto de Hugh Hammer"><img class="foto" src="img/hugh-hammer.webp" width="56" height="56" loading="lazy" alt="Hugh Hammer em A Casa do Dragão"></button><div><h3>Hugh Hammer</h3><p class="ep">Semente de dragão, ferreiro</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Sem casa</span>
@@ -960,8 +1000,9 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
       </div>
       <p class="ate"><b>Até o fim da T3</b>Reivindica Vermithor (T2E8). Na T3, a mulher, Kat, fica presa em Tumbleton e aparece morta depois do incêndio.</p>
       
+      
     </article>
-    <article class="personagem" id="personagem-ulf-white" data-lado="verdes" data-casa="Sem casa">
+    <article class="personagem" id="personagem-ulf-white" data-lado="verdes" data-casa="Sem casa" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/ulf-white.webp" data-nome="Ulf White" data-ep="Semente de dragão" aria-label="Ampliar foto de Ulf White"><img class="foto" src="img/ulf-white.webp" width="56" height="56" loading="lazy" alt="Ulf White em A Casa do Dragão"></button><div><h3>Ulf White</h3><p class="ep">Semente de dragão</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Sem casa</span>
@@ -970,9 +1011,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Humilhado por Daemon, é comprado por Ormund com a promessa de Driftmark e queima Tumbleton com Silverwing, matando Ormund e Roderick (T3E8).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Silverwing, nos livros, é dos dragões que sobrevivem à Dança.</p>
     </article>
-    <article class="personagem" id="personagem-oscar-tully" data-lado="negros" data-casa="Tully">
+    <article class="personagem" id="personagem-oscar-tully" data-lado="negros" data-casa="Tully" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/oscar-tully.webp" data-nome="Oscar Tully" data-ep="Senhor de Correrrio" aria-label="Ampliar foto de Oscar Tully"><img class="foto" src="img/oscar-tully.webp" width="56" height="56" loading="lazy" alt="Oscar Tully em A Casa do Dragão"></button><div><h3>Oscar Tully</h3><p class="ep">Senhor de Correrrio</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Tully</span>
@@ -981,9 +1023,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Lidera o exército do Tridente, embosca Criston Cole e cerca Tumbleton (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Ancestral de Hoster, Catelyn, Edmure e do Peixe Negro.</p>
     </article>
-    <article class="personagem" id="personagem-roderick-dustin" data-lado="negros" data-casa="Dustin">
+    <article class="personagem" id="personagem-roderick-dustin" data-lado="negros" data-casa="Dustin" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/roderick-dustin.webp" data-nome="Roderick Dustin" data-ep="Roddy, a Ruína, dos Lobos do Inverno" aria-label="Ampliar foto de Roderick Dustin"><img class="foto" src="img/roderick-dustin.webp" width="56" height="56" loading="lazy" alt="Roderick Dustin em A Casa do Dragão"></button><div><h3>Roderick Dustin</h3><p class="ep">Roddy, a Ruína, dos Lobos do Inverno</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Dustin</span>
@@ -992,9 +1035,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Entrega a Daemon a cabeça de Jason Lannister (T3E1); escala as muralhas de Tumbleton e morre no incêndio de Ulf (T3E8).</p>
+      <p class="morte"><b>Como morreu</b>T3E8 · Tumbleton. Morre lutando contra Ormund Hightower quando Ulf queima a cidade com Silverwing. <button class="evento-botao" type="button" data-evento="tumbleton">⚔ Batalha de Tumbleton</button></p>
       <p class="got"><b>Em Game of Thrones</b>Barrowton: nos livros, Lady Barbrey Dustin, que odeia Ned Stark.</p>
     </article>
-    <article class="personagem" id="personagem-torrhen-manderly" data-lado="negros" data-casa="Manderly">
+    <article class="personagem" id="personagem-torrhen-manderly" data-lado="negros" data-casa="Manderly" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/torrhen-manderly.webp" data-nome="Torrhen Manderly" data-ep="Mestre da moeda" aria-label="Ampliar foto de Torrhen Manderly"><img class="foto" src="img/torrhen-manderly.webp" width="56" height="56" loading="lazy" alt="Torrhen Manderly em A Casa do Dragão"></button><div><h3>Torrhen Manderly</h3><p class="ep">Mestre da moeda</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Manderly</span>
@@ -1003,9 +1047,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Nomeado por Rhaenyra para levar a culpa pelo cofre vazio (T3E4).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Lorde Wyman Manderly está entre os que proclamam Jon Snow Rei do Norte (T6).</p>
     </article>
-    <article class="personagem" id="personagem-alysanne-blackwood" data-lado="negros" data-casa="Blackwood">
+    <article class="personagem" id="personagem-alysanne-blackwood" data-lado="negros" data-casa="Blackwood" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/alysanne-blackwood.webp" data-nome="Alysanne Blackwood" data-ep="Black Aly, a arqueira" aria-label="Ampliar foto de Alysanne Blackwood"><img class="foto" src="img/alysanne-blackwood.webp" width="56" height="56" loading="lazy" alt="Alysanne Blackwood em A Casa do Dragão"></button><div><h3>Alysanne Blackwood</h3><p class="ep">Black Aly, a arqueira</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Blackwood</span>
@@ -1014,9 +1059,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Mata Criston Cole com uma flecha quando ele pede um duelo (T3E6).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Nos livros, casa com Cregan Stark e vira Senhora de Winterfell.</p>
     </article>
-    <article class="personagem" id="personagem-jeyne-arryn" data-lado="negros" data-casa="Arryn">
+    <article class="personagem" id="personagem-jeyne-arryn" data-lado="negros" data-casa="Arryn" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/jeyne-arryn.webp" data-nome="Jeyne Arryn" data-ep="A Donzela do Vale" aria-label="Ampliar foto de Jeyne Arryn"><img class="foto" src="img/jeyne-arryn.webp" width="56" height="56" loading="lazy" alt="Jeyne Arryn em A Casa do Dragão"></button><div><h3>Jeyne Arryn</h3><p class="ep">A Donzela do Vale</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Arryn</span>
@@ -1025,9 +1071,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Abriga Rhaena e os meninos; manda ouro a Daemon; avisa quando Rhaena foge (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>O Ninho da Águia de Lysa e Robin, a Porta da Lua.</p>
     </article>
-    <article class="personagem" id="personagem-cregan-stark" data-lado="negros" data-casa="Stark">
+    <article class="personagem" id="personagem-cregan-stark" data-lado="negros" data-casa="Stark" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/cregan-stark.webp" data-nome="Cregan Stark" data-ep="Senhor de Winterfell" aria-label="Ampliar foto de Cregan Stark"><img class="foto" src="img/cregan-stark.webp" width="56" height="56" loading="lazy" alt="Cregan Stark em A Casa do Dragão"></button><div><h3>Cregan Stark</h3><p class="ep">Senhor de Winterfell</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Stark</span>
@@ -1036,9 +1083,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Recebe Jacaerys no topo da Muralha e fecha o Pacto de Gelo e Fogo (T2). Fica fora da T3; o Norte aparece pelos Dustin e Manderly.</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Ancestral de Ned Stark; o nome Rickon, do pai dele, volta no caçula de Ned.</p>
     </article>
-    <article class="personagem" id="personagem-luthor-largent" data-lado="negros" data-casa="Sem casa">
+    <article class="personagem" id="personagem-luthor-largent" data-lado="negros" data-casa="Sem casa" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/luthor-largent.webp" data-nome="Luthor Largent" data-ep="Comandante da Patrulha da Cidade" aria-label="Ampliar foto de Luthor Largent"><img class="foto" src="img/luthor-largent.webp" width="56" height="56" loading="lazy" alt="Luthor Largent em A Casa do Dragão"></button><div><h3>Luthor Largent</h3><p class="ep">Comandante da Patrulha da Cidade</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Sem casa</span>
@@ -1047,9 +1095,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Entrega Porto Real a Daemon e prende os apoiadores dos Verdes; é assassinado com vários patrulheiros por homens pagos por Ormund (T3E5).</p>
+      <p class="morte"><b>Como morreu</b>T3E5 · Porto Real. Assassinado com vários patrulheiros por homens pagos por Ormund; os corpos aparecem marcados como traidores. </p>
       <p class="got"><b>Em Game of Thrones</b>A Patrulha da Cidade, os mantos dourados de Janos Slynt e, depois, de Bronn.</p>
     </article>
-    <article class="personagem" id="personagem-alicent-hightower" data-lado="verdes" data-casa="Hightower">
+    <article class="personagem" id="personagem-alicent-hightower" data-lado="verdes" data-casa="Hightower" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/alicent-hightower.webp" data-nome="Alicent Hightower" data-ep="A rainha viúva" aria-label="Ampliar foto de Alicent Hightower"><img class="foto" src="img/alicent-hightower.webp" width="56" height="56" loading="lazy" alt="Alicent Hightower em A Casa do Dragão"></button><div><h3>Alicent Hightower</h3><p class="ep">A rainha viúva</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Hightower</span>
@@ -1058,9 +1107,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Entrega a cidade a Rhaenyra, falha em fugir com Helaena, aceita matar Aemond em troca da liberdade e o envenena em Harrenhal (T3E7).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Dá nome aos Verdes. Ser Gerold Hightower, da casa dela, morre guardando o segredo de Jon Snow (T6).</p>
     </article>
-    <article class="personagem" id="personagem-otto-hightower" data-lado="verdes" data-casa="Hightower">
+    <article class="personagem" id="personagem-otto-hightower" data-lado="verdes" data-casa="Hightower" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/otto-hightower.webp" data-nome="Otto Hightower" data-ep="Mão de três reis" aria-label="Ampliar foto de Otto Hightower"><img class="foto" src="img/otto-hightower.webp" width="56" height="56" loading="lazy" alt="Otto Hightower em A Casa do Dragão"></button><div><h3>Otto Hightower</h3><p class="ep">Mão de três reis</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Hightower</span>
@@ -1069,9 +1119,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Preso, é entregue por Larys a Daemon e decapitado por Rhaenyra (T3E2).</p>
+      <p class="morte"><b>Como morreu</b>T3E2 · Porto Real. Preso, é entregue por Larys a Daemon e decapitado por Rhaenyra diante da corte. <button class="evento-botao" type="button" data-evento="porto-real">⚔ Queda de Porto Real</button></p>
       <p class="got"><b>Em Game of Thrones</b>A Mão do Rei que GoT abre enterrando é Jon Arryn; a que acaba no cadafalso é Ned Stark.</p>
     </article>
-    <article class="personagem" id="personagem-aegon-ii-targaryen" data-lado="verdes" data-casa="Targaryen">
+    <article class="personagem" id="personagem-aegon-ii-targaryen" data-lado="verdes" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/aegon-ii-targaryen.webp" data-nome="Aegon II Targaryen" data-ep="O rei dos Verdes" aria-label="Ampliar foto de Aegon II Targaryen"><img class="foto" src="img/aegon-ii-targaryen.webp" width="56" height="56" loading="lazy" alt="Aegon II Targaryen em A Casa do Dragão"></button><div><h3>Aegon II Targaryen</h3><p class="ep">O rei dos Verdes</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -1080,9 +1131,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Capturado com Larys, foge, chora o corpo errado de Sunfyre, limpa latrinas em Rook's Rest e é salvo pelo dragão, vivo (T3E7). Manda Aemond buscar Vhagar.</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Único rei Targaryen que GoT nunca cita. A linha dele acaba sem herdeiros.</p>
     </article>
-    <article class="personagem" id="personagem-aemond-targaryen" data-lado="verdes" data-casa="Targaryen">
+    <article class="personagem" id="personagem-aemond-targaryen" data-lado="verdes" data-casa="Targaryen" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/aemond-targaryen.webp" data-nome="Aemond Targaryen" data-ep="O Caolho" aria-label="Ampliar foto de Aemond Targaryen"><img class="foto" src="img/aemond-targaryen.webp" width="56" height="56" loading="lazy" alt="Aemond Targaryen em A Casa do Dragão"></button><div><h3>Aemond Targaryen</h3><p class="ep">O Caolho</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -1091,9 +1143,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Senta no Trono dizendo que Aegon abdicou, mata Simon Strong, é ferido em Harrenhal e envenenado por Alicent; sobrevive com a ajuda de Alys (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Vhagar, a dragoa dele, vira um dos três maiores crânios dos porões (livros).</p>
     </article>
-    <article class="personagem" id="personagem-helaena-targaryen" data-lado="verdes" data-casa="Targaryen">
+    <article class="personagem" id="personagem-helaena-targaryen" data-lado="verdes" data-casa="Targaryen" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/helaena-targaryen.webp" data-nome="Helaena Targaryen" data-ep="A rainha sonhadora" aria-label="Ampliar foto de Helaena Targaryen"><img class="foto" src="img/helaena-targaryen.webp" width="56" height="56" loading="lazy" alt="Helaena Targaryen em A Casa do Dragão"></button><div><h3>Helaena Targaryen</h3><p class="ep">A rainha sonhadora</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -1102,9 +1155,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Grávida, presa e alimentada à força por Rhaenyra, pula de uma janela (T3E8) e deixa a tapeçaria de Rhaenyra no trono cercada de fogo e sangue.</p>
+      <p class="morte"><b>Como morreu</b>T3E8 · Fortaleza Vermelha, Porto Real. Grávida e alimentada à força por ordem de Rhaenyra, pula de uma janela. Deixa a tapeçaria de Rhaenyra no trono cercada de fogo e sangue. </p>
       <p class="got"><b>Em Game of Thrones</b>Nos livros, a filha dela, Jaehaera, casa com Aegon III e une os dois lados.</p>
     </article>
-    <article class="personagem" id="personagem-daeron-targaryen" data-lado="verdes" data-casa="Targaryen">
+    <article class="personagem" id="personagem-daeron-targaryen" data-lado="verdes" data-casa="Targaryen" data-estado="sumido">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/daeron-targaryen.webp" data-nome="Daeron Targaryen" data-ep="O caçula de Alicent" aria-label="Ampliar foto de Daeron Targaryen"><img class="foto" src="img/daeron-targaryen.webp" width="56" height="56" loading="lazy" alt="Daeron Targaryen em A Casa do Dragão"></button><div><h3>Daeron Targaryen</h3><p class="ep">O caçula de Alicent</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Targaryen</span>
@@ -1114,8 +1168,9 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
       </div>
       <p class="ate"><b>Até o fim da T3</b>Primeiro um impostor, depois o verdadeiro: Ormund o proclama rei em Tumbleton e o obriga a executar um inocente. Liberta Corlys com Gwayne e some no incêndio (T3E8).</p>
       
+      
     </article>
-    <article class="personagem" id="personagem-ormund-hightower" data-lado="verdes" data-casa="Hightower">
+    <article class="personagem" id="personagem-ormund-hightower" data-lado="verdes" data-casa="Hightower" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/ormund-hightower.webp" data-nome="Ormund Hightower" data-ep="Senhor de Vilavelha" aria-label="Ampliar foto de Ormund Hightower"><img class="foto" src="img/ormund-hightower.webp" width="56" height="56" loading="lazy" alt="Ormund Hightower em A Casa do Dragão"></button><div><h3>Ormund Hightower</h3><p class="ep">Senhor de Vilavelha</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Hightower</span>
@@ -1124,9 +1179,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Submete-se a Daemon de mentira, toma Tumbleton, cunha moedas com Daeron, compra Ulf e morre queimado por Silverwing (T3E8).</p>
+      <p class="morte"><b>Como morreu</b>T3E8 · Tumbleton. Morre no incêndio de Silverwing, lutando contra Roderick Dustin, traído pelo Ulf que ele mesmo comprou. <button class="evento-botao" type="button" data-evento="tumbleton">⚔ Batalha de Tumbleton</button></p>
       <p class="got"><b>Em Game of Thrones</b>Vilavelha e a Cidadela, onde Sam Tarly estuda (T6 e T7).</p>
     </article>
-    <article class="personagem" id="personagem-gwayne-hightower" data-lado="verdes" data-casa="Hightower">
+    <article class="personagem" id="personagem-gwayne-hightower" data-lado="verdes" data-casa="Hightower" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/gwayne-hightower.webp" data-nome="Gwayne Hightower" data-ep="Irmão de Alicent" aria-label="Ampliar foto de Gwayne Hightower"><img class="foto" src="img/gwayne-hightower.webp" width="56" height="56" loading="lazy" alt="Gwayne Hightower em A Casa do Dragão"></button><div><h3>Gwayne Hightower</h3><p class="ep">Irmão de Alicent</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Hightower</span>
@@ -1136,8 +1192,9 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
       </div>
       <p class="ate"><b>Até o fim da T3</b>Abandona Criston, desmascara os assassinos de Rhaenyra, liberta Corlys e não acha Daeron depois do incêndio (T3).</p>
       
+      
     </article>
-    <article class="personagem" id="personagem-criston-cole" data-lado="verdes" data-casa="Cole">
+    <article class="personagem" id="personagem-criston-cole" data-lado="verdes" data-casa="Cole" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/criston-cole.webp" data-nome="Criston Cole" data-ep="O Fazedor de Reis" aria-label="Ampliar foto de Criston Cole"><img class="foto" src="img/criston-cole.webp" width="56" height="56" loading="lazy" alt="Criston Cole em A Casa do Dragão"></button><div><h3>Criston Cole</h3><p class="ep">O Fazedor de Reis</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Cole</span>
@@ -1146,9 +1203,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Guerrilha contra os Tully, chega tarde a uma ponte queimada, pede um duelo e morre com a flecha de Black Aly (T3E6).</p>
+      <p class="morte"><b>Como morreu</b>T3E6 · Terras Fluviais. Emboscado pelos Tully, pede um duelo a Roderick e Oscar; Alysanne Blackwood o mata com uma flecha antes que alguém aceite. <button class="evento-botao" type="button" data-evento="emboscada-tully">⚔ Emboscada dos Tully</button></p>
       <p class="got"><b>Em Game of Thrones</b>Beric Dondarrion é o senhor de Blackhaven, onde Criston cresceu; Jaime é o outro guarda branco que quebra o juramento.</p>
     </article>
-    <article class="personagem" id="personagem-larys-strong" data-lado="verdes" data-casa="Strong">
+    <article class="personagem" id="personagem-larys-strong" data-lado="verdes" data-casa="Strong" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/larys-strong.webp" data-nome="Larys Strong" data-ep="Pé-Torto" aria-label="Ampliar foto de Larys Strong"><img class="foto" src="img/larys-strong.webp" width="56" height="56" loading="lazy" alt="Larys Strong em A Casa do Dragão"></button><div><h3>Larys Strong</h3><p class="ep">Pé-Torto</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Strong</span>
@@ -1157,9 +1215,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Capturado com Aegon, revela quem são para valer como reféns, entrega Otto a Daemon e abandona Aegon quando a busca por Tyland aperta (T3E7).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>O Varys da Dança: mestre dos sussurros que escolhe o lado vencedor.</p>
     </article>
-    <article class="personagem" id="personagem-alys-rivers" data-lado="outros" data-casa="Strong (bastarda)">
+    <article class="personagem" id="personagem-alys-rivers" data-lado="outros" data-casa="Strong (bastarda)" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/alys-rivers.webp" data-nome="Alys Rivers" data-ep="A bruxa de Harrenhal" aria-label="Ampliar foto de Alys Rivers"><img class="foto" src="img/alys-rivers.webp" width="56" height="56" loading="lazy" alt="Alys Rivers em A Casa do Dragão"></button><div><h3>Alys Rivers</h3><p class="ep">A bruxa de Harrenhal</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Strong (bastarda)</span>
@@ -1168,9 +1227,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Salva Aemond, mostra a ele um ninho de ovos escondido e conta que ficou imortal ao falhar em salvar o filho com magia (T3E8).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Uma imortal que não envelhece, como Melisandre sob o colar.</p>
     </article>
-    <article class="personagem" id="personagem-jason-lannister" data-lado="verdes" data-casa="Lannister">
+    <article class="personagem" id="personagem-jason-lannister" data-lado="verdes" data-casa="Lannister" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/jason-lannister.webp" data-nome="Jason Lannister" data-ep="Senhor do Rochedo" aria-label="Ampliar foto de Jason Lannister"><img class="foto" src="img/jason-lannister.webp" width="56" height="56" loading="lazy" alt="Jason Lannister em A Casa do Dragão"></button><div><h3>Jason Lannister</h3><p class="ep">Senhor do Rochedo</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Lannister</span>
@@ -1179,9 +1239,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Derrotado por Daemon; Roderick Dustin entrega a cabeça dele (T3E1).</p>
+      <p class="morte"><b>Como morreu</b>T3E1 · Terras Fluviais. O exército dele é destruído por Daemon e pelos Lobos do Inverno; Roderick Dustin entrega a cabeça a Daemon. <button class="evento-botao" type="button" data-evento="lannister">⚔ Derrota do exército Lannister</button></p>
       <p class="got"><b>Em Game of Thrones</b>Ancestral de Tywin. Gêmeo, como Jaime e Cersei.</p>
     </article>
-    <article class="personagem" id="personagem-tyland-lannister" data-lado="verdes" data-casa="Lannister">
+    <article class="personagem" id="personagem-tyland-lannister" data-lado="verdes" data-casa="Lannister" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/tyland-lannister.webp" data-nome="Tyland Lannister" data-ep="Mestre da moeda de Aegon II" aria-label="Ampliar foto de Tyland Lannister"><img class="foto" src="img/tyland-lannister.webp" width="56" height="56" loading="lazy" alt="Tyland Lannister em A Casa do Dragão"></button><div><h3>Tyland Lannister</h3><p class="ep">Mestre da moeda de Aegon II</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Lannister</span>
@@ -1190,9 +1251,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-vivo">vivo</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Jogado ao mar por Lohar, sobrevive, esconde o tesouro da coroa e se junta a Aegon em Rook's Rest (T3).</p>
+      
       <p class="got"><b>Em Game of Thrones</b>Nos livros, vira Mão de Aegon III: o Lannister cuidando do ouro, como Tywin.</p>
     </article>
-    <article class="personagem" id="personagem-jon-roxton" data-lado="verdes" data-casa="Roxton">
+    <article class="personagem" id="personagem-jon-roxton" data-lado="verdes" data-casa="Roxton" data-estado="vivo">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/jon-roxton.webp" data-nome="Jon Roxton" data-ep="O Audaz" aria-label="Ampliar foto de Jon Roxton"><img class="foto" src="img/jon-roxton.webp" width="56" height="56" loading="lazy" alt="Jon Roxton em A Casa do Dragão"></button><div><h3>Jon Roxton</h3><p class="ep">O Audaz</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Roxton</span>
@@ -1202,8 +1264,9 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
       </div>
       <p class="ate"><b>Até o fim da T3</b>Captura Corlys e duela com Daemon até Ulf interromper (T3E8).</p>
       
+      
     </article>
-    <article class="personagem" id="personagem-sharako-lohar" data-lado="outros" data-casa="Triarquia">
+    <article class="personagem" id="personagem-sharako-lohar" data-lado="outros" data-casa="Triarquia" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/sharako-lohar.webp" data-nome="Sharako Lohar" data-ep="Almirante da Triarquia" aria-label="Ampliar foto de Sharako Lohar"><img class="foto" src="img/sharako-lohar.webp" width="56" height="56" loading="lazy" alt="Sharako Lohar em A Casa do Dragão"></button><div><h3>Sharako Lohar</h3><p class="ep">Almirante da Triarquia</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Triarquia</span>
@@ -1212,9 +1275,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Saqueia Maré Alta, afunda o navio de Corlys e morre pelas mãos de Alyn (T3E1).</p>
+      <p class="morte"><b>Como morreu</b>T3E1 · A Goela. Depois de afundar o navio de Corlys, é morto por Alyn de Hull. <button class="evento-botao" type="button" data-evento="goela">⚔ Batalha da Goela</button></p>
       <p class="got"><b>Em Game of Thrones</b>A Triarquia (Myr, Lys e Tyrosh) são as Cidades Livres que Daenerys atravessa em Essos.</p>
     </article>
-    <article class="personagem" id="personagem-simon-strong" data-lado="negros" data-casa="Strong">
+    <article class="personagem" id="personagem-simon-strong" data-lado="negros" data-casa="Strong" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/simon-strong.webp" data-nome="Simon Strong" data-ep="Castelão de Harrenhal" aria-label="Ampliar foto de Simon Strong"><img class="foto" src="img/simon-strong.webp" width="56" height="56" loading="lazy" alt="Simon Strong em A Casa do Dragão"></button><div><h3>Simon Strong</h3><p class="ep">Castelão de Harrenhal</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Strong</span>
@@ -1223,9 +1287,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Mantém Harrenhal para Daemon (T2) e é morto por Aemond na chegada de Vhagar (T3E2).</p>
+      <p class="morte"><b>Como morreu</b>T3E2 · Harrenhal. Morto por Aemond na chegada de Vhagar ao castelo. <button class="evento-botao" type="button" data-evento="harrenhal">⚔ Retomada de Harrenhal</button></p>
       <p class="got"><b>Em Game of Thrones</b>Harrenhal, onde Arya serve Tywin (T2).</p>
     </article>
-    <article class="personagem" id="personagem-jasper-wylde" data-lado="verdes" data-casa="Wylde">
+    <article class="personagem" id="personagem-jasper-wylde" data-lado="verdes" data-casa="Wylde" data-estado="morto">
       <div class="cabeca"><button class="foto-botao" type="button" data-src="img/jasper-wylde.webp" data-nome="Jasper Wylde" data-ep="Ironrod, mestre das leis" aria-label="Ampliar foto de Jasper Wylde"><img class="foto" src="img/jasper-wylde.webp" width="56" height="56" loading="lazy" alt="Jasper Wylde em A Casa do Dragão"></button><div><h3>Jasper Wylde</h3><p class="ep">Ironrod, mestre das leis</p></div></div>
       <div class="marcas">
         <span class="chip chip-casa">Wylde</span>
@@ -1234,6 +1299,7 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
         <span class="estado estado-morto">† morto</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>Tenta estuprar Alicent, é preso por Orwyle e decapitado por Daemon (T3E2).</p>
+      <p class="morte"><b>Como morreu</b>T3E2 · Porto Real. Decapitado por Daemon na queda da cidade, depois de tentar estuprar Alicent. <button class="evento-botao" type="button" data-evento="porto-real">⚔ Queda de Porto Real</button></p>
       
     </article>
 <!-- /pre:personagens --></div>
@@ -1543,6 +1609,21 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
 </section>
 
 <figure class="previa" id="previa" hidden><img id="previa-img" alt=""><figcaption id="previa-legenda"></figcaption></figure>
+<div class="dialogo" id="evento" hidden role="dialog" aria-modal="true" aria-labelledby="evento-titulo">
+  <div class="dialogo-caixa">
+    <button class="fechar" type="button" id="evento-fechar" aria-label="Fechar">×</button>
+    <p class="olho" id="evento-ep"></p>
+    <h3 id="evento-titulo"></h3>
+    <dl class="evento-meta">
+      <div><dt>Onde</dt><dd id="evento-onde"></dd></div>
+      <div><dt>Quem contra quem</dt><dd id="evento-lados"></dd></div>
+    </dl>
+    <p id="evento-descricao"></p>
+    <h4>Mortos neste combate</h4>
+    <ul class="evento-mortos" id="evento-mortos"></ul>
+    <p class="evento-dragoes" id="evento-dragoes"></p>
+  </div>
+</div>
 <div class="lupa" id="lupa" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
   <button class="fechar" type="button" id="lupa-fechar" aria-label="Fechar">×</button>
   <figure><img id="lupa-img" alt=""><figcaption id="lupa-legenda"></figcaption></figure>
@@ -1870,13 +1951,13 @@ const personagens = [
   {nome:"Daemon Targaryen", ep:"O Príncipe Rebelde", casa:"Targaryen", lado:"negros", dragao:"Caraxes", estado:"vivo",
    ate:"Toma a cidade com Luthor Largent, decapita Jasper Wylde, comanda o cerco de Tumbleton e esconde de Rhaenyra que Rhaena montava Sheepstealer (T3).",
    got:"Ancestral direto de Daenerys e Jon Snow. Nos livros, a espada dele, Irmã Negra, acaba com o Corvo de Sangue."},
-  {nome:"Viserys I Targaryen", ep:"O rei que dividiu o reino", casa:"Targaryen", lado:"outros", dragao:"Balerion, depois nenhum", estado:"morto",
+  {nome:"Viserys I Targaryen", ep:"O rei que dividiu o reino", casa:"Targaryen", lado:"outros", dragao:"Balerion, depois nenhum", estado:"morto", morte:{ep:"T1E8", onde:"Fortaleza Vermelha, Porto Real", como:"Na cama, consumido pela doença. As últimas palavras, sobre a profecia de Aegon, Alicent entende como um pedido para coroar o filho dela."},
    ate:"Morre no fim da T1 depois de confundir a profecia na cabeça de Alicent.",
    got:"Conta a Rhaenyra o sonho de Aegon: é a profecia do Príncipe Prometido que Melisandre persegue."},
-  {nome:"Jacaerys Velaryon", ep:"Jace, herdeiro de Rhaenyra", casa:"Velaryon (Strong)", lado:"negros", dragao:"Vermax", estado:"morto",
+  {nome:"Jacaerys Velaryon", ep:"Jace, herdeiro de Rhaenyra", casa:"Velaryon (Strong)", lado:"negros", dragao:"Vermax", estado:"morto", morte:{ep:"T3E1", onde:"A Goela", como:"Um escorpião da Triarquia acerta Vermax, que afunda. Jace sobe à tona e é morto pelas flechas dos besteiros.", evento:"goela"},
    ate:"Prende a mãe em Pedra do Dragão para lutar no lugar dela. Vermax é abatido por um escorpião e Jace morre sob as flechas da Triarquia na Goela (T3E1).",
    got:"Fecha o Pacto de Gelo e Fogo com Cregan Stark; a união Stark e Targaryen só acontece com Jon Snow."},
-  {nome:"Lucerys Velaryon", ep:"Luke", casa:"Velaryon (Strong)", lado:"negros", dragao:"Arrax", estado:"morto",
+  {nome:"Lucerys Velaryon", ep:"Luke", casa:"Velaryon (Strong)", lado:"negros", dragao:"Arrax", estado:"morto", morte:{ep:"T1E10", onde:"Céu de Ponta Tempestade", como:"Vhagar, fora do controle de Aemond, alcança Arrax na tempestade e devora dragão e cavaleiro.", evento:"ponta-tempestade"},
    ate:"Morto por Vhagar sobre Ponta Tempestade (T1E10). A morte dele começa a guerra.",
    got:"Cai sobre o castelo de Robert, Stannis e Gendry."},
   {nome:"Baela Targaryen", ep:"Filha de Daemon e Laena", casa:"Targaryen", lado:"negros", dragao:"Moondancer", estado:"vivo",
@@ -1888,7 +1969,7 @@ const personagens = [
   {nome:"Aegon, o Jovem, e Viserys", ep:"Filhos de Rhaenyra e Daemon", casa:"Targaryen", lado:"negros", dragao:"Stormcloud", estado:"vivo",
    ate:"Escondidos no Vale com Jeyne Arryn desde a T2.",
    got:"Aegon III será rei. Viserys II é o ancestral direto de Daenerys e Jon Snow (veja a linhagem)."},
-  {nome:"Rhaenys Targaryen", ep:"A Rainha Que Nunca Foi", casa:"Targaryen", lado:"negros", dragao:"Meleys", estado:"morto",
+  {nome:"Rhaenys Targaryen", ep:"A Rainha Que Nunca Foi", casa:"Targaryen", lado:"negros", dragao:"Meleys", estado:"morto", morte:{ep:"T2E4", onde:"Rook's Rest", como:"Cercada no ar por Vhagar e Sunfyre, escolhe lutar em vez de fugir e cai com Meleys.", evento:"rooks-rest"},
    ate:"Morre em Rook's Rest, cercada por Vhagar e Sunfyre (T2E4).",
    got:"Filha de uma Baratheon: o cruzamento de sangue que Robert reivindica."},
   {nome:"Corlys Velaryon", ep:"A Serpente do Mar", casa:"Velaryon", lado:"negros", dragao:"", estado:"vivo",
@@ -1912,7 +1993,7 @@ const personagens = [
   {nome:"Oscar Tully", ep:"Senhor de Correrrio", casa:"Tully", lado:"negros", dragao:"", estado:"vivo",
    ate:"Lidera o exército do Tridente, embosca Criston Cole e cerca Tumbleton (T3).",
    got:"Ancestral de Hoster, Catelyn, Edmure e do Peixe Negro."},
-  {nome:"Roderick Dustin", ep:"Roddy, a Ruína, dos Lobos do Inverno", casa:"Dustin", lado:"negros", dragao:"", estado:"morto",
+  {nome:"Roderick Dustin", ep:"Roddy, a Ruína, dos Lobos do Inverno", casa:"Dustin", lado:"negros", dragao:"", estado:"morto", morte:{ep:"T3E8", onde:"Tumbleton", como:"Morre lutando contra Ormund Hightower quando Ulf queima a cidade com Silverwing.", evento:"tumbleton"},
    ate:"Entrega a Daemon a cabeça de Jason Lannister (T3E1); escala as muralhas de Tumbleton e morre no incêndio de Ulf (T3E8).",
    got:"Barrowton: nos livros, Lady Barbrey Dustin, que odeia Ned Stark."},
   {nome:"Torrhen Manderly", ep:"Mestre da moeda", casa:"Manderly", lado:"negros", dragao:"", estado:"vivo",
@@ -1927,13 +2008,13 @@ const personagens = [
   {nome:"Cregan Stark", ep:"Senhor de Winterfell", casa:"Stark", lado:"negros", dragao:"", estado:"vivo",
    ate:"Recebe Jacaerys no topo da Muralha e fecha o Pacto de Gelo e Fogo (T2). Fica fora da T3; o Norte aparece pelos Dustin e Manderly.",
    got:"Ancestral de Ned Stark; o nome Rickon, do pai dele, volta no caçula de Ned."},
-  {nome:"Luthor Largent", ep:"Comandante da Patrulha da Cidade", casa:"Sem casa", lado:"negros", dragao:"", estado:"morto",
+  {nome:"Luthor Largent", ep:"Comandante da Patrulha da Cidade", casa:"Sem casa", lado:"negros", dragao:"", estado:"morto", morte:{ep:"T3E5", onde:"Porto Real", como:"Assassinado com vários patrulheiros por homens pagos por Ormund; os corpos aparecem marcados como traidores."},
    ate:"Entrega Porto Real a Daemon e prende os apoiadores dos Verdes; é assassinado com vários patrulheiros por homens pagos por Ormund (T3E5).",
    got:"A Patrulha da Cidade, os mantos dourados de Janos Slynt e, depois, de Bronn."},
   {nome:"Alicent Hightower", ep:"A rainha viúva", casa:"Hightower", lado:"verdes", dragao:"", estado:"vivo",
    ate:"Entrega a cidade a Rhaenyra, falha em fugir com Helaena, aceita matar Aemond em troca da liberdade e o envenena em Harrenhal (T3E7).",
    got:"Dá nome aos Verdes. Ser Gerold Hightower, da casa dela, morre guardando o segredo de Jon Snow (T6)."},
-  {nome:"Otto Hightower", ep:"Mão de três reis", casa:"Hightower", lado:"verdes", dragao:"", estado:"morto",
+  {nome:"Otto Hightower", ep:"Mão de três reis", casa:"Hightower", lado:"verdes", dragao:"", estado:"morto", morte:{ep:"T3E2", onde:"Porto Real", como:"Preso, é entregue por Larys a Daemon e decapitado por Rhaenyra diante da corte.", evento:"porto-real"},
    ate:"Preso, é entregue por Larys a Daemon e decapitado por Rhaenyra (T3E2).",
    got:"A Mão do Rei que GoT abre enterrando é Jon Arryn; a que acaba no cadafalso é Ned Stark."},
   {nome:"Aegon II Targaryen", ep:"O rei dos Verdes", casa:"Targaryen", lado:"verdes", dragao:"Sunfyre", estado:"vivo",
@@ -1942,19 +2023,19 @@ const personagens = [
   {nome:"Aemond Targaryen", ep:"O Caolho", casa:"Targaryen", lado:"verdes", dragao:"Vhagar", estado:"vivo",
    ate:"Senta no Trono dizendo que Aegon abdicou, mata Simon Strong, é ferido em Harrenhal e envenenado por Alicent; sobrevive com a ajuda de Alys (T3).",
    got:"Vhagar, a dragoa dele, vira um dos três maiores crânios dos porões (livros)."},
-  {nome:"Helaena Targaryen", ep:"A rainha sonhadora", casa:"Targaryen", lado:"verdes", dragao:"Dreamfyre", estado:"morto",
+  {nome:"Helaena Targaryen", ep:"A rainha sonhadora", casa:"Targaryen", lado:"verdes", dragao:"Dreamfyre", estado:"morto", morte:{ep:"T3E8", onde:"Fortaleza Vermelha, Porto Real", como:"Grávida e alimentada à força por ordem de Rhaenyra, pula de uma janela. Deixa a tapeçaria de Rhaenyra no trono cercada de fogo e sangue."},
    ate:"Grávida, presa e alimentada à força por Rhaenyra, pula de uma janela (T3E8) e deixa a tapeçaria de Rhaenyra no trono cercada de fogo e sangue.",
    got:"Nos livros, a filha dela, Jaehaera, casa com Aegon III e une os dois lados."},
   {nome:"Daeron Targaryen", ep:"O caçula de Alicent", casa:"Targaryen", lado:"verdes", dragao:"Tessarion", estado:"sumido",
    ate:"Primeiro um impostor, depois o verdadeiro: Ormund o proclama rei em Tumbleton e o obriga a executar um inocente. Liberta Corlys com Gwayne e some no incêndio (T3E8).",
    got:""},
-  {nome:"Ormund Hightower", ep:"Senhor de Vilavelha", casa:"Hightower", lado:"verdes", dragao:"", estado:"morto",
+  {nome:"Ormund Hightower", ep:"Senhor de Vilavelha", casa:"Hightower", lado:"verdes", dragao:"", estado:"morto", morte:{ep:"T3E8", onde:"Tumbleton", como:"Morre no incêndio de Silverwing, lutando contra Roderick Dustin, traído pelo Ulf que ele mesmo comprou.", evento:"tumbleton"},
    ate:"Submete-se a Daemon de mentira, toma Tumbleton, cunha moedas com Daeron, compra Ulf e morre queimado por Silverwing (T3E8).",
    got:"Vilavelha e a Cidadela, onde Sam Tarly estuda (T6 e T7)."},
   {nome:"Gwayne Hightower", ep:"Irmão de Alicent", casa:"Hightower", lado:"verdes", dragao:"", estado:"vivo",
    ate:"Abandona Criston, desmascara os assassinos de Rhaenyra, liberta Corlys e não acha Daeron depois do incêndio (T3).",
    got:""},
-  {nome:"Criston Cole", ep:"O Fazedor de Reis", casa:"Cole", lado:"verdes", dragao:"", estado:"morto",
+  {nome:"Criston Cole", ep:"O Fazedor de Reis", casa:"Cole", lado:"verdes", dragao:"", estado:"morto", morte:{ep:"T3E6", onde:"Terras Fluviais", como:"Emboscado pelos Tully, pede um duelo a Roderick e Oscar; Alysanne Blackwood o mata com uma flecha antes que alguém aceite.", evento:"emboscada-tully"},
    ate:"Guerrilha contra os Tully, chega tarde a uma ponte queimada, pede um duelo e morre com a flecha de Black Aly (T3E6).",
    got:"Beric Dondarrion é o senhor de Blackhaven, onde Criston cresceu; Jaime é o outro guarda branco que quebra o juramento."},
   {nome:"Larys Strong", ep:"Pé-Torto", casa:"Strong", lado:"verdes", dragao:"", estado:"vivo",
@@ -1963,7 +2044,7 @@ const personagens = [
   {nome:"Alys Rivers", ep:"A bruxa de Harrenhal", casa:"Strong (bastarda)", lado:"outros", dragao:"", estado:"vivo",
    ate:"Salva Aemond, mostra a ele um ninho de ovos escondido e conta que ficou imortal ao falhar em salvar o filho com magia (T3E8).",
    got:"Uma imortal que não envelhece, como Melisandre sob o colar."},
-  {nome:"Jason Lannister", ep:"Senhor do Rochedo", casa:"Lannister", lado:"verdes", dragao:"", estado:"morto",
+  {nome:"Jason Lannister", ep:"Senhor do Rochedo", casa:"Lannister", lado:"verdes", dragao:"", estado:"morto", morte:{ep:"T3E1", onde:"Terras Fluviais", como:"O exército dele é destruído por Daemon e pelos Lobos do Inverno; Roderick Dustin entrega a cabeça a Daemon.", evento:"lannister"},
    ate:"Derrotado por Daemon; Roderick Dustin entrega a cabeça dele (T3E1).",
    got:"Ancestral de Tywin. Gêmeo, como Jaime e Cersei."},
   {nome:"Tyland Lannister", ep:"Mestre da moeda de Aegon II", casa:"Lannister", lado:"verdes", dragao:"", estado:"vivo",
@@ -1972,13 +2053,13 @@ const personagens = [
   {nome:"Jon Roxton", ep:"O Audaz", casa:"Roxton", lado:"verdes", dragao:"", estado:"vivo",
    ate:"Captura Corlys e duela com Daemon até Ulf interromper (T3E8).",
    got:""},
-  {nome:"Sharako Lohar", ep:"Almirante da Triarquia", casa:"Triarquia", lado:"outros", dragao:"", estado:"morto",
+  {nome:"Sharako Lohar", ep:"Almirante da Triarquia", casa:"Triarquia", lado:"outros", dragao:"", estado:"morto", morte:{ep:"T3E1", onde:"A Goela", como:"Depois de afundar o navio de Corlys, é morto por Alyn de Hull.", evento:"goela"},
    ate:"Saqueia Maré Alta, afunda o navio de Corlys e morre pelas mãos de Alyn (T3E1).",
    got:"A Triarquia (Myr, Lys e Tyrosh) são as Cidades Livres que Daenerys atravessa em Essos."},
-  {nome:"Simon Strong", ep:"Castelão de Harrenhal", casa:"Strong", lado:"negros", dragao:"", estado:"morto",
+  {nome:"Simon Strong", ep:"Castelão de Harrenhal", casa:"Strong", lado:"negros", dragao:"", estado:"morto", morte:{ep:"T3E2", onde:"Harrenhal", como:"Morto por Aemond na chegada de Vhagar ao castelo.", evento:"harrenhal"},
    ate:"Mantém Harrenhal para Daemon (T2) e é morto por Aemond na chegada de Vhagar (T3E2).",
    got:"Harrenhal, onde Arya serve Tywin (T2)."},
-  {nome:"Jasper Wylde", ep:"Ironrod, mestre das leis", casa:"Wylde", lado:"verdes", dragao:"", estado:"morto",
+  {nome:"Jasper Wylde", ep:"Ironrod, mestre das leis", casa:"Wylde", lado:"verdes", dragao:"", estado:"morto", morte:{ep:"T3E2", onde:"Porto Real", como:"Decapitado por Daemon na queda da cidade, depois de tentar estuprar Alicent.", evento:"porto-real"},
    ate:"Tenta estuprar Alicent, é preso por Orwyle e decapitado por Daemon (T3E2).",
    got:""}
 ];
@@ -1994,13 +2075,33 @@ function foto(p){
   if (f) return `<button class="foto-botao" type="button" data-src="${f.arquivo}" data-nome="${esc(p.nome)}" data-ep="${esc(p.ep || "")}" aria-label="Ampliar foto de ${esc(p.nome)}"><img class="foto" src="${f.arquivo}" width="56" height="56" loading="lazy" alt="${esc(p.nome)} em A Casa do Dragão"></button>`;
   return `<div class="foto foto-vazia" aria-hidden="true">${esc(iniciais(p.nome))}</div>`;
 }
+
+// Batalhas e acoes de guerra em que personagens morrem. O popup lista os mortos a partir dos dados acima.
+const eventos = {
+  "ponta-tempestade": {nome:"Perseguição sobre Ponta Tempestade", ep:"T1E10", titulo:"The Black Queen", onde:"Baía dos Naufrágios, Ponta Tempestade", lados:"Aemond (Verdes) contra Lucerys (Negros)",
+    descricao:"Lucerys vai pedir o apoio de Borros Baratheon e encontra Aemond no salão. Na tempestade, Vhagar persegue Arrax e, escapando ao controle de Aemond, devora dragão e cavaleiro. É a morte que começa a guerra.", dragoes:"Arrax"},
+  "rooks-rest": {nome:"Batalha de Rook's Rest", ep:"T2E4", titulo:"The Red Dragon and the Gold", onde:"Rook's Rest, Terras da Coroa", lados:"Verdes (Criston, Aegon II, Aemond) contra Negros (Rhaenys)",
+    descricao:"Criston Cole cerca Rook's Rest e Rhaenys voa em Meleys para defender o castelo. Aemond em Vhagar e Aegon em Sunfyre a cercam no ar. Rhaenys escolhe lutar e cai; Aegon e Sunfyre ficam gravemente feridos. Criston desfila a cabeça de Meleys por Porto Real.", dragoes:"Meleys"},
+  "goela": {nome:"Batalha da Goela", ep:"T3E1", titulo:"Salt and Sea, Fire and Blood", onde:"A Goela, entrada da Baía da Água Negra", lados:"Negros (frota Velaryon, Vermax, Moondancer, Sheepstealer) contra a Triarquia",
+    descricao:"A frota da Triarquia, comandada por Sharako Lohar, ataca a frota Velaryon e saqueia Maré Alta. Jace prende a mãe em Pedra do Dragão e voa com Baela. Rhaena chega em Sheepstealer sem controlá-lo e o dragão ataca os dois lados. Um escorpião derruba Vermax; Jace sobe à tona e morre sob as flechas. Corlys naufraga e Alyn mata Lohar.", dragoes:"Vermax"},
+  "lannister": {nome:"Derrota do exército Lannister", ep:"T3E1", titulo:"Salt and Sea, Fire and Blood", onde:"Terras Fluviais", lados:"Negros (Daemon, senhores do Tridente, Lobos do Inverno) contra Verdes (Jason Lannister)",
+    descricao:"Daemon, com os senhores do Tridente e os Lobos do Inverno de Roderick Dustin, destrói o exército que Jason Lannister trazia do Rochedo Casterly. Roderick entrega a cabeça de Jason a Daemon.", dragoes:""},
+  "porto-real": {nome:"Queda de Porto Real", ep:"T3E2", titulo:"Queen's Landing", onde:"Porto Real", lados:"Negros (Rhaenyra, Daemon, Hugh, Ulf) contra a corte de Aegon II",
+    descricao:"Com Luthor Largent entregando a Patrulha da Cidade, Rhaenyra, Daemon, Hugh e Ulf pousam na cidade com quatro dragões. Aegon já fugiu. Larys entrega Otto preso; Rhaenyra o decapita e Daemon decapita Jasper Wylde. Rhaenyra senta no Trono de Ferro.", dragoes:""},
+  "harrenhal": {nome:"Retomada de Harrenhal", ep:"T3E2", titulo:"Queen's Landing", onde:"Harrenhal, Terras Fluviais", lados:"Aemond (Verdes) contra a guarnição de Daemon",
+    descricao:"Aemond chega a Harrenhal em Vhagar, mata o castelão Simon Strong e, ferido, pede ajuda a Alys Rivers. Addam, Hugh e Ulf, que esperavam para emboscá-lo, já tinham ido embora por conselho de Alys.", dragoes:""},
+  "emboscada-tully": {nome:"Emboscada dos Tully", ep:"T3E6", titulo:"Faceless Men", onde:"Terras Fluviais", lados:"Negros (Oscar Tully, Roderick Dustin, Black Aly) contra Verdes (Criston Cole)",
+    descricao:"Depois de chegar tarde a uma ponte queimada e ser abandonado por Gwayne, Criston Cole é emboscado pelo exército de Oscar Tully e Roderick Dustin. Pede um duelo aos dois; Alysanne Blackwood o mata com uma flecha antes que alguém aceite.", dragoes:""},
+  "tumbleton": {nome:"Batalha de Tumbleton", ep:"T3E8", titulo:"The Treasons at Tumbleton", onde:"Tumbleton, Campina", lados:"Negros (Daemon, Tully, Lobos do Inverno) contra Verdes (Ormund, Daeron, Jon Roxton), com Ulf traindo",
+    descricao:"Daemon e o exército Tully cercam a cidade tomada por Ormund, que enfileira crianças nas muralhas para segurar Caraxes. Os Lobos do Inverno escalam as muralhas e Caraxes derruba o portão. Ulf, comprado por Ormund, monta Silverwing e queima tudo, matando os dois lados: Ormund e Roderick morrem lutando um contra o outro e Kat, mulher de Hugh, morre no incêndio. Corlys convence Daemon a recuar; Daeron some.", dragoes:""}
+};
 const rotuloLadoP = {verdes:"Verdes", negros:"Negros", outros:"Outros"};
 const rotuloEstado = {vivo:"vivo", morto:"† morto", sumido:"? desaparecido"};
 
 function renderPersonagens(){
   const alvo = document.getElementById("lista-personagens");
   alvo.innerHTML = personagens.map(p => `
-    <article class="personagem" id="personagem-${slug(p.nome)}" data-lado="${p.lado}" data-casa="${esc(p.casa)}">
+    <article class="personagem" id="personagem-${slug(p.nome)}" data-lado="${p.lado}" data-casa="${esc(p.casa)}" data-estado="${p.estado}">
       <div class="cabeca">${foto(p)}<div><h3>${esc(p.nome)}</h3>${p.ep ? `<p class="ep">${esc(p.ep)}</p>` : ""}</div></div>
       <div class="marcas">
         <span class="chip chip-casa">${esc(p.casa)}</span>
@@ -2009,11 +2110,12 @@ function renderPersonagens(){
         <span class="estado estado-${p.estado}">${rotuloEstado[p.estado]}</span>
       </div>
       <p class="ate"><b>Até o fim da T3</b>${esc(p.ate)}</p>
+      ${p.morte ? `<p class="morte"><b>Como morreu</b>${esc(p.morte.ep)} · ${esc(p.morte.onde)}. ${esc(p.morte.como)} ${p.morte.evento ? `<button class="evento-botao" type="button" data-evento="${p.morte.evento}">⚔ ${esc(eventos[p.morte.evento].nome)}</button>` : ""}</p>` : ""}
       ${p.got ? `<p class="got"><b>Em Game of Thrones</b>${esc(p.got)}</p>` : ""}
     </article>`).join("");
 }
 
-const estadoP = {lado:"todos", casa:"todas"};
+const estadoP = {lado:"todos", casa:"todas", estado:"todos"};
 
 function aplicarFiltroPersonagens(){
   const cartoes = document.querySelectorAll("#lista-personagens .personagem");
@@ -2021,8 +2123,9 @@ function aplicarFiltroPersonagens(){
   cartoes.forEach(el => {
     const okLado = estadoP.lado === "todos" || el.dataset.lado === estadoP.lado;
     const okCasa = estadoP.casa === "todas" || el.dataset.casa === estadoP.casa;
+    const okEstado = estadoP.estado === "todos" || el.dataset.estado === estadoP.estado;
     const okBusca = el.dataset.busca !== "0";
-    const mostrar = okLado && okCasa && okBusca;
+    const mostrar = okLado && okCasa && okEstado && okBusca;
     el.hidden = !mostrar;
     if (mostrar) visiveis++;
   });
@@ -2037,6 +2140,14 @@ function aplicarFiltroPersonagens(){
     btn.addEventListener("click", () => {
       estadoP.lado = btn.dataset.lado;
       grupo.querySelectorAll(".filtro").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+      aplicarFiltroPersonagens();
+    });
+  });
+  const grupoEstado = document.getElementById("filtro-estado-p");
+  grupoEstado.querySelectorAll(".filtro").forEach(btn => {
+    btn.addEventListener("click", () => {
+      estadoP.estado = btn.dataset.estado;
+      grupoEstado.querySelectorAll(".filtro").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
       aplicarFiltroPersonagens();
     });
   });
@@ -2092,7 +2203,51 @@ aplicarFiltroPersonagens();
   }
   lista.addEventListener("click", ev => { const b = ev.target.closest(".foto-botao"); if (b){ ev.preventDefault(); abrirLupa(b); } });
   lupa.addEventListener("click", fecharLupa);
-  document.addEventListener("keydown", ev => { if (ev.key === "Escape") fecharLupa(); });
+
+  // Popup da batalha: resumo, episodio, mortos (com atalho para o cartao de cada um)
+  const dialogo = document.getElementById("evento");
+  let focoAntesDoEvento = null;
+  function abrirEvento(id){
+    const e = eventos[id]; if (!e) return;
+    document.getElementById("evento-ep").textContent = `${e.ep} · ${e.titulo}`;
+    document.getElementById("evento-titulo").textContent = e.nome;
+    document.getElementById("evento-onde").textContent = e.onde;
+    document.getElementById("evento-lados").textContent = e.lados;
+    document.getElementById("evento-descricao").textContent = e.descricao;
+    const mortos = personagens.filter(p => p.morte && p.morte.evento === id);
+    document.getElementById("evento-mortos").innerHTML = mortos.map(p => {
+      const f = fotos[slug(p.nome)];
+      return `<li><button type="button" data-alvo="personagem-${slug(p.nome)}">${f ? `<img src="${f.arquivo}" alt="">` : ""}<span><b>${esc(p.nome)}</b><br><small>${esc(p.morte.como)}</small></span></button></li>`;
+    }).join("") || "<li>Nenhum personagem com cartão morre aqui.</li>";
+    const dr = document.getElementById("evento-dragoes");
+    dr.textContent = e.dragoes ? `Dragões mortos: ${e.dragoes}.` : "";
+    dr.hidden = !e.dragoes;
+    focoAntesDoEvento = document.activeElement;
+    dialogo.hidden = false; document.body.style.overflow = "hidden";
+    document.getElementById("evento-fechar").focus();
+  }
+  function fecharEvento(){
+    if (dialogo.hidden) return;
+    dialogo.hidden = true; document.body.style.overflow = "";
+    if (focoAntesDoEvento && focoAntesDoEvento.focus) focoAntesDoEvento.focus({preventScroll: true});
+  }
+  lista.addEventListener("click", ev => { const b = ev.target.closest(".evento-botao"); if (b) abrirEvento(b.dataset.evento); });
+  dialogo.addEventListener("click", ev => {
+    const morto = ev.target.closest("[data-alvo]");
+    if (morto){
+      fecharEvento();
+      const alvo = document.getElementById(morto.dataset.alvo);
+      if (alvo){
+        const suave = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        alvo.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "start" });
+        alvo.classList.remove("flash"); void alvo.offsetWidth; alvo.classList.add("flash");
+        setTimeout(() => alvo.classList.remove("flash"), 1600);
+      }
+      return;
+    }
+    if (ev.target === dialogo || ev.target.closest("#evento-fechar")) fecharEvento();
+  });
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape"){ fecharLupa(); fecharEvento(); } });
 })();
 
 // Dragoes: cavaleiros, situacao ao fim da T3 e o rastro que deixam em GoT.
@@ -2173,7 +2328,7 @@ const sugestoes = [
   "Rhaenyra","Daemon","Viserys I","Viserys II","Alicent","Otto Hightower","Gwayne","Aegon II","Aemond","Helaena","Daeron","Jaehaerys","Rhaenys","Corlys","Laenor","Laena","Vaemond","Addam de Hull","Alyn","Jacaerys","Lucerys","Joffrey","Baela","Rhaena","Aemma Arryn","Jeyne Arryn","Criston Cole","Harwin","Larys","Lyonel","Simon Strong","Alys Rivers","Jason Lannister","Tyland","Cregan Stark","Rickon Stark","Borros","Boremund","Grover Tully","Oscar Tully","Forrest Frey","Sabitha Frey","Rhea Royce","Gerold Royce","Steffon Darklyn","Harrold Westerling","Lyman Beesbury","Erryk","Arryk","Willem Blackwood","Samwell Blackwood","Amos Bracken","Mysaria","Seasmoke","Meleys","Vhagar","Caraxes",
   "Daenerys","Jon Snow","Rhaegar","Aerys","Rei Louco","Lyanna","Elia Martell","Meistre Aemon","Aegon V","Egg","Betha Blackwood","Corvo de Sangue","Corvo de Três Olhos","Ned Stark","Catelyn","Robb","Sansa","Arya","Bran","Benjen","Tywin","Cersei","Jaime","Tyrion","Kevan","Lancel","Robert Baratheon","Stannis","Renly","Shireen","Gendry","Tommen","Myrcella","Jon Arryn","Lysa","Robin Arryn","Hoster Tully","Edmure","Peixe Negro","Walder Frey","Talisa","Yohn Royce","Waymar Royce","Beric Dondarrion","Barristan Selmy","Gerold Hightower","Sam Tarly","Varys","Mindinho","Melisandre","Davos","Qyburn","Oberyn","Doran","Ellaria","Theon","Yara","Euron","Balon","Olenna","Margaery","Loras","Rei da Noite","Caminhante Branco","Caminhantes Brancos","Longa Noite","Filhos da Floresta","Craster","Último Herói","Velha Nan","Bloodmoon","vidro de dragão","Outros",
   "Harrenhal","Pedra do Dragão","Ponta Tempestade","Ninho da Águia","Correrrio","As Gêmeas","Runestone","Blackhaven","Vilavelha","Cidadela","Winterfell","Muralha","Porto Real","Driftmark","Fosso dos Dragões","Mesa Pintada","Trono de Ferro","Balerion","adaga","Patrulha da Noite","Guarda Real","Mão do Rei","Torre da Alegria","Casamento Vermelho","Pacto de Gelo e Fogo","Príncipe Prometido","Verdes","Negros",
-  "Ormund Hightower","Roderick Dustin","Lobos do Inverno","Torrhen Manderly","Black Aly","Alysanne Blackwood","Luthor Largent","Adrian Redfort","Jon Roxton","Sharako Lohar","Triarquia","Kat","Alto Septão","Jaehaera","Tumbleton","Goela","Rook's Rest","Maré Alta","Porto Branco","Barrowton",
+  "Ormund Hightower","Roderick Dustin","Lobos do Inverno","Torrhen Manderly","Black Aly","Alysanne Blackwood","Luthor Largent","Adrian Redfort","Jon Roxton","Sharako Lohar","Triarquia","Kat","Alto Septão","Jaehaera","Tumbleton","Goela","Rook's Rest","Batalha da Goela","Batalha de Tumbleton","Batalha de Rook's Rest","Queda de Porto Real","Emboscada dos Tully","Maré Alta","Porto Branco","Barrowton",
   "Syrax","Sunfyre","Vermithor","Silverwing","Seasmoke","Dreamfyre","Vermax","Arrax","Moondancer","Tessarion","Sheepstealer","Morning","Drogon","Rhaegal","Viserion","ovos","Nettles"
 ];
 document.getElementById("sugestoes").innerHTML = sugestoes.map(x => `<option value="${esc(x)}"></option>`).join("");
@@ -2253,9 +2408,10 @@ function restaurar(){
 
 function resetarFiltros(){
   estado.lado = "todos"; estado.tipo = "todos";
-  estadoP.lado = "todos"; estadoP.casa = "todas";
+  estadoP.lado = "todos"; estadoP.casa = "todas"; estadoP.estado = "todos";
   document.getElementById("seletor-casa").value = "todas";
   document.querySelectorAll("#filtro-lado-p .filtro").forEach(b => b.setAttribute("aria-pressed", b.dataset.lado === "todos" ? "true" : "false"));
+  document.querySelectorAll("#filtro-estado-p .filtro").forEach(b => b.setAttribute("aria-pressed", b.dataset.estado === "todos" ? "true" : "false"));
   document.querySelectorAll("#filtro-lado .filtro, #filtro-tipo .filtro").forEach(b => {
     const valor = b.dataset.lado || b.dataset.tipo;
     b.setAttribute("aria-pressed", valor === "todos" ? "true" : "false");
