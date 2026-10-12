@@ -1,30 +1,26 @@
 # Da Dança ao Trono
 
-Infográfico com todas as casas que aparecem em *A Casa do Dragão*, o lado de cada uma na
-Dança dos Dragões e o que liga cada casa aos personagens de *Game of Thrones*, cerca de 170 anos depois.
+Guia de *A Casa do Dragão* (House of the Dragon) e suas ligacoes com *Game of Thrones*:
+casas, personagens, dragoes, mapa das batalhas, aliancas por temporada, linhagem ate Daenerys,
+lugares e objetos compartilhados, livro x serie, resumo por temporada e um quiz.
 
 No ar em https://digounet.github.io/got/
 
-## O que tem
+## Como e feito
 
-- Linha do tempo do Grande Conselho (101 DC) ao inicio de *Game of Thrones* (298 DC).
-- A linhagem de Rhaenyra e Daemon ate Daenerys e Jon Snow, em dez geracoes.
-- Um cartao por casa: quem aparece em cada serie, lado na Dança, tipo de ligacao.
-- Um cartao por personagem: situacao ao fim da 3a temporada e o que deixa em GoT, com filtro por lado e casa.
-- Os dragoes, de Balerion a Drogon, e os cranios dos poroes da Fortaleza Vermelha.
-- Lugares e objetos compartilhados (adaga valiriana, Fosso dos Dragoes, Mesa Pintada, a Muralha, a Longa Noite).
-- Busca por personagem, casa ou lugar, com destaque e atalhos.
+Site estatico em varias paginas, sem framework. `src/base.html` e o template (cabecalho com menu,
+busca global e controle "vi ate"); `src/paginas/*.html` sao os conteudos de cada pagina, com um
+comentario `<!--meta {...}-->` no topo (titulo, descricao, script). `python3 scripts/build.py`
+monta as paginas na raiz, pre-renderiza as listas que o JavaScript gera (para buscadores), gera as
+imagens de compartilhamento e o `sitemap.xml`. Precisa do Google Chrome instalado.
 
-## Como funciona
+- `js/dados.js`: todos os dados (casas, personagens, mortes e batalhas, dragoes, lugares, linhagem, arvore, mapa, aliancas, livro x serie, resumos, quiz).
+- `js/comum.js`: utilidades, controle de episodio (modo sem spoiler, salvo no navegador, `?ep=T2E4` na URL), busca global, popups.
+- `js/pagina-*.js`: um script por pagina.
+- `css/estilo.css`: estilos.
+- `img/`: fotos de divulgacao da HBO via Game of Thrones Wiki (`scripts/fotos.py` + `scripts/injetar_fotos.py`), imagens de compartilhamento.
 
-Uma unica pagina estatica (`index.html`) sem dependencias alem das fontes do Google Fonts. Depois de mudar
-conteudo, `python3 scripts/build.py` pre-renderiza os cartoes no HTML (para buscadores), gera a imagem de
-compartilhamento e atualiza o sitemap.
-Os dados ficam em arrays no proprio script da pagina (`casas`, `personagens`, `dragoes`); para adicionar
-um item, basta acrescentar ali. Conteudo atualizado ate o fim da 3a temporada (agosto de 2026).
+Fluxo: editar `src/` ou `js/dados.js`, rodar `python3 scripts/build.py`, commit e push.
 
-As fotos dos personagens sao imagens de divulgacao da HBO, baixadas da Game of Thrones Wiki (Fandom) por
-`scripts/fotos.py`; a secao de creditos no fim da pagina diz de onde veio cada uma. Projeto de fa, sem fins
-comerciais; os direitos das imagens sao da HBO/Warner Bros. Discovery.
-
-Fontes: as duas series da HBO e *Fogo & Sangue*, de George R. R. Martin.
+Fontes: as duas series da HBO e *Fogo & Sangue*, de George R. R. Martin. Projeto de fa, sem fins
+comerciais; direitos das imagens: HBO/Warner Bros. Discovery.

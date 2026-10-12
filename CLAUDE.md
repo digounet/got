@@ -1,16 +1,22 @@
-# got — infografico "Da Dança ao Trono"
+# got — "Da Dança ao Trono"
 
-Pagina estatica unica (`index.html`) publicada no GitHub Pages em https://digounet.github.io/got/ a partir da branch `main`, raiz do repo.
+Site estatico em varias paginas, publicado no GitHub Pages em https://digounet.github.io/got/ (branch `main`, raiz).
 
-- Depois de mudar conteudo, rodar `python3 scripts/build.py` (precisa do Google Chrome): pre-renderiza as listas de casas, personagens e dragoes dentro do `index.html` (entre os marcadores `<!-- pre:... -->`, para o Google indexar sem JavaScript), gera `img/og.png` e `img/icone-180.png` a partir de `scripts/og.html` e `scripts/icone.html`, e atualiza `dateModified` e o `sitemap.xml`. O JS continua renderizando por cima na carga; o build e idempotente. Depois, commit e push publicam.
-- SEO: titulo e descricao com as palavras de busca, canonical, Open Graph e Twitter Card, JSON-LD (WebPage), favicon SVG, sumario com ancoras. Sitemap em `sitemap.xml`; `robots.txt` nao vale em subpasta do github.io.
-- Dados: arrays `casas`, `personagens` e `dragoes` no `<script>` da pagina. Secoes estaticas (linhagem, lugares, casas menores) sao HTML direto.
-- Conteudo cobre ate o fim da 3a temporada (agosto de 2026). Ao sair a 4a, atualizar os tres arrays e a linha do tempo.
-- O topo tem um canvas de particulas (brasas sobem, gelo desce); respeita prefers-reduced-motion.
-- Busca ignora acentos; sugestoes ficam no array `sugestoes`.
-- Texto da pagina em portugues com acento; codigo e comentarios sem acento.
-- Nomes de lugares seguem a traducao brasileira quando ela e conhecida (Porto Real, Correrrio, Ninho da Aguia); senao, o nome em ingles.
-- Fotos: `img/` tem a imagem principal de cada personagem na Game of Thrones Wiki (Fandom), em WebP 640 px, e `img/creditos.json`. Fluxo: `python3 scripts/fotos.py` (API da wiki; pausa entre pedidos e Referer da wiki, senao o Cloudflare e a CDN devolvem 403) e `python3 scripts/injetar_fotos.py` (regrava o mapa `fotos` e a secao de creditos no `index.html`). Decisao do Pablo em 2026-10-12: usar imagens de cena da HBO, assumindo o risco; antes eram retratos dos atores do Commons.
-- A miniatura abre previa no hover e lupa em tela cheia no clique (`ampliacao()` no script).
-- Mortes: personagens com `estado:"morto"` levam `morte:{ep, onde, como, evento?}`. `evento` aponta para o dicionario `eventos` (batalhas e acoes de guerra); o cartao mostra a linha "Como morreu" e, se houver evento, um botao que abre o popup `#evento` com resumo, episodio e os mortos (calculados a partir de `personagens`). Filtro Vivos/Mortos nos personagens.
-- `googledafd2fba8aab4681.html` na raiz e o arquivo de verificacao do Google Search Console (propriedade verificada em 2026-10-12). Nao apagar: o Google reconfere e a propriedade perde a verificacao.
+## Estrutura
+
+- `src/base.html`: template de todas as paginas (head com SEO, cabecalho com menu, busca global e controle "vi ate", rodape, dialogos de foto e batalha). `src/paginas/<nome>.html`: conteudo de cada pagina, com `<!--meta {"titulo","og","descricao","script"}-->` na primeira linha.
+- `scripts/build.py`: monta `<nome>.html` na raiz a partir de src/, pre-renderiza as listas (marcadores `<!-- pre:X -->` dentro de `#lista-X`, com sentinela `<i hidden data-fim="X">` logo depois) via Chrome headless, gera `img/og.png`, `img/icone-180.png` e `img/antes-da-t4.png` (`scripts/og.html`, `icone.html`, `resumo.html`) e o `sitemap.xml`. `--sem-imagens` pula as imagens. Os `.html` da raiz sao gerados: nunca editar a mao.
+- `js/dados.js`: todos os dados. Arrays principais: `casas`, `personagens` (com `desde`, `estado`, `morte:{ep,onde,como,evento?}`), `eventos` (batalhas), `dragoes`, `dragoesTempo` (placar), `lugares`, `casasMenores`, `casasAusentes`, `nomesRepetidos`, `linhagem`, `arvoreNos/Casamentos/Filhos`, `mapaLugares/Batalhas/Contorno`, `aliancasNos/Arestas`, `livroSerie/Alem`, `resumos`, `pendencias`, `quiz`, `quizPerfis`, `sugestoes`. `fotos` e `creditos` sao regravados por `scripts/injetar_fotos.py`.
+- `js/comum.js`: utilidades (`esc`, `slug`, `normalizar`, `marcar`), tempo (`episodioAtual`, `modoTempo`, `filtrarTexto`, `visivelNoTempo`, `estadoNoTempo`), busca global (indice montado a partir dos dados; a pagina pode expor `window.buscaLocal(termo)` para filtrar/destacar o que esta nela), popups `abrirEvento(id)` e lupa de foto, brasas do topo.
+- `js/pagina-*.js`: um por pagina; cada um escuta o evento `episodio` na `window` para se regravar.
+- `css/estilo.css`: tema unico escuro (vermelho = A Casa do Dragao, azul-gelo = GoT, verde so para os Verdes).
+
+## Regras
+
+- Marcadores de episodio no texto: `(T1)`, `(T2E4)`, `T3E1`. O modo sem spoiler esconde frases/itens que citam episodio posterior ao marcado; escrever datas de episodio sempre nesse formato. Referencias a GoT usam `GoT T6` etc. e nao sao filtradas (temporadas 4+ nao existem na tabela).
+- Progresso do visitante fica em `localStorage` (`episodioAtual`); `?ep=T2E4` na URL sobrescreve e salva. Nao ha backend nem login.
+- Conteudo cobre ate o fim da 3a temporada (agosto de 2026). Ao sair a 4a: `temporadas` em comum.js, arrays em dados.js, `resumos`, `pendencias`, `mapaBatalhas`, `aliancasArestas[4]`.
+- Fotos: imagens de cena da HBO via Game of Thrones Wiki, decisao do Pablo em 2026-10-12 (risco assumido). `scripts/fotos.py` pausa entre pedidos e manda Referer da wiki (Cloudflare e CDN devolvem 403 sem isso; urllib do Python leva 403 mesmo assim, por isso usa curl). Depois: `injetar_fotos.py` e `build.py`.
+- Texto das paginas em portugues com acento; codigo, comentarios e chaves sem acento. Nomes de lugares na traducao brasileira quando conhecida.
+- SEO: cada pagina tem titulo, descricao, canonical, OG/Twitter, JSON-LD; `sitemap.xml` e gerado. `googledafd2fba8aab4681.html` e a verificacao do Search Console: nao apagar.
+- O artefato do claude.ai (versao de pagina unica) ficou congelado na versao 8; o site vivo e o Pages.

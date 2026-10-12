@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
-  <url>
-    <loc>https://digounet.github.io/got/</loc>
-    <lastmod>2026-10-12</lastmod>
-    <image:image><image:loc>https://digounet.github.io/got/img/og.png</image:loc></image:image>
-  </url>
+  <url><loc>https://digounet.github.io/got/aliancas.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/antes-da-t4.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/casas.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/dragoes.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/</loc><lastmod>2026-10-12</lastmod><image:image><image:loc>https://digounet.github.io/got/img/og.png</image:loc></image:image></url>
+  <url><loc>https://digounet.github.io/got/linhagem.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/livro.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/lugares.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/mapa.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/personagens.html</loc><lastmod>2026-10-12</lastmod></url>
+  <url><loc>https://digounet.github.io/got/quiz.html</loc><lastmod>2026-10-12</lastmod></url>
 </urlset>

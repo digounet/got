@@ -1,0 +1,22 @@
+<!--meta {"titulo":"Mapa das batalhas da Dança dos Dragões | Da Dança ao Trono","og":"Onde acontece cada batalha de A Casa do Dragão","descricao":"Mapa esquemático de Westeros com os castelos das casas e as batalhas de A Casa do Dragão: Ponta Tempestade, Rook's Rest, a Goela, Porto Real, Harrenhal e Tumbleton, com resumo e episódio de cada combate.","script":"pagina-mapa.js"}-->
+<header class="topo">
+  <p class="olho">Mapa</p>
+  <h1>Onde acontece cada batalha</h1>
+  <p class="lide">Westeros em traço esquemático: castelos em dourado, batalhas em vermelho. Clique numa batalha para ver o resumo, o episódio e quem morreu; clique num castelo para ir à casa.</p>
+</header>
+<section class="secao" id="mapa-secao">
+  <div class="filtros" role="group" aria-label="Filtro por temporada">
+    <div class="grupo-filtro" id="filtro-temporada">
+      <span class="rotulo">Batalhas de</span>
+      <button class="filtro" type="button" data-temporada="todas" aria-pressed="true">Todas</button>
+      <button class="filtro" type="button" data-temporada="1" aria-pressed="false">T1</button>
+      <button class="filtro" type="button" data-temporada="2" aria-pressed="false">T2</button>
+      <button class="filtro" type="button" data-temporada="3" aria-pressed="false">T3</button>
+    </div>
+  </div>
+  <div class="mapa-caixa">
+    <div class="mapa" id="mapa"></div>
+    <div class="mapa-lista"><h3>Batalhas em ordem</h3><div id="mapa-batalhas" style="display:grid;gap:8px"></div></div>
+  </div>
+  <div class="mapa-legenda"><span><i style="background:var(--gold)"></i>Castelo ou cidade</span><span><i style="background:var(--ember)"></i>Batalha ou ação de guerra</span><span>Posições aproximadas; o mapa é um esquema, não uma carta náutica.</span></div>
+</section>

@@ -1,0 +1,20 @@
+<!--meta {"titulo":"Quiz: de que lado você estaria na Dança dos Dragões? | Da Dança ao Trono","og":"De que lado você estaria na Dança dos Dragões?","descricao":"Oito perguntas para descobrir se você estaria com os Verdes ou com os Negros em A Casa do Dragão, e com qual personagem você mais se parece. Com cartão para compartilhar.","script":"pagina-quiz.js"}-->
+<header class="topo">
+  <p class="olho">Quiz</p>
+  <h1>De que lado você estaria?</h1>
+  <p class="lide">Oito situações da Dança. Responda como você faria, não como acha que deveria. No fim, o seu lado, o personagem mais parecido e um cartão para compartilhar.</p>
+</header>
+<section class="secao" id="quiz-secao">
+  <p class="quiz-progresso" id="quiz-progresso"></p>
+  <div class="quiz" id="quiz"></div>
+  <div class="resultado" id="resultado">
+    <div class="cabeca"><img id="res-foto" alt="" hidden><div><p class="lado-nome" id="res-lado"></p><h3 id="res-nome"></h3><p id="res-frase"></p><p class="placar-quiz" id="res-placar"></p></div></div>
+    <canvas id="res-cartao" width="1200" height="630" aria-label="Cartão do resultado para compartilhar"></canvas>
+    <div class="acoes">
+      <button class="botao" type="button" id="res-copiar">Compartilhar</button>
+      <button class="botao sec" type="button" id="res-baixar">Baixar o cartão</button>
+      <button class="botao sec" type="button" id="res-refazer">Refazer</button>
+      <span class="aviso-ok" id="res-ok" hidden></span>
+    </div>
+  </div>
+</section>

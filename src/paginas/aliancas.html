@@ -1,0 +1,21 @@
+<!--meta {"titulo":"Alianças e traições por temporada em A Casa do Dragão | Da Dança ao Trono","og":"Quem está com quem em cada temporada da Dança","descricao":"Grafo das alianças, casamentos, inimizades e traições de A Casa do Dragão, temporada a temporada: Rhaenyra, Daemon, Alicent, Otto, Aegon II, Aemond, Corlys, Criston, Larys, Mysaria e Ulf.","script":"pagina-aliancas.js"}-->
+<header class="topo">
+  <p class="olho">Alianças</p>
+  <h1>Quem está com quem</h1>
+  <p class="lide">As relações mudam a cada temporada: Alicent entrega a cidade, Ulf muda de lado, Corlys briga com Rhaenyra. Escolha a temporada e clique num rosto para ver só as ligações dele.</p>
+</header>
+<section class="secao" id="aliancas-secao">
+  <div class="filtros" role="group" aria-label="Temporada">
+    <div class="grupo-filtro" id="filtro-temporada-al">
+      <span class="rotulo">Temporada</span>
+      <button class="filtro" type="button" data-temporada="1" aria-pressed="true">T1</button>
+      <button class="filtro" type="button" data-temporada="2" aria-pressed="false">T2</button>
+      <button class="filtro" type="button" data-temporada="3" aria-pressed="false">T3</button>
+    </div>
+  </div>
+  <div class="aliancas-caixa">
+    <div class="aliancas" id="aliancas"></div>
+    <div class="aliancas-lista" id="aliancas-lista"></div>
+  </div>
+  <div class="aliancas-legenda"><span><i style="border-color:var(--gold)"></i>Casados</span><span><i style="border-color:var(--green)"></i>Aliados</span><span><i style="border-color:var(--ember)"></i>Inimigos</span><span><i style="border-color:var(--violet);border-top-style:dashed"></i>Traição</span><span><i style="border-color:var(--stone);border-top-style:dotted"></i>Rompidos</span></div>
+</section>
