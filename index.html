@@ -52,7 +52,7 @@ a{color:var(--gold)}
 /* Topo: brasas e brilho de fogo */
 .topo{display:flex;flex-direction:column;gap:14px;padding-block:52px 36px;position:relative;isolation:isolate}
 .topo::before{content:"";position:absolute;inset:-16px -16px 0;z-index:-2;pointer-events:none;
-  background:radial-gradient(60% 80% at 20% 0%,rgba(209,69,47,.26),transparent 70%),radial-gradient(40% 60% at 85% 10%,rgba(202,163,83,.12),transparent 70%)}
+  background:radial-gradient(60% 80% at 20% 0%,rgba(209,69,47,.26),transparent 70%),radial-gradient(45% 70% at 85% 0%,rgba(143,182,216,.2),transparent 70%)}
 .brasas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
 .tempo{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
 .tempo::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--ember) 0%,var(--blood) 45%,var(--ice) 100%);box-shadow:0 0 10px rgba(209,69,47,.45)}
@@ -87,6 +87,7 @@ a{color:var(--gold)}
 .lado-dividida{color:var(--fg);background:linear-gradient(90deg,rgba(79,154,99,.3) 50%,rgba(122,20,32,.5) 50%)}
 .lado-dividida::before{background:linear-gradient(90deg,var(--green) 50%,var(--ember) 50%)}
 .lado-neutra{color:var(--muted)}
+.lado-outros{color:var(--stone)}
 .chip{display:inline-block;font-size:.74rem;letter-spacing:.04em;padding:3px 9px;border-radius:4px;border:1px solid currentColor;line-height:1.3;white-space:nowrap}
 .chip-linhagem{color:var(--gold)}
 .chip-castelo{color:var(--stone)}
@@ -157,6 +158,42 @@ a{color:var(--gold)}
   .casa-cabecalho .lado{grid-column:1 / -1;justify-self:start}
 }
 
+/* Personagens */
+.personagens{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:12px}
+.personagem{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--muted);border-radius:6px;padding:12px 14px;display:grid;gap:8px;align-content:start;min-width:0;scroll-margin-top:120px}
+.personagem[data-lado="verdes"]{border-left-color:var(--green)}
+.personagem[data-lado="negros"]{border-left-color:var(--ember)}
+.personagem:hover{border-color:var(--gold)}
+.personagem h3{font-size:1rem}
+.personagem .ep{font-size:.88rem;color:var(--muted)}
+.personagem .marcas{display:flex;flex-wrap:wrap;gap:6px}
+.personagem .ate,.personagem .got{font-size:.9rem}
+.personagem .ate b,.personagem .got b{font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:2px}
+.personagem .ate b{color:var(--ember)}
+.personagem .got b{color:var(--ice)}
+.estado{display:inline-flex;align-items:center;gap:4px;font-size:.72rem;padding:3px 8px;border-radius:999px;border:1px solid var(--line);color:var(--muted);line-height:1.3}
+.estado-morto{color:var(--ember);border-color:var(--ember)}
+.estado-sumido{color:var(--gold);border-color:var(--gold)}
+.chip-casa{color:var(--gold)}
+.chip-dragao{color:var(--stone)}
+.seletor{font:inherit;font-size:.85rem;padding:5px 10px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg);max-width:100%}
+.seletor:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+
+/* Dragoes */
+.cranios{border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--surface);padding:12px 16px;margin-bottom:18px;max-width:80ch;font-size:.95rem}
+.cranios b{color:var(--gold);font-weight:600}
+.dragoes{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
+.dragao{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--surface);min-width:0;display:grid;gap:6px;align-content:start;scroll-margin-top:120px}
+.dragao h3{font-size:1rem;color:var(--ember)}
+.dragao h3 small{font-family:var(--body);font-weight:400;font-size:.85rem;color:var(--muted)}
+.dragao .cav{font-size:.88rem;color:var(--muted)}
+.dragao .cav b{color:var(--fg);font-weight:600}
+.dragao dl{margin:0;display:grid;gap:6px}
+.dragao dt{font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.dragao dt.cdd{color:var(--ember)}
+.dragao dt.got{color:var(--ice)}
+.dragao dd{margin:0;font-size:.92rem}
+
 /* Lugares e objetos */
 .lugares{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
 .lugar{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--surface);min-width:0}
@@ -215,10 +252,10 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
   <canvas class="brasas" id="brasas" aria-hidden="true"></canvas>
   <p class="olho">Fogo e Sangue · Infográfico</p>
   <h1>Da Dança dos Dragões ao Trono de Ferro</h1>
-  <p class="lide">Todas as casas que aparecem em <em>A Casa do Dragão</em> e o que liga cada uma aos personagens de <em>Game of Thrones</em>, cerca de 170 anos depois.</p>
+  <p class="lide">Todas as casas que aparecem em <em>A Casa do Dragão</em> e o que liga cada uma aos personagens de <em>Game of Thrones</em>, cerca de 170 anos depois. Atualizado até o fim da 3ª temporada (agosto de 2026).</p>
   <ol class="tempo">
     <li class="marco-fogo"><div class="ano">101 DC</div><div class="fato">Grande Conselho em Harrenhal. Viserys I é escolhido herdeiro.</div><span class="serie">A Casa do Dragão começa</span></li>
-    <li class="marco-fogo"><div class="ano">129 a 131 DC</div><div class="fato">A Dança dos Dragões: Verdes contra Negros, a guerra civil Targaryen.</div><span class="serie">Temporada 2</span></li>
+    <li class="marco-fogo"><div class="ano">129 a 131 DC</div><div class="fato">A Dança dos Dragões: Verdes contra Negros. A 3ª temporada vai da Batalha da Goela à queima de Tumbleton; a 4ª, anunciada como a última, fecha a guerra.</div><span class="serie">Temporadas 2 e 3</span></li>
     <li class="marco-gelo"><div class="ano">283 DC</div><div class="fato">Rebelião de Robert. Jaime mata o Rei Louco. Daenerys nasce no ano seguinte.</div><span class="serie">Passado de GoT</span></li>
     <li class="marco-gelo"><div class="ano">298 DC</div><div class="fato">Jon Arryn morre e Ned Stark vira Mão do Rei.</div><span class="serie">Game of Thrones começa</span></li>
   </ol>
@@ -376,6 +413,37 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
   <div class="casas" id="lista-casas"></div>
 </section>
 
+<section class="secao" id="personagens">
+  <div class="secao-cabecalho">
+    <h2>Os personagens, um a um</h2>
+    <p class="secao-intro">Onde cada um está ao fim da 3ª temporada e o que deixa em <em>Game of Thrones</em>. Os mortos levam a cruz; os desaparecidos, a interrogação.</p>
+  </div>
+  <div class="filtros" role="group" aria-label="Filtros de personagens">
+    <div class="grupo-filtro" id="filtro-lado-p">
+      <span class="rotulo">Lado</span>
+      <button class="filtro" type="button" data-lado="todos" aria-pressed="true">Todos</button>
+      <button class="filtro" type="button" data-lado="verdes" aria-pressed="false">Verdes</button>
+      <button class="filtro" type="button" data-lado="negros" aria-pressed="false">Negros</button>
+      <button class="filtro" type="button" data-lado="outros" aria-pressed="false">Outros</button>
+    </div>
+    <div class="grupo-filtro">
+      <label class="rotulo" for="seletor-casa">Casa</label>
+      <select class="seletor" id="seletor-casa"><option value="todas">Todas</option></select>
+    </div>
+    <span class="contagem" id="contagem-p"></span>
+  </div>
+  <div class="personagens" id="lista-personagens"></div>
+</section>
+
+<section class="secao" id="dragoes">
+  <div class="secao-cabecalho">
+    <h2>Os dragões e os crânios da Fortaleza Vermelha</h2>
+    <p class="secao-intro">Em <em>Game of Thrones</em> os dragões Targaryen são crânios num porão. A Dança é onde a maioria deles vira crânio.</p>
+  </div>
+  <p class="cranios"><b>Os porões.</b> Nos livros, os Targaryen expunham dezenove crânios de dragão no salão do trono, de Balerion aos dois últimos filhotes, “do tamanho de um mastim”. Robert mandou tudo para o porão. É lá que Arya se esconde (GoT T1) e que Cersei mostra a Qyburn o escorpião, apontado para o crânio de Balerion (GoT T7). Tyrion, nos livros, reconhece os três maiores: Balerion, Meraxes e Vhagar, a dragoa de Aemond.</p>
+  <div class="dragoes" id="lista-dragoes"></div>
+</section>
+
 <section class="secao" id="lugares">
   <div class="secao-cabecalho">
     <h2>Lugares e objetos que as duas séries compartilham</h2>
@@ -448,12 +516,15 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
 <section class="secao" id="menores">
   <div class="secao-cabecalho">
     <h2>Casas menores da Dança</h2>
-    <p class="secao-intro">Aparecem pouco e, na maioria dos casos, não deixam rastro em <em>Game of Thrones</em>.</p>
+    <p class="secao-intro">Aparecem pouco e, na maioria dos casos, não deixam rastro em <em>Game of Thrones</em>. Dustin, Redfort e Roxton entram na 3ª temporada.</p>
   </div>
   <ul class="menores">
     <li><b>Beesbury</b><span>Lorde Lyman Beesbury, mestre da moeda, é a primeira morte da Dança: Criston Cole o mata no Conselho Verde (T1).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
     <li><b>Cargyll</b><span>Ser Erryk (Negros) e Ser Arryk (Verdes), gêmeos da Guarda Real que se matam em Pedra do Dragão (T2).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
-    <li><b>Wylde</b><span>Lorde Jasper Wylde, o Ironrod, mestre das leis de Aegon II.</span><span class="nota-livro">Sem ligação com GoT.</span></li>
+    <li><b>Wylde</b><span>Lorde Jasper Wylde, o Ironrod, mestre das leis de Aegon II: tenta estuprar Alicent e é decapitado por Daemon na queda de Porto Real (T3).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
+    <li><b>Dustin</b><span>Ser Roderick Dustin, Roddy, a Ruína, Senhor de Barrowton: lidera os Lobos do Inverno por Rhaenyra, entrega a cabeça de Jason Lannister e morre em Tumbleton (T3).</span><span class="nota-livro">Só nos livros: Lady Barbrey Dustin, de Barrowton, que odeia Ned Stark por não ter trazido o corpo do marido de volta.</span></li>
+    <li><b>Redfort</b><span>Ser Adrian Redfort, cavaleiro do Vale pelos Negros, escolta Alicent a Harrenhal e é morto por Aemond (T3).</span><span class="nota-livro">Só nos livros: os Redfort do Vale; Mychel Redfort é o escudeiro por quem Mya Stone se apaixona.</span></li>
+    <li><b>Roxton</b><span>Ser Jon Roxton, o Audaz, cavaleiro dos Verdes: captura Corlys e duela com Daemon em Tumbleton (T3).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
     <li><b>Caswell</b><span>Lorde Caswell é enforcado por Criston Cole ao tentar sair de Porto Real para avisar Rhaenyra (T2).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
     <li><b>Celtigar</b><span>Lorde Bartimos Celtigar, da Ilha da Garra, senta no Conselho Negro (T1).</span><span class="nota-livro">Só nos livros: os Celtigar seguem Stannis e depois se curvam a Joffrey.</span></li>
     <li><b>Lonmouth</b><span>Ser Joffrey Lonmouth, o Cavaleiro dos Beijos, amante de Laenor, morto por Criston no banquete de casamento de Rhaenyra (T1).</span><span class="nota-livro">Só nos livros: Richard Lonmouth é escudeiro de Robert Baratheon.</span></li>
@@ -487,13 +558,13 @@ const casas = [
     nome:"Targaryen", sede:"Pedra do Dragão e Porto Real", campo:"#17161c", carga:"#c8362b", sigilo:"🐉",
     lado:"dividida", tipos:["linhagem","profecia","castelo"],
     cdd:[
-      "Viserys I, o rei que divide o reino sem querer",
-      "Rhaenyra, herdeira escolhida, rainha dos Negros",
+      "Viserys I, o rei que divide o reino sem querer (T1)",
+      "Rhaenyra, herdeira escolhida: toma Porto Real, senta no Trono de Ferro e endurece a cada episódio (T3)",
       "Daemon, o Príncipe Rebelde, tio e marido de Rhaenyra",
-      "Rhaenys, a Rainha Que Nunca Foi, casada com Corlys Velaryon",
-      "Aegon II, Aemond e Helaena, filhos de Alicent (e Daeron, criado em Vilavelha, só citado)",
-      "Jacaerys, Lucerys, Joffrey, Aegon e Viserys, filhos de Rhaenyra",
-      "Baela e Rhaena, filhas de Daemon e Laena Velaryon",
+      "Rhaenys, a Rainha Que Nunca Foi, morta em Rook's Rest (T2)",
+      "Aegon II, Aemond, Helaena e Daeron, filhos de Alicent: Helaena morre na T3; Daeron é proclamado rei por Ormund em Tumbleton",
+      "Jacaerys (morto na Goela, T3), Lucerys (morto por Vhagar, T1), Joffrey, Aegon e Viserys, filhos de Rhaenyra",
+      "Baela e Rhaena, filhas de Daemon e Laena; Rhaena reivindica o dragão selvagem Sheepstealer (T3)",
       "Jaehaerys I, o Velho Rei, no Grande Conselho que abre a série"
     ],
     got:[
@@ -503,89 +574,93 @@ const casas = [
       "Jon Snow, na verdade Aegon, filho de Rhaegar e Lyanna Stark",
       "Meistre Aemon, da Patrulha da Noite"
     ],
-    ligacao:"Daenerys, Viserys III, Rhaegar e Jon Snow descendem de Rhaenyra e Daemon pelo filho caçula dos dois, Viserys II (veja a linhagem acima). A profecia que Viserys I sussurra a Rhaenyra, o sonho de Aegon sobre a Canção de Gelo e Fogo, é a mesma que Melisandre persegue em GoT: o Príncipe Prometido contra o frio que vem do Norte. Do lado dos Verdes, Aegon II morre sem herdeiros e a linha de Alicent no trono acaba na própria Dança."
+    ligacao:"Daenerys, Viserys III, Rhaegar e Jon Snow descendem de Rhaenyra e Daemon pelo filho caçula dos dois, Viserys II (veja a linhagem acima). A profecia que Viserys I sussurra a Rhaenyra, o sonho de Aegon sobre a Canção de Gelo e Fogo, é a mesma que Melisandre persegue em GoT, e na T3 Rhaenyra a usa em praça pública para justificar a coroa. O arco dela, rainha que o povo aclama e depois teme, antecipa o de Daenerys em Porto Real. Do lado dos Verdes, a linha de Alicent no trono acaba na própria Dança."
   },
   {
     nome:"Hightower", sede:"Vilavelha, a Torre Alta · Campina", campo:"#d9d9d6", carga:"#b0332a", sigilo:"🔥",
     lado:"verdes", tipos:["linhagem","castelo"],
     cdd:[
-      "Otto Hightower, Mão do Rei de Jaehaerys, Viserys e Aegon II",
-      "Alicent, rainha de Viserys I e mãe de Aegon II",
-      "Gwayne, irmão de Alicent (T2)",
-      "Ser Hobert Hightower (T2) e Lorde Ormund, que marcha de Vilavelha, só citado"
+      "Otto Hightower, Mão de três reis; decapitado por Rhaenyra quando Porto Real cai (T3)",
+      "Alicent, rainha de Viserys I e mãe de Aegon II: entrega a cidade a Rhaenyra e envenena o próprio filho Aemond em Harrenhal (T3)",
+      "Lorde Ormund Hightower, Senhor de Vilavelha: toma Tumbleton, proclama Daeron rei, cunha moedas e morre quando Ulf queima a cidade (T3)",
+      "Gwayne, irmão de Alicent: abandona Criston, salva Ormund dos assassinos e liberta Corlys (T2 e T3); Ser Hobert (T2)"
     ],
     got:[
       "Ser Gerold Hightower, o Touro Branco, Lorde Comandante da Guarda Real do Rei Louco: morre na Torre da Alegria lutando contra Ned Stark (T6)",
       "Vilavelha e a Cidadela, onde Sam Tarly estuda para meistre (T6 e T7)"
     ],
-    ligacao:"Mesma casa, 170 anos depois, ainda guardando reis Targaryen: Gerold Hightower morre defendendo o segredo de Lyanna e Rhaegar. A Cidadela dos meistres, que forma os Mellos e Orwyles da Dança e o Sam de GoT, fica em Vilavelha, cidade dos Hightower. O vestido verde de Alicent no torneio dá nome ao partido dos Verdes."
+    ligacao:"Mesma casa, 170 anos depois, ainda guardando reis Targaryen: Gerold Hightower morre defendendo o segredo de Lyanna e Rhaegar. A Cidadela dos meistres, que forma os Mellos e Orwyles da Dança e o Sam de GoT, fica em Vilavelha, cidade dos Hightower. O vestido verde de Alicent no torneio dá nome ao partido dos Verdes; na T3, é Ormund quem carrega a bandeira verde até o fim."
   },
   {
     nome:"Velaryon", sede:"Driftmark, a Maré Alta · Baía da Água Negra", campo:"#2a7f7a", carga:"#9fc9c6", sigilo:"🌊",
     lado:"negros", tipos:["livros","castelo"],
     cdd:[
-      "Corlys, a Serpente do Mar, o homem mais rico de Westeros",
-      "Rhaenys Targaryen, sua esposa",
-      "Laenor, primeiro marido de Rhaenyra, e Laena, segunda esposa de Daemon",
-      "Vaemond, irmão de Corlys, decapitado por Daemon",
-      "Addam e Alyn de Hull, bastardos de Corlys (T2)"
+      "Corlys, a Serpente do Mar: perde Maré Alta para a Triarquia, naufraga, é capturado por Jon Roxton e libertado por Daeron e Gwayne (T3)",
+      "Rhaenys Targaryen, sua esposa (T1 e T2)",
+      "Laenor, primeiro marido de Rhaenyra, e Laena, segunda esposa de Daemon (T1)",
+      "Vaemond, irmão de Corlys, decapitado por Daemon (T1)",
+      "Addam e Alyn de Hull, bastardos de Corlys: Alyn mata Lohar na Goela e vira herdeiro de Driftmark; Addam monta Seasmoke (T3)",
+      "Jacaerys, Lucerys e Joffrey, Velaryon no nome, Strong no sangue"
     ],
     got:[
       "Nenhum Velaryon aparece na série",
       "Nos livros, Aurane Waters, bastardo de Driftmark, vira mestre dos navios de Cersei; Monford Velaryon segue Stannis",
       "Pedra do Dragão, vizinha de Driftmark, é a sede de Stannis e depois de Daenerys"
     ],
-    ligacao:"A casa sobrevive à Dança pela neta de Corlys: Baela Targaryen, filha de Daemon, casa com Alyn Velaryon, e os Velaryon da época de GoT descendem dos dois. Na TV, a ligação é só geográfica: a frota de Corlys domina o mesmo mar que Stannis e Daenerys cruzam para chegar a Porto Real."
+    ligacao:"A casa sobrevive à Dança pela neta de Corlys: Baela Targaryen, filha de Daemon, casa com Alyn Velaryon, e os Velaryon da época de GoT descendem dos dois. Na TV, a ligação é só geográfica: a frota de Corlys domina o mesmo mar que Stannis e Daenerys cruzam para chegar a Porto Real, e a Goela onde Jace morre é a entrada da Baía da Água Negra."
   },
   {
     nome:"Strong", sede:"Harrenhal · Terras Fluviais", campo:"#3b5aa6", carga:"#b33a2b", sigilo:"🏰",
     lado:"dividida", tipos:["castelo","papel"],
     cdd:[
-      "Lyonel Strong, Mão do Rei depois de Otto",
-      "Harwin Quebra-Ossos, pai verdadeiro de Jacaerys, Lucerys e Joffrey",
-      "Larys Pé-Torto, mestre dos sussurros dos Verdes",
-      "Ser Simon Strong, castelão de Harrenhal, e Alys Rivers (T2)"
+      "Lyonel Strong, Mão do Rei depois de Otto (T1)",
+      "Harwin Quebra-Ossos, pai verdadeiro de Jacaerys, Lucerys e Joffrey (T1)",
+      "Larys Pé-Torto, mestre dos sussurros: capturado com Aegon II, entrega Otto a Daemon e, no fim, abandona Aegon (T3)",
+      "Ser Simon Strong, castelão de Harrenhal, morto por Aemond (T3)",
+      "Alys Rivers, a bruxa de Harrenhal, que diz ter sido amaldiçoada com a imortalidade (T3)"
     ],
     got:[
       "A casa não existe mais em GoT",
       "Harrenhal: Arya serve de copeira a Tywin Lannister (T2)",
       "Mindinho recebe o título de Senhor de Harrenhal (T2); Roose Bolton ocupa o castelo depois (T3)"
     ],
-    ligacao:"O castelo é o elo. A série abre com o Grande Conselho em Harrenhal, os Strong são os senhores do lugar e Daemon passa a T2 inteira lá dentro. Em GoT, o mesmo castelo arruinado e “amaldiçoado” é prêmio político. E Larys faz exatamente o trabalho de Varys: ouvir tudo e matar quando convém."
+    ligacao:"O castelo é o elo. A série abre com o Grande Conselho em Harrenhal, os Strong são os senhores do lugar e Daemon e Aemond passam temporadas inteiras lá dentro. Em GoT, o mesmo castelo arruinado e “amaldiçoado” é prêmio político. Larys faz exatamente o trabalho de Varys: ouvir tudo e trocar de lado na hora certa. E Alys Rivers, imortal que não envelhece, é a Melisandre da Dança."
   },
   {
     nome:"Lannister", sede:"Rochedo Casterly · Terras Ocidentais", campo:"#a3141c", carga:"#d9a52b", sigilo:"🦁",
     lado:"verdes", tipos:["linhagem","papel"],
     cdd:[
-      "Jason Lannister, Senhor do Rochedo, pretendente rejeitado por Rhaenyra; marcha com o exército dos Verdes (T2)",
-      "Tyland Lannister, gêmeo de Jason, mestre dos navios e depois da moeda de Aegon II"
+      "Jason Lannister, Senhor do Rochedo, pretendente rejeitado por Rhaenyra: derrotado por Daemon, tem a cabeça entregue por Roderick Dustin (T3)",
+      "Tyland Lannister, gêmeo de Jason: jogado ao mar por Lohar na Goela, sobrevive e se junta a Aegon II em Rook's Rest (T3)"
     ],
     got:[
       "Tywin, Cersei, Jaime e Tyrion",
       "Kevan e Lancel Lannister"
     ],
-    ligacao:"Tywin descende de Jason. Os gêmeos Jason e Tyland antecipam Jaime e Cersei, e a dupla ambição e dinheiro já está lá: Tyland cuida do ouro da coroa, como Tywin e Tyrion farão. Nos livros, Tyland acaba Mão do Rei de Aegon III, o filho de Rhaenyra."
+    ligacao:"Tywin descende de Jason. Os gêmeos Jason e Tyland antecipam Jaime e Cersei, e a dupla ambição e dinheiro já está lá: Tyland cuida do ouro da coroa, como Tywin e Tyrion farão, e é o tesouro escondido por ele que deixa Rhaenyra sem dinheiro na T3. Nos livros, Tyland acaba Mão do Rei de Aegon III, o filho de Rhaenyra."
   },
   {
     nome:"Stark", sede:"Winterfell · O Norte", campo:"#8a8f99", carga:"#e6e8ec", sigilo:"🐺",
     lado:"negros", tipos:["linhagem","castelo","profecia"],
     cdd:[
       "Lorde Rickon Stark, que jura lealdade a Rhaenyra como herdeira (T1)",
-      "Cregan Stark, Senhor de Winterfell, recebe Jacaerys e o leva ao topo da Muralha (T2)"
+      "Cregan Stark, Senhor de Winterfell, recebe Jacaerys e o leva ao topo da Muralha (T2)",
+      "Na T3 o Norte luta pelos Lobos do Inverno de Roderick Dustin e pelos Manderly, vassalos dos Stark; Cregan fica fora da temporada"
     ],
     got:[
       "Ned, Catelyn, Robb, Sansa, Arya, Bran e Rickon",
       "Jon Snow, criado como bastardo de Ned",
       "Benjen, na Patrulha da Noite, e Lyanna, nas visões de Bran"
     ],
-    ligacao:"Ned descende de Cregan, e o nome Rickon volta no caçula dele. Na T2, Jacaerys fecha o Pacto de Gelo e Fogo: uma princesa Targaryen casaria com um Stark. O pacto fica por cumprir até Rhaegar e Lyanna, cujo filho é Jon Snow, gelo e fogo na mesma pessoa. A Muralha e a Patrulha da Noite, cenário de Jon, já aparecem com Cregan e Jacaerys."
+    ligacao:"Ned descende de Cregan, e o nome Rickon volta no caçula dele. Na T2, Jacaerys fecha o Pacto de Gelo e Fogo: uma princesa Targaryen casaria com um Stark. O pacto fica por cumprir até Rhaegar e Lyanna, cujo filho é Jon Snow, gelo e fogo na mesma pessoa. A Muralha e a Patrulha da Noite, cenário de Jon, já aparecem com Cregan e Jacaerys. Nos livros, Cregan ainda casa com Black Aly Blackwood, a arqueira que mata Criston Cole na T3."
   },
   {
     nome:"Baratheon", sede:"Ponta Tempestade · Terras da Tempestade", campo:"#d9a52b", carga:"#1b1a20", sigilo:"🦌",
     lado:"verdes", tipos:["linhagem","castelo"],
     cdd:[
       "Lorde Boremund Baratheon, tio de Rhaenys, aliado dela no Grande Conselho (T1)",
-      "Lorde Borros Baratheon, Senhor de Ponta Tempestade, que recebe Aemond e Lucerys na noite em que Lucerys morre (T1), e suas quatro filhas"
+      "Lorde Borros Baratheon, Senhor de Ponta Tempestade, que recebe Aemond e Lucerys na noite em que Lucerys morre (T1), e suas quatro filhas",
+      "Na T3, os assassinos que Rhaenyra manda a Tumbleton se disfarçam de enviados Baratheon"
     ],
     got:[
       "Robert, Stannis e Renly",
@@ -599,7 +674,7 @@ const casas = [
     lado:"negros", tipos:["linhagem","castelo"],
     cdd:[
       "Rainha Aemma Arryn, primeira esposa de Viserys I e mãe de Rhaenyra, morta no parto no primeiro episódio",
-      "Lady Jeyne Arryn, a Donzela do Vale, que abriga Rhaena e os filhos pequenos de Rhaenyra no Ninho da Águia (T2)"
+      "Lady Jeyne Arryn, a Donzela do Vale: abriga Rhaena e os filhos pequenos de Rhaenyra (T2); manda ouro a Daemon e avisa quando Rhaena foge com Sheepstealer (T3)"
     ],
     got:[
       "Jon Arryn, a Mão do Rei cuja morte abre a série",
@@ -612,7 +687,7 @@ const casas = [
     lado:"negros", tipos:["linhagem"],
     cdd:[
       "Lorde Grover Tully, velho e acamado, Senhor de Correrrio (T2)",
-      "Ser Oscar Tully, bisneto de Grover, que assume Correrrio e leva os senhores do Tridente para o lado de Rhaenyra em Harrenhal (T2)"
+      "Ser Oscar Tully, que leva os senhores do Tridente para Rhaenyra (T2); seu exército embosca Criston Cole e cerca Tumbleton (T3)"
     ],
     got:[
       "Hoster Tully e os filhos Catelyn Stark, Lysa Arryn e Edmure",
@@ -624,8 +699,8 @@ const casas = [
     nome:"Frey", sede:"As Gêmeas · Terras Fluviais", campo:"#4e6380", carga:"#c9d2de", sigilo:"🌉",
     lado:"negros", tipos:["linhagem","papel","castelo"],
     cdd:[
-      "Lorde Forrest e Lady Sabitha Frey, senhores das Gêmeas (T2)",
-      "Jacaerys negocia com eles a travessia do exército de Cregan Stark; os Frey exigem Harrenhal em troca"
+      "Lorde Forrest e Lady Sabitha Frey, senhores das Gêmeas (T2 e T3)",
+      "Jacaerys negocia com eles a travessia do exército de Cregan Stark; os Frey exigem Harrenhal em troca (T2)"
     ],
     got:[
       "Walder Frey e a prole numerosa",
@@ -633,6 +708,18 @@ const casas = [
       "Arya mata Walder e envenena os Frey (T6 e T7)"
     ],
     ligacao:"Walder descende de Forrest. O roteiro se repete quase igual: um Stark precisa cruzar as Gêmeas para ir à guerra e os Frey cobram caro. Jacaerys promete Harrenhal; Robb promete um casamento. O resultado da segunda promessa todo mundo conhece."
+  },
+  {
+    nome:"Manderly", sede:"Porto Branco · O Norte", campo:"#2e6f6a", carga:"#e8e8e8", sigilo:"🧜",
+    lado:"negros", tipos:["linhagem","castelo"],
+    cdd:[
+      "Ser Torrhen Manderly, mandado pelo pai, Lorde Desmond, para servir Rhaenyra: vira mestre da moeda e leva a culpa pelo cofre vazio (T3)"
+    ],
+    got:[
+      "Lorde Wyman Manderly, Senhor de Porto Branco, entre os lordes que proclamam Jon Snow Rei do Norte (T6)",
+      "Nos livros, Wyman é o lorde gordo que engana Frey e Bolton e esconde Rickon Stark"
+    ],
+    ligacao:"Wyman descende dos Manderly de Torrhen. Porto Branco, a única cidade do Norte, manda homens para o sul pelos Targaryen na Dança e, em GoT, está na sala quando o Norte escolhe Jon. É a casa que sempre fica com os Stark."
   },
   {
     nome:"Royce", sede:"Runestone · O Vale", campo:"#9a6a2a", carga:"#d7b36b", sigilo:"🛡️",
@@ -653,19 +740,20 @@ const casas = [
     cdd:[
       "Willem Blackwood mata Jerrel Bracken na apresentação dos pretendentes de Rhaenyra (T1)",
       "A Batalha do Moinho em Chamas: Blackwood pelos Negros, Bracken pelos Verdes (T2)",
-      "Lorde Samwell Blackwood, Ser Amos Bracken e os homens que Daemon reúne em Harrenhal (T2)"
+      "Alysanne Blackwood, a Black Aly, arqueira que mata Criston Cole com uma flecha quando ele pede um duelo (T3)"
     ],
     got:[
       "A rixa entre as duas casas quase não aparece na série",
-      "Nos livros, Aegon V casa com Betha Blackwood, e Brynden Rivers, o Corvo de Sangue, é filho de Aegon IV com uma Blackwood"
+      "Nos livros, Aegon V casa com Betha Blackwood; Brynden Rivers, o Corvo de Sangue, é filho de Aegon IV com uma Blackwood; e Black Aly casa com Cregan Stark"
     ],
-    ligacao:"Pela avó Betha Blackwood, Daenerys, Jon Snow e até Robert Baratheon têm sangue Blackwood (veja Aegon V na linhagem). Na série, o Corvo de Três Olhos que treina Bran nunca é nomeado; nos livros, é um meio-Blackwood. A briga de mil anos entre as duas casas é só pano de fundo em GoT."
+    ligacao:"Pela avó Betha Blackwood, Daenerys, Jon Snow e até Robert Baratheon têm sangue Blackwood (veja Aegon V na linhagem). Na série, o Corvo de Três Olhos que treina Bran nunca é nomeado; nos livros, é um meio-Blackwood. E a arqueira da T3 vira, nos livros, Senhora de Winterfell ao lado de Cregan."
   },
   {
     nome:"Cole", sede:"Blackhaven · Marcas Dornesas", campo:"#3a3a40", carga:"#8c8c94", sigilo:"⚔️",
     lado:"verdes", tipos:["castelo","papel"],
     cdd:[
       "Ser Criston Cole, o Fazedor de Reis: guarda pessoal de Rhaenyra, depois homem de Alicent, Lorde Comandante da Guarda Real e Mão de Aegon II",
+      "Emboscado pelos Tully, desafia Roderick Dustin e Oscar Tully para um duelo e morre com uma flecha de Black Aly Blackwood (T3)",
       "Filho do intendente do Senhor de Blackhaven, sem casa nobre própria"
     ],
     got:[
@@ -769,12 +857,263 @@ ligarFiltros("filtro-lado", "lado");
 ligarFiltros("filtro-tipo", "tipo");
 aplicarFiltro();
 
+
+// Personagens: situacao ao fim da T3 e o que cada um deixa em GoT.
+const personagens = [
+  {nome:"Rhaenyra Targaryen", ep:"A rainha dos Negros", casa:"Targaryen", lado:"negros", dragao:"Syrax", estado:"vivo",
+   ate:"Toma Porto Real e senta no Trono de Ferro (T3E2). Executa Otto, serve ratos aos nobres, manda matar o Alto Septão e prende a própria Baela.",
+   got:"Ancestral direta de Daenerys, Viserys III e Rhaegar. O arco da rainha aclamada que o povo passa a temer antecipa Daenerys em Porto Real (T8)."},
+  {nome:"Daemon Targaryen", ep:"O Príncipe Rebelde", casa:"Targaryen", lado:"negros", dragao:"Caraxes", estado:"vivo",
+   ate:"Toma a cidade com Luthor Largent, decapita Jasper Wylde, comanda o cerco de Tumbleton e esconde de Rhaenyra que Rhaena montava Sheepstealer (T3).",
+   got:"Ancestral direto de Daenerys e Jon Snow. Nos livros, a espada dele, Irmã Negra, acaba com o Corvo de Sangue."},
+  {nome:"Viserys I Targaryen", ep:"O rei que dividiu o reino", casa:"Targaryen", lado:"outros", dragao:"Balerion, depois nenhum", estado:"morto",
+   ate:"Morre no fim da T1 depois de confundir a profecia na cabeça de Alicent.",
+   got:"Conta a Rhaenyra o sonho de Aegon: é a profecia do Príncipe Prometido que Melisandre persegue."},
+  {nome:"Jacaerys Velaryon", ep:"Jace, herdeiro de Rhaenyra", casa:"Velaryon (Strong)", lado:"negros", dragao:"Vermax", estado:"morto",
+   ate:"Prende a mãe em Pedra do Dragão para lutar no lugar dela. Vermax é abatido por um escorpião e Jace morre sob as flechas da Triarquia na Goela (T3E1).",
+   got:"Fecha o Pacto de Gelo e Fogo com Cregan Stark; a união Stark e Targaryen só acontece com Jon Snow."},
+  {nome:"Lucerys Velaryon", ep:"Luke", casa:"Velaryon (Strong)", lado:"negros", dragao:"Arrax", estado:"morto",
+   ate:"Morto por Vhagar sobre Ponta Tempestade (T1E10). A morte dele começa a guerra.",
+   got:"Cai sobre o castelo de Robert, Stannis e Gendry."},
+  {nome:"Baela Targaryen", ep:"Filha de Daemon e Laena", casa:"Targaryen", lado:"negros", dragao:"Moondancer", estado:"vivo",
+   ate:"Salva Jace uma vez na Goela e leva o corpo dele a Pedra do Dragão. Acaba detida por Rhaenyra (T3E8).",
+   got:"Nos livros, casa com Alyn Velaryon; os Velaryon da época de GoT descendem dela."},
+  {nome:"Rhaena Targaryen", ep:"Filha de Daemon e Laena", casa:"Targaryen", lado:"negros", dragao:"Sheepstealer", estado:"vivo",
+   ate:"Reivindica o dragão selvagem Sheepstealer sem dominá-lo; na Goela ele ataca os dois lados e custa Vermax. Foge do Vale, é capturada e levada a Porto Real (T3E7). Herda o papel de Nettles, cortada dos livros.",
+   got:"Os ovos que levou ao Vale na T2 podem ser os de Daenerys (veja Dragões)."},
+  {nome:"Aegon, o Jovem, e Viserys", ep:"Filhos de Rhaenyra e Daemon", casa:"Targaryen", lado:"negros", dragao:"Stormcloud", estado:"vivo",
+   ate:"Escondidos no Vale com Jeyne Arryn desde a T2.",
+   got:"Aegon III será rei. Viserys II é o ancestral direto de Daenerys e Jon Snow (veja a linhagem)."},
+  {nome:"Rhaenys Targaryen", ep:"A Rainha Que Nunca Foi", casa:"Targaryen", lado:"negros", dragao:"Meleys", estado:"morto",
+   ate:"Morre em Rook's Rest, cercada por Vhagar e Sunfyre (T2E4).",
+   got:"Filha de uma Baratheon: o cruzamento de sangue que Robert reivindica."},
+  {nome:"Corlys Velaryon", ep:"A Serpente do Mar", casa:"Velaryon", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Perde Maré Alta, naufraga, chama os filhos de Rhaenyra de bastardos, é capturado por Jon Roxton, perde um dedo e é libertado por Daeron e Gwayne (T3).",
+   got:"Driftmark fica ao lado de Pedra do Dragão, base de Stannis e Daenerys."},
+  {nome:"Alyn de Hull", ep:"Herdeiro de Driftmark", casa:"Velaryon", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Mata Sharako Lohar na Goela, é nomeado herdeiro por Corlys e mata o Alto Septão a mando de Rhaenyra (T3).",
+   got:"Nos livros, Alyn Velaryon vira o grande almirante Targaryen e casa com Baela."},
+  {nome:"Addam de Hull", ep:"Semente de dragão", casa:"Velaryon", lado:"negros", dragao:"Seasmoke", estado:"vivo",
+   ate:"Armado cavaleiro por Daemon, nunca legitimado por Rhaenyra; caça Aemond com Baela (T3).",
+   got:""},
+  {nome:"Mysaria", ep:"O Verme Branco", casa:"Sem casa", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Mestra dos sussurros de Rhaenyra; descobre a gravidez de Helaena; é demitida e expulsa da cidade (T3E8).",
+   got:"Faz o papel de Varys: mestre dos sussurros de origem humilde, vindo de Essos."},
+  {nome:"Hugh Hammer", ep:"Semente de dragão, ferreiro", casa:"Sem casa", lado:"negros", dragao:"Vermithor", estado:"vivo",
+   ate:"Reivindica Vermithor (T2E8). Na T3, a mulher, Kat, fica presa em Tumbleton e aparece morta depois do incêndio.",
+   got:""},
+  {nome:"Ulf White", ep:"Semente de dragão", casa:"Sem casa", lado:"verdes", dragao:"Silverwing", estado:"vivo",
+   ate:"Humilhado por Daemon, é comprado por Ormund com a promessa de Driftmark e queima Tumbleton com Silverwing, matando Ormund e Roderick (T3E8).",
+   got:"Silverwing, nos livros, é dos dragões que sobrevivem à Dança."},
+  {nome:"Oscar Tully", ep:"Senhor de Correrrio", casa:"Tully", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Lidera o exército do Tridente, embosca Criston Cole e cerca Tumbleton (T3).",
+   got:"Ancestral de Hoster, Catelyn, Edmure e do Peixe Negro."},
+  {nome:"Roderick Dustin", ep:"Roddy, a Ruína, dos Lobos do Inverno", casa:"Dustin", lado:"negros", dragao:"", estado:"morto",
+   ate:"Entrega a Daemon a cabeça de Jason Lannister (T3E1); escala as muralhas de Tumbleton e morre no incêndio de Ulf (T3E8).",
+   got:"Barrowton: nos livros, Lady Barbrey Dustin, que odeia Ned Stark."},
+  {nome:"Torrhen Manderly", ep:"Mestre da moeda", casa:"Manderly", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Nomeado por Rhaenyra para levar a culpa pelo cofre vazio (T3E4).",
+   got:"Lorde Wyman Manderly está entre os que proclamam Jon Snow Rei do Norte (T6)."},
+  {nome:"Alysanne Blackwood", ep:"Black Aly, a arqueira", casa:"Blackwood", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Mata Criston Cole com uma flecha quando ele pede um duelo (T3E6).",
+   got:"Nos livros, casa com Cregan Stark e vira Senhora de Winterfell."},
+  {nome:"Jeyne Arryn", ep:"A Donzela do Vale", casa:"Arryn", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Abriga Rhaena e os meninos; manda ouro a Daemon; avisa quando Rhaena foge (T3).",
+   got:"O Ninho da Águia de Lysa e Robin, a Porta da Lua."},
+  {nome:"Cregan Stark", ep:"Senhor de Winterfell", casa:"Stark", lado:"negros", dragao:"", estado:"vivo",
+   ate:"Recebe Jacaerys no topo da Muralha e fecha o Pacto de Gelo e Fogo (T2). Fica fora da T3; o Norte aparece pelos Dustin e Manderly.",
+   got:"Ancestral de Ned Stark; o nome Rickon, do pai dele, volta no caçula de Ned."},
+  {nome:"Luthor Largent", ep:"Comandante da Patrulha da Cidade", casa:"Sem casa", lado:"negros", dragao:"", estado:"morto",
+   ate:"Entrega Porto Real a Daemon e prende os apoiadores dos Verdes; é assassinado com vários patrulheiros por homens pagos por Ormund (T3E5).",
+   got:"A Patrulha da Cidade, os mantos dourados de Janos Slynt e, depois, de Bronn."},
+  {nome:"Alicent Hightower", ep:"A rainha viúva", casa:"Hightower", lado:"verdes", dragao:"", estado:"vivo",
+   ate:"Entrega a cidade a Rhaenyra, falha em fugir com Helaena, aceita matar Aemond em troca da liberdade e o envenena em Harrenhal (T3E7).",
+   got:"Dá nome aos Verdes. Ser Gerold Hightower, da casa dela, morre guardando o segredo de Jon Snow (T6)."},
+  {nome:"Otto Hightower", ep:"Mão de três reis", casa:"Hightower", lado:"verdes", dragao:"", estado:"morto",
+   ate:"Preso, é entregue por Larys a Daemon e decapitado por Rhaenyra (T3E2).",
+   got:"A Mão do Rei que GoT abre enterrando é Jon Arryn; a que acaba no cadafalso é Ned Stark."},
+  {nome:"Aegon II Targaryen", ep:"O rei dos Verdes", casa:"Targaryen", lado:"verdes", dragao:"Sunfyre", estado:"vivo",
+   ate:"Capturado com Larys, foge, chora o corpo errado de Sunfyre, limpa latrinas em Rook's Rest e é salvo pelo dragão, vivo (T3E7). Manda Aemond buscar Vhagar.",
+   got:"Único rei Targaryen que GoT nunca cita. A linha dele acaba sem herdeiros."},
+  {nome:"Aemond Targaryen", ep:"O Caolho", casa:"Targaryen", lado:"verdes", dragao:"Vhagar", estado:"vivo",
+   ate:"Senta no Trono dizendo que Aegon abdicou, mata Simon Strong, é ferido em Harrenhal e envenenado por Alicent; sobrevive com a ajuda de Alys (T3).",
+   got:"Vhagar, a dragoa dele, vira um dos três maiores crânios dos porões (livros)."},
+  {nome:"Helaena Targaryen", ep:"A rainha sonhadora", casa:"Targaryen", lado:"verdes", dragao:"Dreamfyre", estado:"morto",
+   ate:"Grávida, presa e alimentada à força por Rhaenyra, pula de uma janela (T3E8) e deixa a tapeçaria de Rhaenyra no trono cercada de fogo e sangue.",
+   got:"Nos livros, a filha dela, Jaehaera, casa com Aegon III e une os dois lados."},
+  {nome:"Daeron Targaryen", ep:"O caçula de Alicent", casa:"Targaryen", lado:"verdes", dragao:"Tessarion", estado:"sumido",
+   ate:"Primeiro um impostor, depois o verdadeiro: Ormund o proclama rei em Tumbleton e o obriga a executar um inocente. Liberta Corlys com Gwayne e some no incêndio (T3E8).",
+   got:""},
+  {nome:"Ormund Hightower", ep:"Senhor de Vilavelha", casa:"Hightower", lado:"verdes", dragao:"", estado:"morto",
+   ate:"Submete-se a Daemon de mentira, toma Tumbleton, cunha moedas com Daeron, compra Ulf e morre queimado por Silverwing (T3E8).",
+   got:"Vilavelha e a Cidadela, onde Sam Tarly estuda (T6 e T7)."},
+  {nome:"Gwayne Hightower", ep:"Irmão de Alicent", casa:"Hightower", lado:"verdes", dragao:"", estado:"vivo",
+   ate:"Abandona Criston, desmascara os assassinos de Rhaenyra, liberta Corlys e não acha Daeron depois do incêndio (T3).",
+   got:""},
+  {nome:"Criston Cole", ep:"O Fazedor de Reis", casa:"Cole", lado:"verdes", dragao:"", estado:"morto",
+   ate:"Guerrilha contra os Tully, chega tarde a uma ponte queimada, pede um duelo e morre com a flecha de Black Aly (T3E6).",
+   got:"Beric Dondarrion é o senhor de Blackhaven, onde Criston cresceu; Jaime é o outro guarda branco que quebra o juramento."},
+  {nome:"Larys Strong", ep:"Pé-Torto", casa:"Strong", lado:"verdes", dragao:"", estado:"vivo",
+   ate:"Capturado com Aegon, revela quem são para valer como reféns, entrega Otto a Daemon e abandona Aegon quando a busca por Tyland aperta (T3E7).",
+   got:"O Varys da Dança: mestre dos sussurros que escolhe o lado vencedor."},
+  {nome:"Alys Rivers", ep:"A bruxa de Harrenhal", casa:"Strong (bastarda)", lado:"outros", dragao:"", estado:"vivo",
+   ate:"Salva Aemond, mostra a ele um ninho de ovos escondido e conta que ficou imortal ao falhar em salvar o filho com magia (T3E8).",
+   got:"Uma imortal que não envelhece, como Melisandre sob o colar."},
+  {nome:"Jason Lannister", ep:"Senhor do Rochedo", casa:"Lannister", lado:"verdes", dragao:"", estado:"morto",
+   ate:"Derrotado por Daemon; Roderick Dustin entrega a cabeça dele (T3E1).",
+   got:"Ancestral de Tywin. Gêmeo, como Jaime e Cersei."},
+  {nome:"Tyland Lannister", ep:"Mestre da moeda de Aegon II", casa:"Lannister", lado:"verdes", dragao:"", estado:"vivo",
+   ate:"Jogado ao mar por Lohar, sobrevive, esconde o tesouro da coroa e se junta a Aegon em Rook's Rest (T3).",
+   got:"Nos livros, vira Mão de Aegon III: o Lannister cuidando do ouro, como Tywin."},
+  {nome:"Jon Roxton", ep:"O Audaz", casa:"Roxton", lado:"verdes", dragao:"", estado:"vivo",
+   ate:"Captura Corlys e duela com Daemon até Ulf interromper (T3E8).",
+   got:""},
+  {nome:"Sharako Lohar", ep:"Almirante da Triarquia", casa:"Triarquia", lado:"outros", dragao:"", estado:"morto",
+   ate:"Saqueia Maré Alta, afunda o navio de Corlys e morre pelas mãos de Alyn (T3E1).",
+   got:"A Triarquia (Myr, Lys e Tyrosh) são as Cidades Livres que Daenerys atravessa em Essos."},
+  {nome:"Simon Strong", ep:"Castelão de Harrenhal", casa:"Strong", lado:"negros", dragao:"", estado:"morto",
+   ate:"Mantém Harrenhal para Daemon (T2) e é morto por Aemond na chegada de Vhagar (T3E2).",
+   got:"Harrenhal, onde Arya serve Tywin (T2)."},
+  {nome:"Jasper Wylde", ep:"Ironrod, mestre das leis", casa:"Wylde", lado:"verdes", dragao:"", estado:"morto",
+   ate:"Tenta estuprar Alicent, é preso por Orwyle e decapitado por Daemon (T3E2).",
+   got:""}
+];
+
+const rotuloLadoP = {verdes:"Verdes", negros:"Negros", outros:"Outros"};
+const rotuloEstado = {vivo:"vivo", morto:"† morto", sumido:"? desaparecido"};
+
+function renderPersonagens(){
+  const alvo = document.getElementById("lista-personagens");
+  alvo.innerHTML = personagens.map(p => `
+    <article class="personagem" id="personagem-${slug(p.nome)}" data-lado="${p.lado}" data-casa="${esc(p.casa)}">
+      <div><h3>${esc(p.nome)}</h3>${p.ep ? `<p class="ep">${esc(p.ep)}</p>` : ""}</div>
+      <div class="marcas">
+        <span class="chip chip-casa">${esc(p.casa)}</span>
+        <span class="lado lado-${p.lado}">${rotuloLadoP[p.lado]}</span>
+        ${p.dragao ? `<span class="chip chip-dragao">🐉 ${esc(p.dragao)}</span>` : ""}
+        <span class="estado estado-${p.estado}">${rotuloEstado[p.estado]}</span>
+      </div>
+      <p class="ate"><b>Até o fim da T3</b>${esc(p.ate)}</p>
+      ${p.got ? `<p class="got"><b>Em Game of Thrones</b>${esc(p.got)}</p>` : ""}
+    </article>`).join("");
+}
+
+const estadoP = {lado:"todos", casa:"todas"};
+
+function aplicarFiltroPersonagens(){
+  const cartoes = document.querySelectorAll("#lista-personagens .personagem");
+  let visiveis = 0;
+  cartoes.forEach(el => {
+    const okLado = estadoP.lado === "todos" || el.dataset.lado === estadoP.lado;
+    const okCasa = estadoP.casa === "todas" || el.dataset.casa === estadoP.casa;
+    const okBusca = el.dataset.busca !== "0";
+    const mostrar = okLado && okCasa && okBusca;
+    el.hidden = !mostrar;
+    if (mostrar) visiveis++;
+  });
+  const contagem = document.getElementById("contagem-p");
+  contagem.textContent = visiveis === cartoes.length ? `${cartoes.length} personagens` : `${visiveis} de ${cartoes.length} personagens`;
+  if (visiveis === 0) contagem.textContent = "Nenhum personagem com essa combinação";
+}
+
+(function ligarFiltrosPersonagens(){
+  const grupo = document.getElementById("filtro-lado-p");
+  grupo.querySelectorAll(".filtro").forEach(btn => {
+    btn.addEventListener("click", () => {
+      estadoP.lado = btn.dataset.lado;
+      grupo.querySelectorAll(".filtro").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+      aplicarFiltroPersonagens();
+    });
+  });
+  const seletor = document.getElementById("seletor-casa");
+  const casasDosPersonagens = [...new Set(personagens.map(p => p.casa))].sort((a, b) => a.localeCompare(b, "pt"));
+  seletor.innerHTML += casasDosPersonagens.map(c => `<option value="${esc(c)}">${esc(c)}</option>`).join("");
+  seletor.addEventListener("change", () => { estadoP.casa = seletor.value; aplicarFiltroPersonagens(); });
+})();
+
+renderPersonagens();
+aplicarFiltroPersonagens();
+
+// Dragoes: cavaleiros, situacao ao fim da T3 e o rastro que deixam em GoT.
+const dragoes = [
+  {nome:"Balerion", ep:"o Terror Negro", cav:"Aegon, o Conquistador; depois Viserys I",
+   cdd:"Morto antes da série. Viserys I conta a profecia a Rhaenyra sob o crânio dele (T1).",
+   got:"O crânio nos porões: Arya se esconde atrás dele (T1); Cersei testa o escorpião nele (T7)."},
+  {nome:"Vhagar", ep:"a última da Conquista", cav:"Visenya; Laena Velaryon; Aemond",
+   cdd:"Mata Arrax e Lucerys (T1), Meleys e Rhaenys em Rook's Rest (T2). Leva Aemond ferido a Harrenhal; Aegon manda buscá-la de volta (T3).",
+   got:"Nos livros, o crânio dela está entre os três maiores do porão, com Balerion e Meraxes."},
+  {nome:"Caraxes", ep:"o Verme Sangrento", cav:"Daemon",
+   cdd:"Toma Harrenhal (T2). Leva Daemon até Rhaena, fere Sheepstealer e derruba o portão de Tumbleton (T3).",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Syrax", ep:"a dragoa de Rhaenyra", cav:"Rhaenyra",
+   cdd:"Leva Rhaenyra a Porto Real para tomar o trono (T3).",
+   got:"O Fosso dos Dragões, casa dela, é a ruína onde Daenerys e Cersei se encontram (T7)."},
+  {nome:"Meleys", ep:"a Rainha Vermelha", cav:"Rhaenys",
+   cdd:"Morta em Rook's Rest por Vhagar e Sunfyre (T2). Criston desfila a cabeça dela por Porto Real.",
+   got:"A cabeça é o primeiro troféu da Dança, do tipo que lota o porão de Robert."},
+  {nome:"Sunfyre", ep:"o Dourado", cav:"Aegon II",
+   cdd:"Ferido em Rook's Rest (T2). Aegon chora o corpo errado (T3E4); Sunfyre reaparece e salva Aegon dos soldados (T3E7).",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Vermithor", ep:"a Fúria de Bronze", cav:"Jaehaerys I; Hugh Hammer",
+   cdd:"Reivindicado por Hugh no fim da T2. Voa com Rhaenyra sobre Porto Real (T3).",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Silverwing", ep:"Asa de Prata", cav:"Rainha Alysanne; Ulf White",
+   cdd:"Reivindicada por Ulf (T2). Queima Tumbleton quando ele muda de lado (T3E8).",
+   got:"Nos livros, é dos dragões que sobrevivem à Dança."},
+  {nome:"Seasmoke", ep:"Fumaça do Mar", cav:"Laenor Velaryon; Addam de Hull",
+   cdd:"Escolhe Addam depois de queimar Steffon Darklyn (T2). Luta na Goela (T3).",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Dreamfyre", ep:"Fogo de Sonho", cav:"Helaena",
+   cdd:"Nunca vai à guerra. Fica sem cavaleira quando Helaena morre (T3E8).",
+   got:"Uma leitura da própria série: ovos de Dreamfyre seriam os ovos de Daenerys. Veja “Os ovos do Vale”."},
+  {nome:"Vermax", ep:"o dragão de Jace", cav:"Jacaerys",
+   cdd:"Abatido por um escorpião da Triarquia e afogado na Goela (T3E1).",
+   got:"O escorpião faz com ele o que o de Qyburn faz com Rhaegal (T8)."},
+  {nome:"Arrax", ep:"o dragão de Luke", cav:"Lucerys",
+   cdd:"Morto por Vhagar sobre Ponta Tempestade (T1E10).",
+   got:"Cai sobre o castelo de Renly, Davos e Gendry."},
+  {nome:"Moondancer", ep:"Dançarina da Lua", cav:"Baela",
+   cdd:"Salva Jace uma vez na Goela (T3E1); caça Aemond com Seasmoke (T3).",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Tessarion", ep:"a Rainha Azul", cav:"Daeron",
+   cdd:"Presa dentro das muralhas de Tumbleton por Ormund (T3).",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Sheepstealer", ep:"Ladrão de Ovelhas, selvagem", cav:"Rhaena",
+   cdd:"Rhaena o monta sem dominá-lo; ataca os dois lados na Goela e é ferido por Caraxes (T3). Nos livros, a cavaleira é Nettles, cortada da série.",
+   got:"Sem ligação direta com GoT."},
+  {nome:"Morning", ep:"Manhã", cav:"Rhaena (o ovo dela)",
+   cdd:"O ovo que choca no fim da T2.",
+   got:"Nos livros, Morning é dos últimos dragões; os dois menores crânios do porão são dos filhotes finais."},
+  {nome:"Os ovos do Vale", ep:"quatro ovos", cav:"Rhaena os leva ao Ninho da Águia (T2E3)",
+   cdd:"A diretora Geeta Patel disse que três deles viram os ovos de Daenerys; Ryan Condal chamou isso de “um futuro possível”. Na T3, Alys mostra a Aemond outro ninho escondido em Harrenhal.",
+   got:"Illyrio dá três ovos a Daenerys e eles chocam na pira de Drogo: Drogon, Rhaegal e Viserion (T1)."},
+  {nome:"Drogon, Rhaegal e Viserion", ep:"os dragões de GoT", cav:"Daenerys; Jon Snow monta Rhaegal",
+   cdd:"Os nomes homenageiam Drogo, Rhaegar e Viserys, o irmão e o marido de Daenerys e o irmão de Rhaenyra na linhagem.",
+   got:"Viserion vira dragão de gelo e derruba a Muralha (T7); Rhaegal cai ao escorpião (T8); Drogon derrete o Trono de Ferro (T8)."}
+];
+
+function renderDragoes(){
+  const alvo = document.getElementById("lista-dragoes");
+  alvo.innerHTML = dragoes.map((d, i) => `
+    <article class="dragao" id="dragao-${slug(d.nome)}">
+      <h3>${esc(d.nome)} <small>${esc(d.ep)}</small></h3>
+      <p class="cav"><b>Cavaleiros:</b> ${esc(d.cav)}</p>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>${esc(d.cdd)}</dd>
+        <dt class="got">Game of Thrones</dt><dd>${esc(d.got)}</dd>
+      </dl>
+    </article>`).join("");
+}
+renderDragoes();
+
 // Busca por personagem ou casa. Ignora acentos e maiusculas, destaca os trechos e lista onde o termo aparece.
 const sugestoes = [
   "Targaryen","Hightower","Velaryon","Strong","Lannister","Stark","Baratheon","Arryn","Tully","Frey","Royce","Blackwood","Bracken","Cole","Darklyn","Westerling","Beesbury","Cargyll","Celtigar","Lonmouth","Marbrand","Greyjoy","Tyrell","Martell","Dondarrion",
   "Rhaenyra","Daemon","Viserys I","Viserys II","Alicent","Otto Hightower","Gwayne","Aegon II","Aemond","Helaena","Daeron","Jaehaerys","Rhaenys","Corlys","Laenor","Laena","Vaemond","Addam de Hull","Alyn","Jacaerys","Lucerys","Joffrey","Baela","Rhaena","Aemma Arryn","Jeyne Arryn","Criston Cole","Harwin","Larys","Lyonel","Simon Strong","Alys Rivers","Jason Lannister","Tyland","Cregan Stark","Rickon Stark","Borros","Boremund","Grover Tully","Oscar Tully","Forrest Frey","Sabitha Frey","Rhea Royce","Gerold Royce","Steffon Darklyn","Harrold Westerling","Lyman Beesbury","Erryk","Arryk","Willem Blackwood","Samwell Blackwood","Amos Bracken","Mysaria","Seasmoke","Meleys","Vhagar","Caraxes",
   "Daenerys","Jon Snow","Rhaegar","Aerys","Rei Louco","Lyanna","Elia Martell","Meistre Aemon","Aegon V","Egg","Betha Blackwood","Corvo de Sangue","Corvo de Três Olhos","Ned Stark","Catelyn","Robb","Sansa","Arya","Bran","Benjen","Tywin","Cersei","Jaime","Tyrion","Kevan","Lancel","Robert Baratheon","Stannis","Renly","Shireen","Gendry","Tommen","Myrcella","Jon Arryn","Lysa","Robin Arryn","Hoster Tully","Edmure","Peixe Negro","Walder Frey","Talisa","Yohn Royce","Waymar Royce","Beric Dondarrion","Barristan Selmy","Gerold Hightower","Sam Tarly","Varys","Mindinho","Melisandre","Davos","Qyburn","Oberyn","Doran","Ellaria","Theon","Yara","Euron","Balon","Olenna","Margaery","Loras","Rei da Noite","Caminhante Branco","Caminhantes Brancos","Longa Noite","Filhos da Floresta","Craster","Último Herói","Velha Nan","Bloodmoon","vidro de dragão","Outros",
-  "Harrenhal","Pedra do Dragão","Ponta Tempestade","Ninho da Águia","Correrrio","As Gêmeas","Runestone","Blackhaven","Vilavelha","Cidadela","Winterfell","Muralha","Porto Real","Driftmark","Fosso dos Dragões","Mesa Pintada","Trono de Ferro","Balerion","adaga","Patrulha da Noite","Guarda Real","Mão do Rei","Torre da Alegria","Casamento Vermelho","Pacto de Gelo e Fogo","Príncipe Prometido","Verdes","Negros"
+  "Harrenhal","Pedra do Dragão","Ponta Tempestade","Ninho da Águia","Correrrio","As Gêmeas","Runestone","Blackhaven","Vilavelha","Cidadela","Winterfell","Muralha","Porto Real","Driftmark","Fosso dos Dragões","Mesa Pintada","Trono de Ferro","Balerion","adaga","Patrulha da Noite","Guarda Real","Mão do Rei","Torre da Alegria","Casamento Vermelho","Pacto de Gelo e Fogo","Príncipe Prometido","Verdes","Negros",
+  "Ormund Hightower","Roderick Dustin","Lobos do Inverno","Torrhen Manderly","Black Aly","Alysanne Blackwood","Luthor Largent","Adrian Redfort","Jon Roxton","Sharako Lohar","Triarquia","Kat","Alto Septão","Jaehaera","Tumbleton","Goela","Rook's Rest","Maré Alta","Porto Branco","Barrowton",
+  "Syrax","Sunfyre","Vermithor","Silverwing","Seasmoke","Dreamfyre","Vermax","Arrax","Moondancer","Tessarion","Sheepstealer","Morning","Drogon","Rhaegal","Viserion","ovos","Nettles"
 ];
 document.getElementById("sugestoes").innerHTML = sugestoes.map(x => `<option value="${esc(x)}"></option>`).join("");
 
@@ -831,16 +1170,18 @@ function registrar(seletor, tipo, onde, rotular){
   });
 }
 registrar(".linhagem > li", "linhagem", "Linhagem", el => el.querySelector(".nome").firstChild.textContent.trim());
+registrar("#lista-dragoes .dragao", "dragao", "Dragão", el => el.querySelector("h3").firstChild.textContent.trim());
 registrar("#lugares .lugar", "lugar", "Lugar ou objeto", el => el.querySelector("h3").textContent.trim());
 registrar("#menores .menores li", "menor", "Casa menor", el => el.querySelector("b").textContent.trim());
 registrar("#ausentes .menores li", "ausente", "Fica de fora", el => el.querySelector("b").textContent.trim());
 
 const campo = document.getElementById("campo-busca");
 const resumo = document.getElementById("resumo-busca");
-const secoesAuxiliares = ["lugares", "menores", "ausentes"].map(id => document.getElementById(id));
+const secoesAuxiliares = ["dragoes", "lugares", "menores", "ausentes"].map(id => document.getElementById(id));
 
 function restaurar(){
   render();
+  renderPersonagens();
   for (const a of alvosEstaticos){
     a.el.innerHTML = a.html;
     a.el.classList.remove("apagado");
@@ -851,6 +1192,9 @@ function restaurar(){
 
 function resetarFiltros(){
   estado.lado = "todos"; estado.tipo = "todos";
+  estadoP.lado = "todos"; estadoP.casa = "todas";
+  document.getElementById("seletor-casa").value = "todas";
+  document.querySelectorAll("#filtro-lado-p .filtro").forEach(b => b.setAttribute("aria-pressed", b.dataset.lado === "todos" ? "true" : "false"));
   document.querySelectorAll("#filtro-lado .filtro, #filtro-tipo .filtro").forEach(b => {
     const valor = b.dataset.lado || b.dataset.tipo;
     b.setAttribute("aria-pressed", valor === "todos" ? "true" : "false");
@@ -864,6 +1208,7 @@ function aplicarBusca(){
     resumo.hidden = true;
     resumo.innerHTML = "";
     aplicarFiltro();
+    aplicarFiltroPersonagens();
     return;
   }
   resetarFiltros();
@@ -875,6 +1220,15 @@ function aplicarBusca(){
     if (bate){
       marcar(el, termo);
       acertos.push({ id: el.id, onde: "Casa", classe: "", rotulo: el.querySelector("h3").textContent });
+    }
+  });
+
+  document.querySelectorAll("#lista-personagens .personagem").forEach(el => {
+    const bate = normalizar(el.textContent).includes(termo);
+    el.dataset.busca = bate ? "1" : "0";
+    if (bate){
+      marcar(el, termo);
+      acertos.push({ id: el.id, onde: "Personagem", classe: "fogo", rotulo: el.querySelector("h3").textContent });
     }
   });
 
@@ -893,7 +1247,7 @@ function aplicarBusca(){
   }
   // Se nenhum no da linhagem bate, nao apaga nenhum: a cadeia continua legivel
   if (!algumNo) alvosEstaticos.filter(a => a.tipo === "linhagem").forEach(a => a.el.classList.remove("apagado"));
-  secoesAuxiliares.forEach(sec => { sec.hidden = !sec.querySelector(".lugar:not([hidden]), .menores li:not([hidden])"); });
+  secoesAuxiliares.forEach(sec => { sec.hidden = !sec.querySelector(".lugar:not([hidden]), .menores li:not([hidden]), .dragao:not([hidden])"); });
 
   resumo.hidden = false;
   if (!acertos.length){
@@ -904,6 +1258,7 @@ function aplicarBusca(){
       <div class="acertos">${acertos.map(a => `<button class="acerto-chip" type="button" data-alvo="${a.id}"><span class="onde ${a.classe}">${esc(a.onde)}</span>${esc(a.rotulo)}</button>`).join("")}</div>`;
   }
   aplicarFiltro();
+  aplicarFiltroPersonagens();
 }
 
 resumo.addEventListener("click", ev => {
@@ -935,7 +1290,8 @@ document.getElementById("limpar-busca").addEventListener("click", () => {
 // O navegador pode restaurar o valor do campo ao recarregar: aplica a busca se houver algo
 if (campo.value) aplicarBusca();
 
-// Brasas subindo no topo: atmosfera da serie. Respeita reducao de movimento e pausa fora de foco.
+// Brasas subindo e cristais de gelo descendo no topo: fogo contra gelo, dragoes contra Caminhantes.
+// Respeita reducao de movimento e pausa fora de foco.
 (function(){
   const tela = document.getElementById("brasas");
   if (!tela || !tela.getContext) return;
@@ -950,17 +1306,27 @@ if (campo.value) aplicarBusca();
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
   }
   function nova(inicial){
-    return { x: Math.random() * w, y: inicial ? Math.random() * h : h + 6, r: 0.8 + Math.random() * 1.8,
-      vy: 0.15 + Math.random() * 0.35, vx: (Math.random() - 0.5) * 0.25, vida: Math.random(), fase: Math.random() * Math.PI * 2 };
+    const gelo = Math.random() < 0.42;
+    return { gelo, x: Math.random() * w, y: inicial ? Math.random() * h : (gelo ? -6 : h + 6),
+      r: gelo ? 0.9 + Math.random() * 1.7 : 0.8 + Math.random() * 1.8,
+      vy: gelo ? 0.08 + Math.random() * 0.22 : 0.15 + Math.random() * 0.35,
+      vx: (Math.random() - 0.5) * 0.25, fase: Math.random() * Math.PI * 2 };
   }
   function desenhar(t){
     ctx.clearRect(0, 0, w, h);
     for (const p of particulas){
-      const brilho = 0.35 + 0.65 * Math.abs(Math.sin(p.fase + t / 900));
       const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
-      g.addColorStop(0, "rgba(255,180,120," + (0.9 * brilho) + ")");
-      g.addColorStop(0.4, "rgba(209,69,47," + (0.5 * brilho) + ")");
-      g.addColorStop(1, "rgba(209,69,47,0)");
+      if (p.gelo){
+        const brilho = 0.5 + 0.5 * Math.abs(Math.sin(p.fase + t / 1400));
+        g.addColorStop(0, "rgba(235,246,255," + (0.95 * brilho) + ")");
+        g.addColorStop(0.4, "rgba(143,182,216," + (0.5 * brilho) + ")");
+        g.addColorStop(1, "rgba(143,182,216,0)");
+      } else {
+        const brilho = 0.35 + 0.65 * Math.abs(Math.sin(p.fase + t / 900));
+        g.addColorStop(0, "rgba(255,180,120," + (0.9 * brilho) + ")");
+        g.addColorStop(0.4, "rgba(209,69,47," + (0.5 * brilho) + ")");
+        g.addColorStop(1, "rgba(209,69,47,0)");
+      }
       ctx.fillStyle = g;
       ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fill();
     }
@@ -969,8 +1335,9 @@ if (campo.value) aplicarBusca();
     if (!animando) return;
     for (let i = 0; i < particulas.length; i++){
       const p = particulas[i];
-      p.y -= p.vy; p.x += p.vx + Math.sin(t / 1500 + p.fase) * 0.15;
-      if (p.y < -8 || p.x < -8 || p.x > w + 8) particulas[i] = nova(false);
+      p.y += p.gelo ? p.vy : -p.vy;
+      p.x += p.vx + Math.sin(t / 1500 + p.fase) * (p.gelo ? 0.25 : 0.15);
+      if (p.y < -8 || p.y > h + 8 || p.x < -8 || p.x > w + 8) particulas[i] = nova(false);
     }
     desenhar(t);
     requestAnimationFrame(passo);
