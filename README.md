@@ -17,7 +17,9 @@ No ar em https://digounet.github.io/got/
 
 ## Como funciona
 
-Uma unica pagina estatica (`index.html`), sem build e sem dependencias alem das fontes do Google Fonts.
+Uma unica pagina estatica (`index.html`) sem dependencias alem das fontes do Google Fonts. Depois de mudar
+conteudo, `python3 scripts/build.py` pre-renderiza os cartoes no HTML (para buscadores), gera a imagem de
+compartilhamento e atualiza o sitemap.
 Os dados ficam em arrays no proprio script da pagina (`casas`, `personagens`, `dragoes`); para adicionar
 um item, basta acrescentar ali. Conteudo atualizado ate o fim da 3a temporada (agosto de 2026).
 
