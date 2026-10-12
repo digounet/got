@@ -21,4 +21,8 @@ Uma unica pagina estatica (`index.html`), sem build e sem dependencias alem das 
 Os dados ficam em arrays no proprio script da pagina (`casas`, `personagens`, `dragoes`); para adicionar
 um item, basta acrescentar ali. Conteudo atualizado ate o fim da 3a temporada (agosto de 2026).
 
+As fotos dos personagens sao retratos dos atores com licenca livre, baixados do Wikimedia Commons por
+`scripts/fotos.py` (lead image do artigo na Wikipedia) e `scripts/fotos_commons.py` (busca direta); os creditos
+exigidos pelas licencas ficam no fim da pagina. Nenhuma imagem de cena da HBO e usada.
+
 Fontes: as duas series da HBO e *Fogo & Sangue*, de George R. R. Martin.

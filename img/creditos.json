@@ -1,0 +1,218 @@
+{
+ "rhaenyra-targaryen": {
+  "personagem": "Rhaenyra Targaryen",
+  "ator": "Emma D'Arcy",
+  "arquivo": "img/rhaenyra-targaryen.jpg",
+  "autor": "Gwydion M. Williams",
+  "licenca": "CC BY 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Emma_D%27Arcy.jpg"
+ },
+ "daemon-targaryen": {
+  "personagem": "Daemon Targaryen",
+  "ator": "Matt Smith",
+  "arquivo": "img/daemon-targaryen.jpg",
+  "autor": "JaceMerlyn",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Matt_Smith_at_BAFTAs_2026_04.jpg"
+ },
+ "viserys-i-targaryen": {
+  "personagem": "Viserys I Targaryen",
+  "ator": "Paddy Considine",
+  "arquivo": "img/viserys-i-targaryen.jpg",
+  "autor": "Miguel Discart",
+  "licenca": "CC BY-SA 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Paddy_Considine_(52921672397).jpg"
+ },
+ "rhaenys-targaryen": {
+  "personagem": "Rhaenys Targaryen",
+  "ator": "Eve Best",
+  "arquivo": "img/rhaenys-targaryen.jpg",
+  "autor": "Jason DeVinney from Laurel, Md, USA",
+  "licenca": "CC BY-SA 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Eve_Best_Laughing.jpg"
+ },
+ "corlys-velaryon": {
+  "personagem": "Corlys Velaryon",
+  "ator": "Steve Toussaint",
+  "arquivo": "img/corlys-velaryon.jpg",
+  "autor": "German Comic Con",
+  "licenca": "CC BY 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Steve_toussaint_2022_3.jpg"
+ },
+ "alyn-de-hull": {
+  "personagem": "Alyn de Hull",
+  "ator": "Abubakar Salim",
+  "arquivo": "img/alyn-de-hull.jpg",
+  "autor": "Jon Holloway",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:AbubakarSalim.jpg"
+ },
+ "addam-de-hull": {
+  "personagem": "Addam de Hull",
+  "ator": "Clinton Liberty",
+  "arquivo": "img/addam-de-hull.jpg",
+  "autor": "German Film and Comic Con",
+  "licenca": "CC BY 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Clinton_Liberty_@_German_Throne_%26_Dragon_Con_2025.jpg"
+ },
+ "mysaria": {
+  "personagem": "Mysaria",
+  "ator": "Sonoya Mizuno",
+  "arquivo": "img/mysaria.jpg",
+  "autor": "Sonoya Mizuno",
+  "licenca": "Public domain",
+  "licenca_url": "",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Sonoya_Mizuno_autograph.svg"
+ },
+ "torrhen-manderly": {
+  "personagem": "Torrhen Manderly",
+  "ator": "Dan Fogler",
+  "arquivo": "img/torrhen-manderly.jpg",
+  "autor": "DavidPMaynard",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Dan_Fogler_at_MCM_Comic_Con_London,_May_2025_01.jpg"
+ },
+ "jeyne-arryn": {
+  "personagem": "Jeyne Arryn",
+  "ator": "Amanda Collin",
+  "arquivo": "img/jeyne-arryn.jpg",
+  "autor": "HEARTBEATS DK",
+  "licenca": "CC BY 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Amanda_Collin_2020.png"
+ },
+ "luthor-largent": {
+  "personagem": "Luthor Largent",
+  "ator": "Tom Cullen",
+  "arquivo": "img/luthor-largent.jpg",
+  "autor": "Drexl cullen",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:TomCullen.jpg"
+ },
+ "alicent-hightower": {
+  "personagem": "Alicent Hightower",
+  "ator": "Olivia Cooke",
+  "arquivo": "img/alicent-hightower.jpg",
+  "autor": "Patrick.suechan",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Olivia_Cooke_at_the_2026_Toronto_International_Film_Festival_(cropped).jpg"
+ },
+ "otto-hightower": {
+  "personagem": "Otto Hightower",
+  "ator": "Rhys Ifans",
+  "arquivo": "img/otto-hightower.jpg",
+  "autor": "Senedd Cymru / Welsh Parliament from Wales",
+  "licenca": "CC BY 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Rhys_Ifans_(53290048890)_(cropped).jpg"
+ },
+ "aegon-ii-targaryen": {
+  "personagem": "Aegon II Targaryen",
+  "ator": "Tom Glynn-Carney",
+  "arquivo": "img/aegon-ii-targaryen.jpg",
+  "autor": "Gage Skidmore",
+  "licenca": "CC BY-SA 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Tom_Glynn-Carney_by_Gage_Skidmore.jpg"
+ },
+ "ormund-hightower": {
+  "personagem": "Ormund Hightower",
+  "ator": "James Norton",
+  "arquivo": "img/ormund-hightower.jpg",
+  "autor": "Punting Cambridge: Website - Scudamore’s Punting Cambridge",
+  "licenca": "CC BY-SA 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:James_Norton_at_Cambridge_(cropped).jpg"
+ },
+ "gwayne-hightower": {
+  "personagem": "Gwayne Hightower",
+  "ator": "Freddie Fox",
+  "arquivo": "img/gwayne-hightower.jpg",
+  "autor": "Ibsan73",
+  "licenca": "CC BY 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Freddie_Fox_2015.jpg"
+ },
+ "criston-cole": {
+  "personagem": "Criston Cole",
+  "ator": "Fabien Frankel",
+  "arquivo": "img/criston-cole.jpg",
+  "autor": "Dave Benett",
+  "licenca": "CC BY 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Fabien_Frankel_HOTD_Premiere_Series_3.jpg"
+ },
+ "alys-rivers": {
+  "personagem": "Alys Rivers",
+  "ator": "Gayle Rankin",
+  "arquivo": "img/alys-rivers.jpg",
+  "autor": "TheGhostOfKyoto",
+  "licenca": "CC BY 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Gayle_Rankin_at_The_Incomer_Premier_at_Sundance_Film_Festival_(cropped).jpg"
+ },
+ "sharako-lohar": {
+  "personagem": "Sharako Lohar",
+  "ator": "Abigail Thorn",
+  "arquivo": "img/sharako-lohar.jpg",
+  "autor": "Ira Giorgetti",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Portrait_of_Abigail_Thorn.jpg"
+ },
+ "simon-strong": {
+  "personagem": "Simon Strong",
+  "ator": "Simon Russell Beale",
+  "arquivo": "img/simon-strong.jpg",
+  "autor": "Steve  Bowbrick from Radlett, United Kingdom",
+  "licenca": "CC BY 2.0",
+  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Simon_Russell_Beale.jpg"
+ },
+ "roderick-dustin": {
+  "personagem": "Roderick Dustin",
+  "ator": "Tommy Flanagan",
+  "arquivo": "img/roderick-dustin.jpg",
+  "autor": "Gage Skidmore",
+  "licenca": "CC BY-SA 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Tommy_Flanagan_by_Gage_Skidmore.jpg"
+ },
+ "aemond-targaryen": {
+  "personagem": "Aemond Targaryen",
+  "ator": "Ewan Mitchell",
+  "arquivo": "img/aemond-targaryen.jpg",
+  "autor": "Gwhitlocksboy",
+  "licenca": "CC BY-SA 4.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Ewan_Mitchell.jpg"
+ },
+ "jason-lannister": {
+  "personagem": "Jason Lannister",
+  "ator": "Jefferson Hall",
+  "arquivo": "img/jason-lannister.jpg",
+  "autor": "Raboe001",
+  "licenca": "CC BY-SA 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Stuttgart_2022_-Comic_Con_Germany-_Jefferson_Hall-_by-RaBoe_002_(cropped).jpg"
+ },
+ "tyland-lannister": {
+  "personagem": "Tyland Lannister",
+  "ator": "Jefferson Hall",
+  "arquivo": "img/tyland-lannister.jpg",
+  "autor": "Raboe001",
+  "licenca": "CC BY-SA 3.0",
+  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
+  "fonte": "https://commons.wikimedia.org/wiki/File:Stuttgart_2022_-Comic_Con_Germany-_Jefferson_Hall-_by-RaBoe_002_(cropped).jpg"
+ }
+}
