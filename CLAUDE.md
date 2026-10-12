@@ -9,4 +9,5 @@ Pagina estatica unica (`index.html`) publicada no GitHub Pages em https://digoun
 - Busca ignora acentos; sugestoes ficam no array `sugestoes`.
 - Texto da pagina em portugues com acento; codigo e comentarios sem acento.
 - Nomes de lugares seguem a traducao brasileira quando ela e conhecida (Porto Real, Correrrio, Ninho da Aguia); senao, o nome em ingles.
-- Fotos: `img/` tem retratos dos atores (Commons, licenca livre) e `img/creditos.json`. Fluxo: `python3 scripts/fotos.py` (Wikipedia), `python3 scripts/fotos_commons.py` (segunda passada, com lista de homonimos falsos), `python3 scripts/injetar_fotos.py` (regrava o mapa `fotos` e a secao de creditos no `index.html`). Nunca usar imagem de cena da HBO.
+- Fotos: `img/` tem a imagem principal de cada personagem na Game of Thrones Wiki (Fandom), em WebP 640 px, e `img/creditos.json`. Fluxo: `python3 scripts/fotos.py` (API da wiki; pausa entre pedidos e Referer da wiki, senao o Cloudflare e a CDN devolvem 403) e `python3 scripts/injetar_fotos.py` (regrava o mapa `fotos` e a secao de creditos no `index.html`). Decisao do Pablo em 2026-10-12: usar imagens de cena da HBO, assumindo o risco; antes eram retratos dos atores do Commons.
+- A miniatura abre previa no hover e lupa em tela cheia no clique (`ampliacao()` no script).

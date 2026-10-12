@@ -1,218 +1,268 @@
 {
  "rhaenyra-targaryen": {
   "personagem": "Rhaenyra Targaryen",
-  "ator": "Emma D'Arcy",
-  "arquivo": "img/rhaenyra-targaryen.jpg",
-  "autor": "Gwydion M. Williams",
-  "licenca": "CC BY 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Emma_D%27Arcy.jpg"
+  "arquivo": "img/rhaenyra-targaryen.webp",
+  "pagina": "Rhaenyra Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Rhaenyra_Targaryen",
+  "imagem": "Rhaenyra_308.png"
  },
  "daemon-targaryen": {
   "personagem": "Daemon Targaryen",
-  "ator": "Matt Smith",
-  "arquivo": "img/daemon-targaryen.jpg",
-  "autor": "JaceMerlyn",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Matt_Smith_at_BAFTAs_2026_04.jpg"
+  "arquivo": "img/daemon-targaryen.webp",
+  "pagina": "Daemon Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Daemon_Targaryen",
+  "imagem": "Daemon_S3_Profile.png"
  },
  "viserys-i-targaryen": {
   "personagem": "Viserys I Targaryen",
-  "ator": "Paddy Considine",
-  "arquivo": "img/viserys-i-targaryen.jpg",
-  "autor": "Miguel Discart",
-  "licenca": "CC BY-SA 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Paddy_Considine_(52921672397).jpg"
+  "arquivo": "img/viserys-i-targaryen.webp",
+  "pagina": "Viserys I Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Viserys_I_Targaryen",
+  "imagem": "Viserys_I_Targaryen_Official_Guide.jpg"
+ },
+ "jacaerys-velaryon": {
+  "personagem": "Jacaerys Velaryon",
+  "arquivo": "img/jacaerys-velaryon.webp",
+  "pagina": "Jacaerys Velaryon",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Jacaerys_Velaryon",
+  "imagem": "Jacaerys-206.jpeg"
+ },
+ "lucerys-velaryon": {
+  "personagem": "Lucerys Velaryon",
+  "arquivo": "img/lucerys-velaryon.webp",
+  "pagina": "Lucerys Velaryon",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Lucerys_Velaryon",
+  "imagem": "Lucerys_Velaryon_Official_Guide_2.jpg"
+ },
+ "baela-targaryen": {
+  "personagem": "Baela Targaryen",
+  "arquivo": "img/baela-targaryen.webp",
+  "pagina": "Baela Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Baela_Targaryen",
+  "imagem": "BaelaTargaryen2x03.PNG"
+ },
+ "rhaena-targaryen": {
+  "personagem": "Rhaena Targaryen",
+  "arquivo": "img/rhaena-targaryen.webp",
+  "pagina": "Rhaena Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Rhaena_Targaryen",
+  "imagem": "Rhaena_Targaryen-304.jpg"
  },
  "rhaenys-targaryen": {
   "personagem": "Rhaenys Targaryen",
-  "ator": "Eve Best",
-  "arquivo": "img/rhaenys-targaryen.jpg",
-  "autor": "Jason DeVinney from Laurel, Md, USA",
-  "licenca": "CC BY-SA 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Eve_Best_Laughing.jpg"
+  "arquivo": "img/rhaenys-targaryen.webp",
+  "pagina": "Rhaenys Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Rhaenys_Targaryen",
+  "imagem": "Rhaenys_Targaryen1.png"
  },
  "corlys-velaryon": {
   "personagem": "Corlys Velaryon",
-  "ator": "Steve Toussaint",
-  "arquivo": "img/corlys-velaryon.jpg",
-  "autor": "German Comic Con",
-  "licenca": "CC BY 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Steve_toussaint_2022_3.jpg"
+  "arquivo": "img/corlys-velaryon.webp",
+  "pagina": "Corlys Velaryon",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Corlys_Velaryon",
+  "imagem": "Corlys_Velaryon_S2.jpg"
  },
  "alyn-de-hull": {
   "personagem": "Alyn de Hull",
-  "ator": "Abubakar Salim",
-  "arquivo": "img/alyn-de-hull.jpg",
-  "autor": "Jon Holloway",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:AbubakarSalim.jpg"
+  "arquivo": "img/alyn-de-hull.webp",
+  "pagina": "Alyn of Hull",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Alyn_of_Hull",
+  "imagem": "Alyn_of_Hull-305.jpg"
  },
  "addam-de-hull": {
   "personagem": "Addam de Hull",
-  "ator": "Clinton Liberty",
-  "arquivo": "img/addam-de-hull.jpg",
-  "autor": "German Film and Comic Con",
-  "licenca": "CC BY 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Clinton_Liberty_@_German_Throne_%26_Dragon_Con_2025.jpg"
+  "arquivo": "img/addam-de-hull.webp",
+  "pagina": "Addam of Hull",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Addam_of_Hull",
+  "imagem": "Addam_of_Hull-303.jpg"
  },
  "mysaria": {
   "personagem": "Mysaria",
-  "ator": "Sonoya Mizuno",
-  "arquivo": "img/mysaria.jpg",
-  "autor": "Sonoya Mizuno",
-  "licenca": "Public domain",
-  "licenca_url": "",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Sonoya_Mizuno_autograph.svg"
+  "arquivo": "img/mysaria.webp",
+  "pagina": "Mysaria",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Mysaria",
+  "imagem": "305_Mysaria_Still.jpg"
  },
- "torrhen-manderly": {
-  "personagem": "Torrhen Manderly",
-  "ator": "Dan Fogler",
-  "arquivo": "img/torrhen-manderly.jpg",
-  "autor": "DavidPMaynard",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Dan_Fogler_at_MCM_Comic_Con_London,_May_2025_01.jpg"
+ "hugh-hammer": {
+  "personagem": "Hugh Hammer",
+  "arquivo": "img/hugh-hammer.webp",
+  "pagina": "Hugh Hammer",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Hugh_Hammer",
+  "imagem": "Hugh_Hammer-302.jpg"
  },
- "jeyne-arryn": {
-  "personagem": "Jeyne Arryn",
-  "ator": "Amanda Collin",
-  "arquivo": "img/jeyne-arryn.jpg",
-  "autor": "HEARTBEATS DK",
-  "licenca": "CC BY 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Amanda_Collin_2020.png"
+ "ulf-white": {
+  "personagem": "Ulf White",
+  "arquivo": "img/ulf-white.webp",
+  "pagina": "Ulf White",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Ulf_White",
+  "imagem": "Ulf_White-302.jpg"
  },
- "luthor-largent": {
-  "personagem": "Luthor Largent",
-  "ator": "Tom Cullen",
-  "arquivo": "img/luthor-largent.jpg",
-  "autor": "Drexl cullen",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:TomCullen.jpg"
- },
- "alicent-hightower": {
-  "personagem": "Alicent Hightower",
-  "ator": "Olivia Cooke",
-  "arquivo": "img/alicent-hightower.jpg",
-  "autor": "Patrick.suechan",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Olivia_Cooke_at_the_2026_Toronto_International_Film_Festival_(cropped).jpg"
- },
- "otto-hightower": {
-  "personagem": "Otto Hightower",
-  "ator": "Rhys Ifans",
-  "arquivo": "img/otto-hightower.jpg",
-  "autor": "Senedd Cymru / Welsh Parliament from Wales",
-  "licenca": "CC BY 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Rhys_Ifans_(53290048890)_(cropped).jpg"
- },
- "aegon-ii-targaryen": {
-  "personagem": "Aegon II Targaryen",
-  "ator": "Tom Glynn-Carney",
-  "arquivo": "img/aegon-ii-targaryen.jpg",
-  "autor": "Gage Skidmore",
-  "licenca": "CC BY-SA 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Tom_Glynn-Carney_by_Gage_Skidmore.jpg"
- },
- "ormund-hightower": {
-  "personagem": "Ormund Hightower",
-  "ator": "James Norton",
-  "arquivo": "img/ormund-hightower.jpg",
-  "autor": "Punting Cambridge: Website - Scudamore’s Punting Cambridge",
-  "licenca": "CC BY-SA 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:James_Norton_at_Cambridge_(cropped).jpg"
- },
- "gwayne-hightower": {
-  "personagem": "Gwayne Hightower",
-  "ator": "Freddie Fox",
-  "arquivo": "img/gwayne-hightower.jpg",
-  "autor": "Ibsan73",
-  "licenca": "CC BY 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Freddie_Fox_2015.jpg"
- },
- "criston-cole": {
-  "personagem": "Criston Cole",
-  "ator": "Fabien Frankel",
-  "arquivo": "img/criston-cole.jpg",
-  "autor": "Dave Benett",
-  "licenca": "CC BY 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Fabien_Frankel_HOTD_Premiere_Series_3.jpg"
- },
- "alys-rivers": {
-  "personagem": "Alys Rivers",
-  "ator": "Gayle Rankin",
-  "arquivo": "img/alys-rivers.jpg",
-  "autor": "TheGhostOfKyoto",
-  "licenca": "CC BY 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Gayle_Rankin_at_The_Incomer_Premier_at_Sundance_Film_Festival_(cropped).jpg"
- },
- "sharako-lohar": {
-  "personagem": "Sharako Lohar",
-  "ator": "Abigail Thorn",
-  "arquivo": "img/sharako-lohar.jpg",
-  "autor": "Ira Giorgetti",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Portrait_of_Abigail_Thorn.jpg"
- },
- "simon-strong": {
-  "personagem": "Simon Strong",
-  "ator": "Simon Russell Beale",
-  "arquivo": "img/simon-strong.jpg",
-  "autor": "Steve  Bowbrick from Radlett, United Kingdom",
-  "licenca": "CC BY 2.0",
-  "licenca_url": "https://creativecommons.org/licenses/by/2.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Simon_Russell_Beale.jpg"
+ "oscar-tully": {
+  "personagem": "Oscar Tully",
+  "arquivo": "img/oscar-tully.webp",
+  "pagina": "Oscar Tully",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Oscar_Tully",
+  "imagem": "Oscar_Tully_infobox.jpg"
  },
  "roderick-dustin": {
   "personagem": "Roderick Dustin",
-  "ator": "Tommy Flanagan",
-  "arquivo": "img/roderick-dustin.jpg",
-  "autor": "Gage Skidmore",
-  "licenca": "CC BY-SA 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Tommy_Flanagan_by_Gage_Skidmore.jpg"
+  "arquivo": "img/roderick-dustin.webp",
+  "pagina": "Roderick Dustin",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Roderick_Dustin",
+  "imagem": "Roderick_Dustin-305.jpg"
+ },
+ "torrhen-manderly": {
+  "personagem": "Torrhen Manderly",
+  "arquivo": "img/torrhen-manderly.webp",
+  "pagina": "Torrhen Manderly",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Torrhen_Manderly",
+  "imagem": "Torrhen_Manderly_profile.png"
+ },
+ "alysanne-blackwood": {
+  "personagem": "Alysanne Blackwood",
+  "arquivo": "img/alysanne-blackwood.webp",
+  "pagina": "Alysanne Blackwood",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Alysanne_Blackwood",
+  "imagem": "Black_Aly_Blackwood.jpg"
+ },
+ "jeyne-arryn": {
+  "personagem": "Jeyne Arryn",
+  "arquivo": "img/jeyne-arryn.webp",
+  "pagina": "Jeyne Arryn",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Jeyne_Arryn",
+  "imagem": "Lady_Jeyne_Arryn.jpg"
+ },
+ "cregan-stark": {
+  "personagem": "Cregan Stark",
+  "arquivo": "img/cregan-stark.webp",
+  "pagina": "Cregan Stark",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Cregan_Stark",
+  "imagem": "Cregan-portrait.png"
+ },
+ "luthor-largent": {
+  "personagem": "Luthor Largent",
+  "arquivo": "img/luthor-largent.webp",
+  "pagina": "Luthor Largent",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Luthor_Largent",
+  "imagem": "Luthor_Largent.png"
+ },
+ "alicent-hightower": {
+  "personagem": "Alicent Hightower",
+  "arquivo": "img/alicent-hightower.webp",
+  "pagina": "Alicent Hightower",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Alicent_Hightower",
+  "imagem": "AlicentASfASInfobox.PNG"
+ },
+ "otto-hightower": {
+  "personagem": "Otto Hightower",
+  "arquivo": "img/otto-hightower.webp",
+  "pagina": "Otto Hightower",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Otto_Hightower",
+  "imagem": "Otto_Hightower-302.jpg"
+ },
+ "aegon-ii-targaryen": {
+  "personagem": "Aegon II Targaryen",
+  "arquivo": "img/aegon-ii-targaryen.webp",
+  "pagina": "Aegon II Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Aegon_II_Targaryen",
+  "imagem": "Aegon_302_Profile.jpg"
  },
  "aemond-targaryen": {
   "personagem": "Aemond Targaryen",
-  "ator": "Ewan Mitchell",
-  "arquivo": "img/aemond-targaryen.jpg",
-  "autor": "Gwhitlocksboy",
-  "licenca": "CC BY-SA 4.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/4.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Ewan_Mitchell.jpg"
+  "arquivo": "img/aemond-targaryen.webp",
+  "pagina": "Aemond Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Aemond_Targaryen",
+  "imagem": "Aemond_Targaryen-301.jpg"
+ },
+ "helaena-targaryen": {
+  "personagem": "Helaena Targaryen",
+  "arquivo": "img/helaena-targaryen.webp",
+  "pagina": "Helaena Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Helaena_Targaryen",
+  "imagem": "Helaena_Targaryen-301.jpg"
+ },
+ "daeron-targaryen": {
+  "personagem": "Daeron Targaryen",
+  "arquivo": "img/daeron-targaryen.webp",
+  "pagina": "Daeron Targaryen",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Daeron_Targaryen",
+  "imagem": "Daeron_Targaryen-306.jpg"
+ },
+ "ormund-hightower": {
+  "personagem": "Ormund Hightower",
+  "arquivo": "img/ormund-hightower.webp",
+  "pagina": "Ormund Hightower",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Ormund_Hightower",
+  "imagem": "Ormund_Hightower-306.jpg"
+ },
+ "gwayne-hightower": {
+  "personagem": "Gwayne Hightower",
+  "arquivo": "img/gwayne-hightower.webp",
+  "pagina": "Gwayne Hightower",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Gwayne_Hightower",
+  "imagem": "GwayneHightowerADoD.PNG"
+ },
+ "criston-cole": {
+  "personagem": "Criston Cole",
+  "arquivo": "img/criston-cole.webp",
+  "pagina": "Criston Cole",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Criston_Cole",
+  "imagem": "Criston_Cole-306.jpg"
+ },
+ "larys-strong": {
+  "personagem": "Larys Strong",
+  "arquivo": "img/larys-strong.webp",
+  "pagina": "Larys Strong",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Larys_Strong",
+  "imagem": "Larys_Strong_S2.jpg"
+ },
+ "alys-rivers": {
+  "personagem": "Alys Rivers",
+  "arquivo": "img/alys-rivers.webp",
+  "pagina": "Alys Rivers",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Alys_Rivers",
+  "imagem": "Alys_Rivers-304.jpg"
  },
  "jason-lannister": {
   "personagem": "Jason Lannister",
-  "ator": "Jefferson Hall",
-  "arquivo": "img/jason-lannister.jpg",
-  "autor": "Raboe001",
-  "licenca": "CC BY-SA 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Stuttgart_2022_-Comic_Con_Germany-_Jefferson_Hall-_by-RaBoe_002_(cropped).jpg"
+  "arquivo": "img/jason-lannister.webp",
+  "pagina": "Jason Lannister",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Jason_Lannister",
+  "imagem": "Jason_Lannister_Official_Guide.jpg"
  },
  "tyland-lannister": {
   "personagem": "Tyland Lannister",
-  "ator": "Jefferson Hall",
-  "arquivo": "img/tyland-lannister.jpg",
-  "autor": "Raboe001",
-  "licenca": "CC BY-SA 3.0",
-  "licenca_url": "https://creativecommons.org/licenses/by-sa/3.0",
-  "fonte": "https://commons.wikimedia.org/wiki/File:Stuttgart_2022_-Comic_Con_Germany-_Jefferson_Hall-_by-RaBoe_002_(cropped).jpg"
+  "arquivo": "img/tyland-lannister.webp",
+  "pagina": "Tyland Lannister",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Tyland_Lannister",
+  "imagem": "Tyland_Lannister-301.jpg"
+ },
+ "jon-roxton": {
+  "personagem": "Jon Roxton",
+  "arquivo": "img/jon-roxton.webp",
+  "pagina": "Jon Roxton",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Jon_Roxton",
+  "imagem": "Bold_Jon_301.png"
+ },
+ "sharako-lohar": {
+  "personagem": "Sharako Lohar",
+  "arquivo": "img/sharako-lohar.webp",
+  "pagina": "Sharako Lohar",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Sharako_Lohar",
+  "imagem": "Sharako_Lohar-301.jpg"
+ },
+ "simon-strong": {
+  "personagem": "Simon Strong",
+  "arquivo": "img/simon-strong.webp",
+  "pagina": "Simon Strong",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Simon_Strong",
+  "imagem": "Simon_Strong-302.jpg"
+ },
+ "jasper-wylde": {
+  "personagem": "Jasper Wylde",
+  "arquivo": "img/jasper-wylde.webp",
+  "pagina": "Jasper Wylde",
+  "fonte": "https://gameofthrones.fandom.com/wiki/Jasper_Wylde",
+  "imagem": "Jasper_Wylde_201.png"
  }
 }

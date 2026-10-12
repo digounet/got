@@ -171,7 +171,22 @@ a{color:var(--gold)}
 .foto-vazia{display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:.95rem;color:var(--muted);border-color:var(--line);letter-spacing:.04em}
 .personagem[data-lado="verdes"] .foto{border-color:var(--green)}
 .personagem[data-lado="negros"] .foto{border-color:var(--ember)}
-.creditos{list-style:none;margin:0;padding:0;display:grid;gap:4px;font-size:.8rem;color:var(--muted);columns:1}
+.foto-botao{all:unset;cursor:zoom-in;border-radius:50%;flex:none;display:block;line-height:0}
+.foto-botao:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.foto-botao .foto{transition:transform .15s ease}
+.foto-botao:hover .foto{transform:scale(1.08)}
+.previa{position:fixed;z-index:50;pointer-events:none;margin:0;width:240px;max-width:calc(100vw - 32px);background:var(--surface);border:1px solid var(--gold);border-radius:8px;padding:6px;box-shadow:0 12px 40px rgba(0,0,0,.6);display:grid;gap:6px}
+.previa img{width:100%;height:auto;aspect-ratio:3 / 4;object-fit:cover;object-position:top;border-radius:4px;display:block;background:var(--surface-2)}
+.previa figcaption{font-family:var(--display);font-size:.8rem;color:var(--gold);text-align:center}
+.lupa{position:fixed;inset:0;z-index:60;background:rgba(5,4,5,.9);display:grid;place-items:center;padding:24px;cursor:zoom-out}
+.lupa figure{margin:0;display:grid;gap:10px;justify-items:center;max-width:min(92vw,720px)}
+.lupa img{max-width:100%;max-height:78vh;border:2px solid var(--gold);border-radius:6px;box-shadow:0 20px 60px rgba(0,0,0,.7);background:var(--surface-2)}
+.lupa figcaption{font-family:var(--display);color:var(--fg);text-align:center;font-size:1.05rem}
+.lupa figcaption small{display:block;font-family:var(--body);color:var(--muted);font-size:.9rem;margin-top:4px}
+.lupa .fechar{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);right:16px;font:inherit;font-size:1.4rem;line-height:1;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:50%;width:40px;height:40px;cursor:pointer}
+.lupa .fechar:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){.foto-botao .foto{transition:none}}
+.creditos{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:4px 24px;font-size:.8rem;color:var(--muted)}
 .creditos b{color:var(--fg);font-weight:600}
 .personagem .ep{font-size:.88rem;color:var(--muted)}
 .personagem .marcas{display:flex;flex-wrap:wrap;gap:6px}
@@ -424,7 +439,7 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
 <section class="secao" id="personagens">
   <div class="secao-cabecalho">
     <h2>Os personagens, um a um</h2>
-    <p class="secao-intro">Onde cada um está ao fim da 3ª temporada e o que deixa em <em>Game of Thrones</em>. Os mortos levam a cruz; os desaparecidos, a interrogação. As fotos são dos atores, com licença livre (créditos no fim da página); quem não tem foto livre fica com as iniciais.</p>
+    <p class="secao-intro">Onde cada um está ao fim da 3ª temporada e o que deixa em <em>Game of Thrones</em>. Os mortos levam a cruz; os desaparecidos, a interrogação. Passe o mouse na foto para ver maior, ou clique para abrir em tela cheia.</p>
   </div>
   <div class="filtros" role="group" aria-label="Filtros de personagens">
     <div class="grupo-filtro" id="filtro-lado-p">
@@ -555,37 +570,57 @@ mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius
 <section class="secao" id="creditos">
   <div class="secao-cabecalho">
     <h2>Créditos das fotos</h2>
-    <p class="secao-intro">Retratos dos atores publicados no Wikimedia Commons com licença livre. Nenhuma imagem de cena da HBO é usada.</p>
+    <p class="secao-intro">Imagens de divulgação de <em>A Casa do Dragão</em>, propriedade da HBO e da Warner Bros. Discovery, obtidas nas páginas dos personagens na <a href="https://gameofthrones.fandom.com/">Game of Thrones Wiki</a>. Uso sem fins comerciais, num projeto de fã. A lista diz de onde veio cada uma.</p>
   </div>
   <!-- creditos:inicio -->
   <ul class="creditos">
-    <li><b>Abigail Thorn</b> (Sharako Lohar): foto de Ira Giorgetti, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Portrait_of_Abigail_Thorn.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Abubakar Salim</b> (Alyn de Hull): foto de Jon Holloway, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:AbubakarSalim.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Amanda Collin</b> (Jeyne Arryn): foto de HEARTBEATS DK, <a href="https://creativecommons.org/licenses/by/3.0" rel="license">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Amanda_Collin_2020.png">Wikimedia Commons</a>.</li>
-    <li><b>Clinton Liberty</b> (Addam de Hull): foto de German Film and Comic Con, <a href="https://creativecommons.org/licenses/by/3.0" rel="license">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Clinton_Liberty_@_German_Throne_%26_Dragon_Con_2025.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Dan Fogler</b> (Torrhen Manderly): foto de DavidPMaynard, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Dan_Fogler_at_MCM_Comic_Con_London,_May_2025_01.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Emma D&#x27;Arcy</b> (Rhaenyra Targaryen): foto de Gwydion M. Williams, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Emma_D%27Arcy.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Eve Best</b> (Rhaenys Targaryen): foto de Jason DeVinney from Laurel, Md, USA, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Eve_Best_Laughing.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Ewan Mitchell</b> (Aemond Targaryen): foto de Gwhitlocksboy, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Ewan_Mitchell.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Fabien Frankel</b> (Criston Cole): foto de Dave Benett, <a href="https://creativecommons.org/licenses/by/4.0" rel="license">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Fabien_Frankel_HOTD_Premiere_Series_3.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Freddie Fox</b> (Gwayne Hightower): foto de Ibsan73, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Freddie_Fox_2015.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Gayle Rankin</b> (Alys Rivers): foto de TheGhostOfKyoto, <a href="https://creativecommons.org/licenses/by/4.0" rel="license">CC BY 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Gayle_Rankin_at_The_Incomer_Premier_at_Sundance_Film_Festival_(cropped).jpg">Wikimedia Commons</a>.</li>
-    <li><b>James Norton</b> (Ormund Hightower): foto de Punting Cambridge: Website - Scudamore’s Punting Cambridge, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:James_Norton_at_Cambridge_(cropped).jpg">Wikimedia Commons</a>.</li>
-    <li><b>Jefferson Hall</b> (Jason Lannister): foto de Raboe001, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Stuttgart_2022_-Comic_Con_Germany-_Jefferson_Hall-_by-RaBoe_002_(cropped).jpg">Wikimedia Commons</a>.</li>
-    <li><b>Jefferson Hall</b> (Tyland Lannister): foto de Raboe001, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Stuttgart_2022_-Comic_Con_Germany-_Jefferson_Hall-_by-RaBoe_002_(cropped).jpg">Wikimedia Commons</a>.</li>
-    <li><b>Matt Smith</b> (Daemon Targaryen): foto de JaceMerlyn, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Matt_Smith_at_BAFTAs_2026_04.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Olivia Cooke</b> (Alicent Hightower): foto de Patrick.suechan, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Olivia_Cooke_at_the_2026_Toronto_International_Film_Festival_(cropped).jpg">Wikimedia Commons</a>.</li>
-    <li><b>Paddy Considine</b> (Viserys I Targaryen): foto de Miguel Discart, <a href="https://creativecommons.org/licenses/by-sa/2.0" rel="license">CC BY-SA 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Paddy_Considine_(52921672397).jpg">Wikimedia Commons</a>.</li>
-    <li><b>Rhys Ifans</b> (Otto Hightower): foto de Senedd Cymru / Welsh Parliament from Wales, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Rhys_Ifans_(53290048890)_(cropped).jpg">Wikimedia Commons</a>.</li>
-    <li><b>Simon Russell Beale</b> (Simon Strong): foto de Steve  Bowbrick from Radlett, United Kingdom, <a href="https://creativecommons.org/licenses/by/2.0" rel="license">CC BY 2.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Simon_Russell_Beale.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Sonoya Mizuno</b> (Mysaria): foto de Sonoya Mizuno, Public domain, via <a href="https://commons.wikimedia.org/wiki/File:Sonoya_Mizuno_autograph.svg">Wikimedia Commons</a>.</li>
-    <li><b>Steve Toussaint</b> (Corlys Velaryon): foto de German Comic Con, <a href="https://creativecommons.org/licenses/by/3.0" rel="license">CC BY 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Steve_toussaint_2022_3.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Tom Cullen</b> (Luthor Largent): foto de Drexl cullen, <a href="https://creativecommons.org/licenses/by-sa/4.0" rel="license">CC BY-SA 4.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:TomCullen.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Tom Glynn-Carney</b> (Aegon II Targaryen): foto de Gage Skidmore, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Tom_Glynn-Carney_by_Gage_Skidmore.jpg">Wikimedia Commons</a>.</li>
-    <li><b>Tommy Flanagan</b> (Roderick Dustin): foto de Gage Skidmore, <a href="https://creativecommons.org/licenses/by-sa/3.0" rel="license">CC BY-SA 3.0</a>, via <a href="https://commons.wikimedia.org/wiki/File:Tommy_Flanagan_by_Gage_Skidmore.jpg">Wikimedia Commons</a>.</li>
+    <li><b>Addam de Hull</b>: <a href="https://gameofthrones.fandom.com/wiki/Addam_of_Hull">Addam of Hull</a> (Addam_of_Hull-303.jpg)</li>
+    <li><b>Aegon II Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Aegon_II_Targaryen">Aegon II Targaryen</a> (Aegon_302_Profile.jpg)</li>
+    <li><b>Aemond Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Aemond_Targaryen">Aemond Targaryen</a> (Aemond_Targaryen-301.jpg)</li>
+    <li><b>Alicent Hightower</b>: <a href="https://gameofthrones.fandom.com/wiki/Alicent_Hightower">Alicent Hightower</a> (AlicentASfASInfobox.PNG)</li>
+    <li><b>Alyn de Hull</b>: <a href="https://gameofthrones.fandom.com/wiki/Alyn_of_Hull">Alyn of Hull</a> (Alyn_of_Hull-305.jpg)</li>
+    <li><b>Alys Rivers</b>: <a href="https://gameofthrones.fandom.com/wiki/Alys_Rivers">Alys Rivers</a> (Alys_Rivers-304.jpg)</li>
+    <li><b>Alysanne Blackwood</b>: <a href="https://gameofthrones.fandom.com/wiki/Alysanne_Blackwood">Alysanne Blackwood</a> (Black_Aly_Blackwood.jpg)</li>
+    <li><b>Baela Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Baela_Targaryen">Baela Targaryen</a> (BaelaTargaryen2x03.PNG)</li>
+    <li><b>Corlys Velaryon</b>: <a href="https://gameofthrones.fandom.com/wiki/Corlys_Velaryon">Corlys Velaryon</a> (Corlys_Velaryon_S2.jpg)</li>
+    <li><b>Cregan Stark</b>: <a href="https://gameofthrones.fandom.com/wiki/Cregan_Stark">Cregan Stark</a> (Cregan-portrait.png)</li>
+    <li><b>Criston Cole</b>: <a href="https://gameofthrones.fandom.com/wiki/Criston_Cole">Criston Cole</a> (Criston_Cole-306.jpg)</li>
+    <li><b>Daemon Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Daemon_Targaryen">Daemon Targaryen</a> (Daemon_S3_Profile.png)</li>
+    <li><b>Daeron Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Daeron_Targaryen">Daeron Targaryen</a> (Daeron_Targaryen-306.jpg)</li>
+    <li><b>Gwayne Hightower</b>: <a href="https://gameofthrones.fandom.com/wiki/Gwayne_Hightower">Gwayne Hightower</a> (GwayneHightowerADoD.PNG)</li>
+    <li><b>Helaena Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Helaena_Targaryen">Helaena Targaryen</a> (Helaena_Targaryen-301.jpg)</li>
+    <li><b>Hugh Hammer</b>: <a href="https://gameofthrones.fandom.com/wiki/Hugh_Hammer">Hugh Hammer</a> (Hugh_Hammer-302.jpg)</li>
+    <li><b>Jacaerys Velaryon</b>: <a href="https://gameofthrones.fandom.com/wiki/Jacaerys_Velaryon">Jacaerys Velaryon</a> (Jacaerys-206.jpeg)</li>
+    <li><b>Jason Lannister</b>: <a href="https://gameofthrones.fandom.com/wiki/Jason_Lannister">Jason Lannister</a> (Jason_Lannister_Official_Guide.jpg)</li>
+    <li><b>Jasper Wylde</b>: <a href="https://gameofthrones.fandom.com/wiki/Jasper_Wylde">Jasper Wylde</a> (Jasper_Wylde_201.png)</li>
+    <li><b>Jeyne Arryn</b>: <a href="https://gameofthrones.fandom.com/wiki/Jeyne_Arryn">Jeyne Arryn</a> (Lady_Jeyne_Arryn.jpg)</li>
+    <li><b>Jon Roxton</b>: <a href="https://gameofthrones.fandom.com/wiki/Jon_Roxton">Jon Roxton</a> (Bold_Jon_301.png)</li>
+    <li><b>Larys Strong</b>: <a href="https://gameofthrones.fandom.com/wiki/Larys_Strong">Larys Strong</a> (Larys_Strong_S2.jpg)</li>
+    <li><b>Lucerys Velaryon</b>: <a href="https://gameofthrones.fandom.com/wiki/Lucerys_Velaryon">Lucerys Velaryon</a> (Lucerys_Velaryon_Official_Guide_2.jpg)</li>
+    <li><b>Luthor Largent</b>: <a href="https://gameofthrones.fandom.com/wiki/Luthor_Largent">Luthor Largent</a> (Luthor_Largent.png)</li>
+    <li><b>Mysaria</b>: <a href="https://gameofthrones.fandom.com/wiki/Mysaria">Mysaria</a> (305_Mysaria_Still.jpg)</li>
+    <li><b>Ormund Hightower</b>: <a href="https://gameofthrones.fandom.com/wiki/Ormund_Hightower">Ormund Hightower</a> (Ormund_Hightower-306.jpg)</li>
+    <li><b>Oscar Tully</b>: <a href="https://gameofthrones.fandom.com/wiki/Oscar_Tully">Oscar Tully</a> (Oscar_Tully_infobox.jpg)</li>
+    <li><b>Otto Hightower</b>: <a href="https://gameofthrones.fandom.com/wiki/Otto_Hightower">Otto Hightower</a> (Otto_Hightower-302.jpg)</li>
+    <li><b>Rhaena Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Rhaena_Targaryen">Rhaena Targaryen</a> (Rhaena_Targaryen-304.jpg)</li>
+    <li><b>Rhaenyra Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Rhaenyra_Targaryen">Rhaenyra Targaryen</a> (Rhaenyra_308.png)</li>
+    <li><b>Rhaenys Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Rhaenys_Targaryen">Rhaenys Targaryen</a> (Rhaenys_Targaryen1.png)</li>
+    <li><b>Roderick Dustin</b>: <a href="https://gameofthrones.fandom.com/wiki/Roderick_Dustin">Roderick Dustin</a> (Roderick_Dustin-305.jpg)</li>
+    <li><b>Sharako Lohar</b>: <a href="https://gameofthrones.fandom.com/wiki/Sharako_Lohar">Sharako Lohar</a> (Sharako_Lohar-301.jpg)</li>
+    <li><b>Simon Strong</b>: <a href="https://gameofthrones.fandom.com/wiki/Simon_Strong">Simon Strong</a> (Simon_Strong-302.jpg)</li>
+    <li><b>Torrhen Manderly</b>: <a href="https://gameofthrones.fandom.com/wiki/Torrhen_Manderly">Torrhen Manderly</a> (Torrhen_Manderly_profile.png)</li>
+    <li><b>Tyland Lannister</b>: <a href="https://gameofthrones.fandom.com/wiki/Tyland_Lannister">Tyland Lannister</a> (Tyland_Lannister-301.jpg)</li>
+    <li><b>Ulf White</b>: <a href="https://gameofthrones.fandom.com/wiki/Ulf_White">Ulf White</a> (Ulf_White-302.jpg)</li>
+    <li><b>Viserys I Targaryen</b>: <a href="https://gameofthrones.fandom.com/wiki/Viserys_I_Targaryen">Viserys I Targaryen</a> (Viserys_I_Targaryen_Official_Guide.jpg)</li>
   </ul>
   <!-- creditos:fim -->
 </section>
+
+<figure class="previa" id="previa" hidden><img id="previa-img" alt=""><figcaption id="previa-legenda"></figcaption></figure>
+<div class="lupa" id="lupa" hidden role="dialog" aria-modal="true" aria-label="Foto ampliada">
+  <button class="fechar" type="button" id="lupa-fechar" aria-label="Fechar">×</button>
+  <figure><img id="lupa-img" alt=""><figcaption id="lupa-legenda"></figcaption></figure>
+</div>
 
 <footer class="rodape">
   <p class="lema">Fogo e Sangue</p>
@@ -1023,14 +1058,14 @@ const personagens = [
 ];
 
 // fotos:inicio
-const fotos = {"addam-de-hull": {"ator": "Clinton Liberty", "arquivo": "img/addam-de-hull.jpg"}, "aegon-ii-targaryen": {"ator": "Tom Glynn-Carney", "arquivo": "img/aegon-ii-targaryen.jpg"}, "aemond-targaryen": {"ator": "Ewan Mitchell", "arquivo": "img/aemond-targaryen.jpg"}, "alicent-hightower": {"ator": "Olivia Cooke", "arquivo": "img/alicent-hightower.jpg"}, "alyn-de-hull": {"ator": "Abubakar Salim", "arquivo": "img/alyn-de-hull.jpg"}, "alys-rivers": {"ator": "Gayle Rankin", "arquivo": "img/alys-rivers.jpg"}, "corlys-velaryon": {"ator": "Steve Toussaint", "arquivo": "img/corlys-velaryon.jpg"}, "criston-cole": {"ator": "Fabien Frankel", "arquivo": "img/criston-cole.jpg"}, "daemon-targaryen": {"ator": "Matt Smith", "arquivo": "img/daemon-targaryen.jpg"}, "gwayne-hightower": {"ator": "Freddie Fox", "arquivo": "img/gwayne-hightower.jpg"}, "jason-lannister": {"ator": "Jefferson Hall", "arquivo": "img/jason-lannister.jpg"}, "jeyne-arryn": {"ator": "Amanda Collin", "arquivo": "img/jeyne-arryn.jpg"}, "luthor-largent": {"ator": "Tom Cullen", "arquivo": "img/luthor-largent.jpg"}, "mysaria": {"ator": "Sonoya Mizuno", "arquivo": "img/mysaria.jpg"}, "ormund-hightower": {"ator": "James Norton", "arquivo": "img/ormund-hightower.jpg"}, "otto-hightower": {"ator": "Rhys Ifans", "arquivo": "img/otto-hightower.jpg"}, "rhaenyra-targaryen": {"ator": "Emma D'Arcy", "arquivo": "img/rhaenyra-targaryen.jpg"}, "rhaenys-targaryen": {"ator": "Eve Best", "arquivo": "img/rhaenys-targaryen.jpg"}, "roderick-dustin": {"ator": "Tommy Flanagan", "arquivo": "img/roderick-dustin.jpg"}, "sharako-lohar": {"ator": "Abigail Thorn", "arquivo": "img/sharako-lohar.jpg"}, "simon-strong": {"ator": "Simon Russell Beale", "arquivo": "img/simon-strong.jpg"}, "torrhen-manderly": {"ator": "Dan Fogler", "arquivo": "img/torrhen-manderly.jpg"}, "tyland-lannister": {"ator": "Jefferson Hall", "arquivo": "img/tyland-lannister.jpg"}, "viserys-i-targaryen": {"ator": "Paddy Considine", "arquivo": "img/viserys-i-targaryen.jpg"}};
+const fotos = {"addam-de-hull": {"arquivo": "img/addam-de-hull.webp"}, "aegon-ii-targaryen": {"arquivo": "img/aegon-ii-targaryen.webp"}, "aemond-targaryen": {"arquivo": "img/aemond-targaryen.webp"}, "alicent-hightower": {"arquivo": "img/alicent-hightower.webp"}, "alyn-de-hull": {"arquivo": "img/alyn-de-hull.webp"}, "alys-rivers": {"arquivo": "img/alys-rivers.webp"}, "alysanne-blackwood": {"arquivo": "img/alysanne-blackwood.webp"}, "baela-targaryen": {"arquivo": "img/baela-targaryen.webp"}, "corlys-velaryon": {"arquivo": "img/corlys-velaryon.webp"}, "cregan-stark": {"arquivo": "img/cregan-stark.webp"}, "criston-cole": {"arquivo": "img/criston-cole.webp"}, "daemon-targaryen": {"arquivo": "img/daemon-targaryen.webp"}, "daeron-targaryen": {"arquivo": "img/daeron-targaryen.webp"}, "gwayne-hightower": {"arquivo": "img/gwayne-hightower.webp"}, "helaena-targaryen": {"arquivo": "img/helaena-targaryen.webp"}, "hugh-hammer": {"arquivo": "img/hugh-hammer.webp"}, "jacaerys-velaryon": {"arquivo": "img/jacaerys-velaryon.webp"}, "jason-lannister": {"arquivo": "img/jason-lannister.webp"}, "jasper-wylde": {"arquivo": "img/jasper-wylde.webp"}, "jeyne-arryn": {"arquivo": "img/jeyne-arryn.webp"}, "jon-roxton": {"arquivo": "img/jon-roxton.webp"}, "larys-strong": {"arquivo": "img/larys-strong.webp"}, "lucerys-velaryon": {"arquivo": "img/lucerys-velaryon.webp"}, "luthor-largent": {"arquivo": "img/luthor-largent.webp"}, "mysaria": {"arquivo": "img/mysaria.webp"}, "ormund-hightower": {"arquivo": "img/ormund-hightower.webp"}, "oscar-tully": {"arquivo": "img/oscar-tully.webp"}, "otto-hightower": {"arquivo": "img/otto-hightower.webp"}, "rhaena-targaryen": {"arquivo": "img/rhaena-targaryen.webp"}, "rhaenyra-targaryen": {"arquivo": "img/rhaenyra-targaryen.webp"}, "rhaenys-targaryen": {"arquivo": "img/rhaenys-targaryen.webp"}, "roderick-dustin": {"arquivo": "img/roderick-dustin.webp"}, "sharako-lohar": {"arquivo": "img/sharako-lohar.webp"}, "simon-strong": {"arquivo": "img/simon-strong.webp"}, "torrhen-manderly": {"arquivo": "img/torrhen-manderly.webp"}, "tyland-lannister": {"arquivo": "img/tyland-lannister.webp"}, "ulf-white": {"arquivo": "img/ulf-white.webp"}, "viserys-i-targaryen": {"arquivo": "img/viserys-i-targaryen.webp"}};
 // fotos:fim
 function iniciais(nome){
   return nome.split(/[\s,]+/).filter(x => /^[A-ZÀ-Ú]/.test(x)).slice(0, 2).map(x => x[0]).join("");
 }
 function foto(p){
   const f = fotos[slug(p.nome)];
-  if (f) return `<img class="foto" src="${f.arquivo}" width="56" height="56" loading="lazy" alt="${esc(f.ator)}, que interpreta ${esc(p.nome)}" title="${esc(f.ator)}">`;
+  if (f) return `<button class="foto-botao" type="button" data-src="${f.arquivo}" data-nome="${esc(p.nome)}" data-ep="${esc(p.ep || "")}" aria-label="Ampliar foto de ${esc(p.nome)}"><img class="foto" src="${f.arquivo}" width="56" height="56" loading="lazy" alt=""></button>`;
   return `<div class="foto foto-vazia" aria-hidden="true">${esc(iniciais(p.nome))}</div>`;
 }
 const rotuloLadoP = {verdes:"Verdes", negros:"Negros", outros:"Outros"};
@@ -1087,6 +1122,52 @@ function aplicarFiltroPersonagens(){
 
 renderPersonagens();
 aplicarFiltroPersonagens();
+
+// Ampliacao das fotos: previa flutuante no hover (so com mouse) e lupa em tela cheia no clique.
+(function ampliacao(){
+  const lista = document.getElementById("lista-personagens");
+  const previa = document.getElementById("previa"), previaImg = document.getElementById("previa-img"), previaLeg = document.getElementById("previa-legenda");
+  const lupa = document.getElementById("lupa"), lupaImg = document.getElementById("lupa-img"), lupaLeg = document.getElementById("lupa-legenda");
+  const temHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  let ultimoFoco = null;
+  function posicionar(botao){
+    const r = botao.getBoundingClientRect();
+    const largura = previa.offsetWidth || 240, altura = previa.offsetHeight || 340;
+    let x = r.right + 12, y = r.top - 24;
+    if (x + largura > window.innerWidth - 16) x = Math.max(16, r.left - largura - 12);
+    if (y + altura > window.innerHeight - 16) y = Math.max(16, window.innerHeight - altura - 16);
+    if (y < 16) y = 16;
+    previa.style.left = x + "px"; previa.style.top = y + "px";
+  }
+  function mostrarPrevia(botao){
+    if (!lupa.hidden) return;
+    previaImg.src = botao.dataset.src; previaImg.alt = botao.dataset.nome; previaLeg.textContent = botao.dataset.nome;
+    previa.hidden = false; posicionar(botao);
+  }
+  function esconderPrevia(){ previa.hidden = true; }
+  if (temHover){
+    lista.addEventListener("mouseover", ev => { const b = ev.target.closest(".foto-botao"); if (b) mostrarPrevia(b); });
+    lista.addEventListener("mouseout", ev => { const b = ev.target.closest(".foto-botao"); if (b && !b.contains(ev.relatedTarget)) esconderPrevia(); });
+    window.addEventListener("scroll", esconderPrevia, {passive: true});
+  }
+  lista.addEventListener("focusin", ev => { const b = ev.target.closest(".foto-botao"); if (b) mostrarPrevia(b); });
+  lista.addEventListener("focusout", ev => { const b = ev.target.closest(".foto-botao"); if (b) esconderPrevia(); });
+  function abrirLupa(botao){
+    esconderPrevia();
+    lupaImg.src = botao.dataset.src; lupaImg.alt = botao.dataset.nome;
+    lupaLeg.innerHTML = esc(botao.dataset.nome) + (botao.dataset.ep ? `<small>${esc(botao.dataset.ep)}</small>` : "");
+    ultimoFoco = botao; lupa.hidden = false; document.body.style.overflow = "hidden";
+    document.getElementById("lupa-fechar").focus();
+  }
+  function fecharLupa(){
+    if (lupa.hidden) return;
+    lupa.hidden = true; document.body.style.overflow = "";
+    if (ultimoFoco) ultimoFoco.focus({preventScroll: true});
+  }
+  lista.addEventListener("click", ev => { const b = ev.target.closest(".foto-botao"); if (b){ ev.preventDefault(); abrirLupa(b); } });
+  lupa.addEventListener("click", fecharLupa);
+  document.addEventListener("keydown", ev => { if (ev.key === "Escape") fecharLupa(); });
+})();
 
 // Dragoes: cavaleiros, situacao ao fim da T3 e o rastro que deixam em GoT.
 const dragoes = [
