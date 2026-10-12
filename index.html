@@ -1,0 +1,995 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Todas as casas de A Casa do Dragão, o lado de cada uma na Dança dos Dragões e as ligações com os personagens de Game of Thrones.">
+<meta name="theme-color" content="#0d0b0c">
+<meta property="og:title" content="Da Dança ao Trono">
+<meta property="og:description" content="As casas de A Casa do Dragão e suas ligações com Game of Thrones, 170 anos depois.">
+<meta property="og:type" content="website">
+<title>Da Dança ao Trono</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap">
+<style>
+/* Layout: cronica de meistre gravada em obsidiana. Tema unico, escuro, no clima da serie:
+   vermelho = A Casa do Dragao (fogo), azul-gelo = Game of Thrones (gelo), verde so para os Verdes.
+   Coluna unica de leitura (max 1120px); linha do tempo no topo, linhagem como canal de sangue,
+   casas em grade de cartoes (2 col, 1 no celular), apendices compactos. */
+:root{
+  --bg:#0d0b0c; --surface:#171314; --surface-2:#1f1819; --fg:#e9e0d2; --muted:#a3968b; --line:#3a2d2f;
+  --gold:#caa353; --ember:#d1452f; --blood:#7a1420; --green:#4f9a63; --ice:#8fb6d8; --ink:#050405; --on-ink:#f3ebe0;
+  --violet:#b08fd0; --stone:#9aa7b8;
+  --display:"Cinzel","Trajan Pro",Georgia,serif;
+  --body:"Source Serif 4",Georgia,"Times New Roman",serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.5;padding-inline:16px;padding-block:0 48px;position:relative}
+/* textura de pedra: ruido leve sobre tudo */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.09;mix-blend-mode:screen;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 .85 0 0 0 0 .7 0 0 0 .6 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.pagina{max-width:1120px;margin:0 auto;position:relative;z-index:1}
+h1,h2,h3,h4{font-family:var(--display);font-weight:700;line-height:1.15;text-wrap:balance;margin:0}
+h1{font-size:clamp(1.8rem,4.8vw,3.2rem);letter-spacing:.02em;color:var(--fg);text-shadow:0 0 24px rgba(209,69,47,.25)}
+h2{font-size:clamp(1.25rem,2.6vw,1.7rem);margin-bottom:.35rem;color:var(--gold)}
+h2::after{content:"";display:block;width:64px;height:2px;margin-top:10px;background:linear-gradient(90deg,var(--gold),transparent)}
+h3{font-size:1.15rem}
+h4{font-size:.72rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+p{margin:0}
+ul{margin:0;padding-left:1.1rem}
+li{margin:.2rem 0}
+em{font-style:italic}
+a{color:var(--gold)}
+.olho{font-family:var(--display);font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ember);font-weight:500}
+.lide{font-size:1.1rem;max-width:62ch;color:var(--muted)}
+.secao{padding-block:40px;border-top:1px solid var(--line)}
+.secao-intro{max-width:66ch;color:var(--muted);margin-bottom:22px}
+.secao-cabecalho{display:flex;flex-direction:column;gap:.35rem;margin-bottom:18px}
+
+/* Topo: brasas e brilho de fogo */
+.topo{display:flex;flex-direction:column;gap:14px;padding-block:52px 36px;position:relative;isolation:isolate}
+.topo::before{content:"";position:absolute;inset:-16px -16px 0;z-index:-2;pointer-events:none;
+  background:radial-gradient(60% 80% at 20% 0%,rgba(209,69,47,.26),transparent 70%),radial-gradient(40% 60% at 85% 10%,rgba(202,163,83,.12),transparent 70%)}
+.brasas{position:absolute;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+.tempo{list-style:none;margin:26px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.tempo::before{content:"";position:absolute;left:0;right:0;top:7px;height:2px;background:linear-gradient(90deg,var(--ember) 0%,var(--blood) 45%,var(--ice) 100%);box-shadow:0 0 10px rgba(209,69,47,.45)}
+.tempo li{position:relative;padding:22px 14px 0 0;min-width:0}
+.tempo li::before{content:"";position:absolute;left:0;top:1px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:2px solid var(--bg);box-shadow:0 0 0 2px var(--gold)}
+.tempo li.marco-fogo::before{background:var(--ember);box-shadow:0 0 0 2px var(--ember),0 0 12px rgba(209,69,47,.7)}
+.tempo li.marco-gelo::before{background:var(--ice);box-shadow:0 0 0 2px var(--ice),0 0 12px rgba(143,182,216,.6)}
+.tempo .ano{font-family:var(--display);font-size:1.05rem;font-weight:700;font-variant-numeric:tabular-nums;color:var(--fg)}
+.tempo .fato{font-size:.9rem;color:var(--muted)}
+.tempo .serie{display:inline-block;margin-top:4px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-family:var(--display);color:var(--gold)}
+.tempo li.marco-fogo .serie{color:var(--ember)}
+.tempo li.marco-gelo .serie{color:var(--ice)}
+@media (max-width:640px){
+  .tempo{grid-template-columns:1fr;gap:12px;padding-left:22px}
+  .tempo::before{left:7px;right:auto;top:0;bottom:0;width:2px;height:auto;background:linear-gradient(180deg,var(--ember) 0%,var(--blood) 45%,var(--ice) 100%)}
+  .tempo li{padding:0 0 0 10px}
+  .tempo li::before{left:-22px;top:5px}
+}
+
+/* Legenda */
+.legenda{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 32px}
+.legenda dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:8px 12px;align-items:center}
+.legenda dt{justify-self:start}
+.legenda dd{margin:0;font-size:.93rem;color:var(--muted)}
+
+/* Marcas: lado e tipo */
+.lado{display:inline-flex;align-items:center;gap:6px;font-family:var(--display);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+.lado::before{content:"";width:8px;height:8px;border-radius:50%;background:currentColor}
+.lado-verdes{color:var(--green);border-color:var(--green);background:rgba(79,154,99,.14)}
+.lado-negros{color:var(--on-ink);background:var(--ink);border-color:var(--ember);box-shadow:0 0 8px rgba(209,69,47,.35)}
+.lado-negros::before{background:var(--ember)}
+.lado-dividida{color:var(--fg);background:linear-gradient(90deg,rgba(79,154,99,.3) 50%,rgba(122,20,32,.5) 50%)}
+.lado-dividida::before{background:linear-gradient(90deg,var(--green) 50%,var(--ember) 50%)}
+.lado-neutra{color:var(--muted)}
+.chip{display:inline-block;font-size:.74rem;letter-spacing:.04em;padding:3px 9px;border-radius:4px;border:1px solid currentColor;line-height:1.3;white-space:nowrap}
+.chip-linhagem{color:var(--gold)}
+.chip-castelo{color:var(--stone)}
+.chip-papel{color:var(--violet)}
+.chip-profecia{color:var(--ember)}
+.chip-livros{color:var(--muted);border-style:dashed}
+.chip-nenhuma{color:var(--muted);opacity:.7}
+.etiqueta{display:inline-block;font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;padding:2px 7px;border-radius:3px;margin-left:8px;vertical-align:middle}
+.etiqueta-cdd{color:var(--ember);border:1px solid var(--ember)}
+.etiqueta-got{color:var(--ice);border:1px solid var(--ice)}
+.etiqueta-entre{color:var(--muted);border:1px solid var(--line)}
+
+/* Linhagem: o canal de sangue da abertura */
+.linhagem{list-style:none;margin:0;padding:0;display:grid;gap:0;position:relative;max-width:820px}
+.linhagem>li{display:grid;grid-template-columns:34px 1fr;gap:0 14px;position:relative;padding-bottom:18px}
+.linhagem>li::before{content:"";position:absolute;left:15px;top:0;bottom:0;width:4px;border-radius:2px;background:linear-gradient(180deg,var(--ember),var(--blood));box-shadow:0 0 10px rgba(209,69,47,.5)}
+.linhagem>li.era-gelo::before{background:linear-gradient(180deg,var(--blood),var(--ice))}
+.linhagem>li.era-gelo ~ li::before{background:var(--ice);box-shadow:0 0 10px rgba(143,182,216,.45)}
+.linhagem>li:last-child::before{bottom:auto;height:22px}
+.marcador{position:relative;z-index:1;width:34px;height:34px;border-radius:50%;background:var(--ink);border:2px solid var(--gold);display:grid;place-items:center;font-family:var(--display);font-size:.72rem;font-weight:700;color:var(--gold)}
+.marcador.era-cdd{border-color:var(--ember);color:var(--ember);box-shadow:0 0 12px rgba(209,69,47,.5)}
+.marcador.era-got{border-color:var(--ice);color:var(--ice);box-shadow:0 0 12px rgba(143,182,216,.45)}
+.no{padding-top:4px;min-width:0}
+.no .nome{font-family:var(--display);font-size:1.05rem;font-weight:700}
+.no small{font-size:.92rem;color:var(--muted)}
+.no .nota{margin-top:6px;padding:8px 12px;border-left:3px solid var(--gold);background:var(--surface);font-size:.93rem;color:var(--fg);max-width:64ch}
+.no .nota b{color:var(--gold);font-weight:600}
+.irmaos{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.irmaos span{padding:6px 10px;border:1px solid var(--line);border-radius:4px;background:var(--surface);font-size:.92rem}
+.irmaos span b{font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--gold)}
+
+/* Filtros */
+.filtros{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;margin-bottom:18px}
+.grupo-filtro{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.grupo-filtro .rotulo{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-family:var(--display);margin-right:4px}
+.filtro{font:inherit;font-size:.85rem;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer}
+.filtro:hover{border-color:var(--gold)}
+.filtro[aria-pressed="true"]{background:var(--gold);color:var(--ink);border-color:var(--gold);font-weight:600}
+.filtro:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.contagem{font-size:.9rem;color:var(--muted);margin-left:auto}
+
+/* Cartoes das casas: lajes de pedra com a cor do lado na borda de cima */
+.casas{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,460px),1fr));gap:18px}
+.casa{background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--muted);border-radius:6px;display:flex;flex-direction:column;min-width:0;transition:border-color .15s ease,box-shadow .15s ease}
+.casa[data-lado="verdes"]{border-top-color:var(--green)}
+.casa[data-lado="negros"]{border-top-color:var(--ember)}
+.casa[data-lado="dividida"]{border-image:linear-gradient(90deg,var(--green) 50%,var(--ember) 50%) 1;border-left:0;border-right:0;border-bottom:0;box-shadow:inset 1px 0 var(--line),inset -1px 0 var(--line),inset 0 -1px var(--line)}
+.casa:hover{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold),0 8px 30px rgba(0,0,0,.45)}
+.casa[data-lado="dividida"]:hover{box-shadow:inset 1px 0 var(--gold),inset -1px 0 var(--gold),inset 0 -1px var(--gold),0 8px 30px rgba(0,0,0,.45)}
+.casa-cabecalho{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.escudo{width:52px;height:58px;display:grid;place-items:center;font-size:1.6rem;line-height:1;background:linear-gradient(135deg,var(--campo),var(--carga));border:2px solid var(--gold);border-radius:4px 4px 50% 50% / 4px 4px 55% 55%;box-shadow:inset 0 0 0 2px rgba(255,255,255,.18),0 2px 10px rgba(0,0,0,.5)}
+.escudo span{filter:drop-shadow(0 1px 1px rgba(0,0,0,.55))}
+.casa-cabecalho h3{color:var(--fg)}
+.casa-cabecalho .sede{font-size:.88rem;color:var(--muted)}
+.casa-corpo{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:14px 18px}
+.casa-corpo section{min-width:0}
+.casa-corpo h4{margin-bottom:6px}
+.casa-corpo h4.fogo{color:var(--ember)}
+.casa-corpo h4.gelo{color:var(--ice)}
+.casa-corpo ul{font-size:.92rem}
+.ligacao{margin-top:auto;padding:14px 18px 16px;background:var(--surface-2);border-top:1px solid var(--line);border-radius:0 0 6px 6px}
+.ligacao h4{color:var(--gold);margin-bottom:6px}
+.ligacao p{font-size:.95rem;max-width:70ch}
+.ligacao .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+@media (max-width:560px){
+  .casa-corpo{grid-template-columns:1fr}
+  .casa-cabecalho{grid-template-columns:auto 1fr;}
+  .casa-cabecalho .lado{grid-column:1 / -1;justify-self:start}
+}
+
+/* Lugares e objetos */
+.lugares{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:14px}
+.lugar{border:1px solid var(--line);border-radius:6px;padding:14px 16px;background:var(--surface);min-width:0}
+.lugar h3{font-size:1rem;margin-bottom:8px;color:var(--gold)}
+.lugar dl{margin:0;display:grid;gap:6px}
+.lugar dt{font-family:var(--display);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase}
+.lugar dt.cdd{color:var(--ember)}
+.lugar dt.got{color:var(--ice)}
+.lugar dd{margin:0;font-size:.92rem}
+.lugar-largo{grid-column:1 / -1;border-color:var(--ice);box-shadow:inset 0 0 0 1px rgba(143,182,216,.18),0 0 24px rgba(143,182,216,.08)}
+.lugar-largo h3{font-size:1.15rem;color:var(--ice)}
+.lugar-largo .lugar-intro{font-size:.95rem;color:var(--muted);margin-bottom:14px;max-width:70ch}
+.lugar dl.tres{grid-template-columns:repeat(3,1fr);gap:18px}
+.lugar dl.tres > div{display:grid;gap:6px;align-content:start;min-width:0}
+.lugar dt.livros{color:var(--muted)}
+@media (max-width:760px){.lugar dl.tres{grid-template-columns:1fr}}
+
+/* Casas menores e ausentes */
+.menores{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:10px 24px;list-style:none;margin:0;padding:0}
+.menores li{padding:10px 0;border-bottom:1px dotted var(--line);font-size:.93rem;display:grid;gap:4px}
+.menores b{font-family:var(--display);font-weight:700;font-size:.9rem;color:var(--gold)}
+.menores .nota-livro{color:var(--muted)}
+.rodape{padding-top:28px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);max-width:70ch;display:grid;gap:10px}
+.lema{font-family:var(--display);letter-spacing:.3em;text-transform:uppercase;color:var(--ember);font-size:.8rem}
+
+/* Busca: barra fixa logo abaixo do topo */
+.busca{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:12px;border-bottom:1px solid var(--line);box-shadow:0 10px 24px rgba(0,0,0,.45);display:grid;gap:8px}
+.busca-campo{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}
+.busca input{font:inherit;font-size:1rem;width:100%;min-width:0;padding:10px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.busca input::placeholder{color:var(--muted)}
+.busca input:focus-visible{outline:2px solid var(--gold);outline-offset:1px;border-color:var(--gold)}
+.limpar{font:inherit;font-size:.85rem;padding:9px 14px;border-radius:6px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;white-space:nowrap}
+.limpar:hover{border-color:var(--gold);color:var(--gold)}
+.limpar:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.resumo-busca{font-size:.92rem;color:var(--muted);display:grid;gap:8px}
+.resumo-busca strong{color:var(--fg);font-weight:600}
+.acertos{display:flex;flex-wrap:wrap;gap:6px}
+.acerto-chip{font:inherit;font-size:.8rem;padding:4px 10px;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--fg);cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.acerto-chip:hover{border-color:var(--gold)}
+.acerto-chip:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.acerto-chip .onde{font-family:var(--display);font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold)}
+.acerto-chip .onde.gelo{color:var(--ice)}
+.acerto-chip .onde.fogo{color:var(--ember)}
+mark{background:rgba(202,163,83,.38);color:var(--fg);padding:0 2px;border-radius:2px}
+.apagado{opacity:.32}
+.casa,.linhagem>li,.lugar,.menores li{scroll-margin-top:120px}
+.flash{animation:flash 1.4s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 3px var(--gold),0 0 24px rgba(202,163,83,.6)}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion: reduce){.casa{transition:none}.flash{animation:none;box-shadow:0 0 0 3px var(--gold)}}
+</style>
+</head>
+<body>
+<div class="pagina">
+
+<header class="topo">
+  <canvas class="brasas" id="brasas" aria-hidden="true"></canvas>
+  <p class="olho">Fogo e Sangue · Infográfico</p>
+  <h1>Da Dança dos Dragões ao Trono de Ferro</h1>
+  <p class="lide">Todas as casas que aparecem em <em>A Casa do Dragão</em> e o que liga cada uma aos personagens de <em>Game of Thrones</em>, cerca de 170 anos depois.</p>
+  <ol class="tempo">
+    <li class="marco-fogo"><div class="ano">101 DC</div><div class="fato">Grande Conselho em Harrenhal. Viserys I é escolhido herdeiro.</div><span class="serie">A Casa do Dragão começa</span></li>
+    <li class="marco-fogo"><div class="ano">129 a 131 DC</div><div class="fato">A Dança dos Dragões: Verdes contra Negros, a guerra civil Targaryen.</div><span class="serie">Temporada 2</span></li>
+    <li class="marco-gelo"><div class="ano">283 DC</div><div class="fato">Rebelião de Robert. Jaime mata o Rei Louco. Daenerys nasce no ano seguinte.</div><span class="serie">Passado de GoT</span></li>
+    <li class="marco-gelo"><div class="ano">298 DC</div><div class="fato">Jon Arryn morre e Ned Stark vira Mão do Rei.</div><span class="serie">Game of Thrones começa</span></li>
+  </ol>
+</header>
+
+<div class="busca" id="busca">
+  <div class="busca-campo">
+    <input type="search" id="campo-busca" list="sugestoes" autocomplete="off" spellcheck="false" placeholder="Busque um personagem ou uma casa: Jon Snow, Alicent, Frey, Harrenhal…" aria-label="Buscar personagem ou casa">
+    <button class="limpar" type="button" id="limpar-busca">Limpar</button>
+  </div>
+  <datalist id="sugestoes"></datalist>
+  <div class="resumo-busca" id="resumo-busca" hidden></div>
+</div>
+
+<section class="secao" id="legenda">
+  <div class="secao-cabecalho">
+    <h2>Como ler os cartões</h2>
+    <p class="secao-intro">Cada casa tem um lado na Dança e um ou mais tipos de ligação com <em>Game of Thrones</em>. Os filtros da seção de casas usam essas marcas.</p>
+  </div>
+  <div class="legenda">
+    <dl>
+      <dt><span class="lado lado-verdes">Verdes</span></dt><dd>O partido de Alicent e Otto Hightower, que coroa Aegon II.</dd>
+      <dt><span class="lado lado-negros">Negros</span></dt><dd>O partido de Rhaenyra e Daemon, herdeira nomeada por Viserys I.</dd>
+      <dt><span class="lado lado-dividida">Dividida</span></dt><dd>A casa tem gente dos dois lados.</dd>
+      <dt><span class="lado lado-neutra">Neutra</span></dt><dd>Não toma partido, ou aparece antes da guerra.</dd>
+    </dl>
+    <dl>
+      <dt><span class="etiqueta etiqueta-cdd" style="margin-left:0">A Casa do Dragão</span></dt><dd>Em vermelho, fogo: tudo o que vem da Dança.</dd>
+      <dt><span class="etiqueta etiqueta-got" style="margin-left:0">Game of Thrones</span></dt><dd>Em azul-gelo: tudo o que vem 170 anos depois.</dd>
+    </dl>
+    <dl>
+      <dt><span class="chip chip-linhagem">Linhagem</span></dt><dd>Personagens de GoT descendem dos personagens da Dança.</dd>
+      <dt><span class="chip chip-castelo">Mesmo castelo</span></dt><dd>O mesmo lugar é cenário nas duas séries.</dd>
+      <dt><span class="chip chip-papel">Mesmo papel</span></dt><dd>A mesma função ou o mesmo roteiro se repete.</dd>
+      <dt><span class="chip chip-profecia">Profecia e objetos</span></dt><dd>Algo passa de mão em mão entre as séries.</dd>
+      <dt><span class="chip chip-livros">Só nos livros</span></dt><dd>A ligação existe em <em>Fogo &amp; Sangue</em> ou nos romances, não na TV.</dd>
+      <dt><span class="chip chip-nenhuma">Sem ligação</span></dt><dd>A casa some depois da Dança.</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="secao" id="linhagem">
+  <div class="secao-cabecalho">
+    <h2>A espinha dorsal: de Rhaenyra a Daenerys e Jon Snow</h2>
+    <p class="secao-intro">Todos os Targaryen de <em>Game of Thrones</em> descendem de um único casal da Dança. A coroa dos Verdes morre com Aegon II; a dos Negros atravessa oito gerações até o Rei Louco.</p>
+  </div>
+  <ol class="linhagem">
+    <li>
+      <div class="marcador era-cdd">1</div>
+      <div class="no">
+        <div class="nome">Rhaenyra Targaryen ⚭ Daemon Targaryen <span class="etiqueta etiqueta-cdd">A Casa do Dragão</span></div>
+        <small>A rainha dos Negros e o Príncipe Rebelde. Tio e sobrinha, casados na T1.</small>
+        <p class="nota"><b>Por que o filho caçula?</b> O mais velho, Aegon III, reina depois da Dança, mas sua linha acaba em dois reis sem filhos, Daeron I e Baelor I. A coroa passa ao irmão mais novo.</p>
+      </div>
+    </li>
+    <li>
+      <div class="marcador era-cdd">2</div>
+      <div class="no">
+        <div class="nome">Viserys II <span class="etiqueta etiqueta-cdd">A Casa do Dragão</span></div>
+        <small>É o pequeno Viserys da T2, o menino que Rhaenyra manda para o Ninho da Águia. Reina só um ano.</small>
+      </div>
+    </li>
+    <li>
+      <div class="marcador">3</div>
+      <div class="no">
+        <div class="nome">Aegon IV, o Indigno <span class="etiqueta etiqueta-entre">Entre as séries</span></div>
+        <small>Legitima todos os bastardos no leito de morte e planta um século de rebeliões Blackfyre.</small>
+        <p class="nota"><b>Ramo lateral:</b> Brynden Rivers, o Corvo de Sangue, filho de Aegon IV com Melissa Blackwood. Nos livros, é o Corvo de Três Olhos que treina Bran. Na série, o personagem nunca é nomeado.</p>
+      </div>
+    </li>
+    <li>
+      <div class="marcador">4</div>
+      <div class="no">
+        <div class="nome">Daeron II, o Bom ⚭ Myriah Martell <span class="etiqueta etiqueta-entre">Entre as séries</span></div>
+        <small>Dorne entra nos Sete Reinos por esse casamento, não por conquista. Daí o sangue Martell em Daenerys.</small>
+      </div>
+    </li>
+    <li>
+      <div class="marcador">5</div>
+      <div class="no">
+        <div class="nome">Maekar I <span class="etiqueta etiqueta-entre">Entre as séries</span></div>
+        <small>Pai de dois nomes importantes para GoT.</small>
+        <div class="irmaos">
+          <span><b>Aemon</b> · o Meistre Aemon de Castelo Negro, conselheiro de Jon Snow (GoT T1 a T5). Recusou a coroa.</span>
+          <span><b>Aegon V, o Egg</b> · segue a linha abaixo.</span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="marcador">6</div>
+      <div class="no">
+        <div class="nome">Aegon V, o Egg ⚭ Betha Blackwood <span class="etiqueta etiqueta-entre">Entre as séries</span></div>
+        <small>O escudeiro de Dunk nas novelas do Cavaleiro Andante. Morre no incêndio de Solarestival.</small>
+        <p class="nota"><b>Ramo Baratheon:</b> a filha Rhaelle casa com Ormund Baratheon. O neto deles é Steffon, pai de Robert, Stannis e Renly. É esse “sangue do dragão” que legitima Robert no trono.</p>
+      </div>
+    </li>
+    <li>
+      <div class="marcador">7</div>
+      <div class="no">
+        <div class="nome">Jaehaerys II ⚭ Shaera Targaryen <span class="etiqueta etiqueta-entre">Entre as séries</span></div>
+        <small>Irmão e irmã, de volta ao costume valiriano.</small>
+      </div>
+    </li>
+    <li class="era-gelo">
+      <div class="marcador era-got">8</div>
+      <div class="no">
+        <div class="nome">Aerys II, o Rei Louco ⚭ Rhaella <span class="etiqueta etiqueta-got">Game of Thrones</span></div>
+        <small>Aparece nas visões de Bran; morto por Jaime Lannister. “Queimem todos.”</small>
+      </div>
+    </li>
+    <li>
+      <div class="marcador era-got">9</div>
+      <div class="no">
+        <div class="nome">Os filhos de Aerys <span class="etiqueta etiqueta-got">Game of Thrones</span></div>
+        <div class="irmaos">
+          <span><b>Rhaegar</b> · casa com Elia Martell, depois com Lyanna Stark em segredo.</span>
+          <span><b>Viserys III</b> · a coroa de ouro derretido.</span>
+          <span><b>Daenerys</b> · nasce em Pedra do Dragão na noite da tempestade.</span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="marcador era-got">10</div>
+      <div class="no">
+        <div class="nome">Jon Snow, batizado Aegon Targaryen <span class="etiqueta etiqueta-got">Game of Thrones</span></div>
+        <small>Filho de Rhaegar e Lyanna Stark. Gelo e fogo na mesma pessoa, como o Pacto de Gelo e Fogo da T2 prometia.</small>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="secao" id="casas">
+  <div class="secao-cabecalho">
+    <h2>As casas, uma a uma</h2>
+    <p class="secao-intro">Quem aparece em cada série e qual é o fio que liga as duas. Ordem: das casas centrais da Dança para as periféricas.</p>
+  </div>
+  <div class="filtros" role="group" aria-label="Filtros">
+    <div class="grupo-filtro" id="filtro-lado">
+      <span class="rotulo">Lado</span>
+      <button class="filtro" type="button" data-lado="todos" aria-pressed="true">Todos</button>
+      <button class="filtro" type="button" data-lado="verdes" aria-pressed="false">Verdes</button>
+      <button class="filtro" type="button" data-lado="negros" aria-pressed="false">Negros</button>
+      <button class="filtro" type="button" data-lado="neutra" aria-pressed="false">Neutra</button>
+    </div>
+    <div class="grupo-filtro" id="filtro-tipo">
+      <span class="rotulo">Ligação</span>
+      <button class="filtro" type="button" data-tipo="todos" aria-pressed="true">Todas</button>
+      <button class="filtro" type="button" data-tipo="linhagem" aria-pressed="false">Linhagem</button>
+      <button class="filtro" type="button" data-tipo="castelo" aria-pressed="false">Mesmo castelo</button>
+      <button class="filtro" type="button" data-tipo="papel" aria-pressed="false">Mesmo papel</button>
+      <button class="filtro" type="button" data-tipo="livros" aria-pressed="false">Só nos livros</button>
+    </div>
+    <span class="contagem" id="contagem"></span>
+  </div>
+  <div class="casas" id="lista-casas"></div>
+</section>
+
+<section class="secao" id="lugares">
+  <div class="secao-cabecalho">
+    <h2>Lugares e objetos que as duas séries compartilham</h2>
+    <p class="secao-intro">Além das famílias, algumas coisas atravessam os 170 anos intactas, ou quase.</p>
+  </div>
+  <div class="lugares">
+    <article class="lugar lugar-largo" id="longa-noite">
+      <h3>A Longa Noite e os Caminhantes Brancos</h3>
+      <p class="lugar-intro">Só a série de TV explica de onde eles vêm. Os livros, até agora, têm apenas lendas. É a ameaça que atravessa as duas séries sem aparecer em nenhuma cena de <em>A Casa do Dragão</em>.</p>
+      <dl class="tres">
+        <div>
+          <dt class="cdd">A Casa do Dragão</dt>
+          <dd>O sonho de Aegon, que Viserys I conta a Rhaenyra sob o crânio de Balerion, fala de um inverno terrível vindo do norte distante que trará o fim do mundo dos homens. É por isso que, na profecia, um Targaryen precisa estar no Trono de Ferro quando ele chegar (T1). No topo da Muralha, Cregan Stark diz a Jacaerys que ela não foi erguida contra selvagens nem contra a neve, e sim contra a morte (T2).</dd>
+        </div>
+        <div>
+          <dt class="got">Game of Thrones</dt>
+          <dd>Na visão de Bran, os Filhos da Floresta criam o primeiro Caminhante cravando vidro de dragão no coração de um Primeiro Homem amarrado a um represeiro: ele vira o Rei da Noite (T6). Era uma arma contra os homens, e escapou do controle. O Rei da Noite transforma os filhos de Craster com um toque (T4), quer apagar a memória do mundo, que é Bran (T8), e cai com todos os seus quando Arya o mata com a adaga valiriana desta mesma lista (T8). O vidro de dragão que o criou é o que o destrói.</dd>
+        </div>
+        <div>
+          <dt class="livros">Nos livros</dt>
+          <dd>Os Outros surgem na Longa Noite, há uns oito mil anos, sem origem confirmada. George R. R. Martin diz que não são mortos-vivos, e sim “outra forma de vida”, elegante e perigosa. Restam as lendas da Velha Nan: o Rei da Noite dos livros, 13º Lorde Comandante da Patrulha da Noite, que casou com uma mulher de olhos azuis como estrelas e talvez fosse um Stark; e o Último Herói, que procurou os Filhos para vencer os Outros. A HBO filmou um piloto sobre a Longa Noite, “Bloodmoon”, e o cancelou em 2019.</dd>
+        </div>
+      </dl>
+    </article>
+    <article class="lugar">
+      <h3>A adaga de aço valiriano</h3>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>Viserys I mostra a Rhaenyra a inscrição escondida com a profecia de Aegon, o Conquistador. A adaga passa a Alicent e depois a Aegon II.</dd>
+        <dt class="got">Game of Thrones</dt><dd>É a arma do atentado contra Bran (T1). Mindinho a devolve a Bran (T7), Bran a dá a Arya e Arya mata o Rei da Noite com ela (T8).</dd>
+      </dl>
+    </article>
+    <article class="lugar">
+      <h3>O Fosso dos Dragões</h3>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>Palco da coroação de Aegon II. Rhaenys irrompe pelo chão montada em Meleys (T1).</dd>
+        <dt class="got">Game of Thrones</dt><dd>Só restam ruínas. É ali que Daenerys, Jon e Cersei se encontram para ver o morto-vivo (T7).</dd>
+      </dl>
+    </article>
+    <article class="lugar">
+      <h3>Pedra do Dragão e a Mesa Pintada</h3>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>Sede de Rhaenyra. O conselho dos Negros planeja a guerra sobre a mesa esculpida por Aegon.</dd>
+        <dt class="got">Game of Thrones</dt><dd>Stannis e Melisandre (T2); depois Daenerys e Jon sobre a mesma mesa (T7). O vidro de dragão da ilha vira arma contra os Caminhantes.</dd>
+      </dl>
+    </article>
+    <article class="lugar">
+      <h3>O crânio de Balerion</h3>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>Viserys I conta a Rhaenyra o sonho de Aegon sob o crânio do Terror Negro (T1).</dd>
+        <dt class="got">Game of Thrones</dt><dd>Arya se esconde entre os crânios nos porões (T1). Cersei e Qyburn testam o escorpião nele (T7).</dd>
+      </dl>
+    </article>
+    <article class="lugar">
+      <h3>O Trono de Ferro</h3>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>Enorme, com milhares de lâminas, e corta Viserys I sempre que ele senta.</dd>
+        <dt class="got">Game of Thrones</dt><dd>O mesmo trono, menor, pelo qual Aerys, Robert, Joffrey, Cersei e Daenerys brigam até Drogon derretê-lo.</dd>
+      </dl>
+    </article>
+    <article class="lugar">
+      <h3>A Muralha</h3>
+      <dl>
+        <dt class="cdd">A Casa do Dragão</dt><dd>Jacaerys e Cregan Stark conversam no topo dela sobre o que ela protege (T2).</dd>
+        <dt class="got">Game of Thrones</dt><dd>Lar de Jon Snow e da Patrulha da Noite. Os Caminhantes Brancos a derrubam com Viserion (T7).</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section class="secao" id="menores">
+  <div class="secao-cabecalho">
+    <h2>Casas menores da Dança</h2>
+    <p class="secao-intro">Aparecem pouco e, na maioria dos casos, não deixam rastro em <em>Game of Thrones</em>.</p>
+  </div>
+  <ul class="menores">
+    <li><b>Beesbury</b><span>Lorde Lyman Beesbury, mestre da moeda, é a primeira morte da Dança: Criston Cole o mata no Conselho Verde (T1).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
+    <li><b>Cargyll</b><span>Ser Erryk (Negros) e Ser Arryk (Verdes), gêmeos da Guarda Real que se matam em Pedra do Dragão (T2).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
+    <li><b>Wylde</b><span>Lorde Jasper Wylde, o Ironrod, mestre das leis de Aegon II.</span><span class="nota-livro">Sem ligação com GoT.</span></li>
+    <li><b>Caswell</b><span>Lorde Caswell é enforcado por Criston Cole ao tentar sair de Porto Real para avisar Rhaenyra (T2).</span><span class="nota-livro">Sem ligação com GoT.</span></li>
+    <li><b>Celtigar</b><span>Lorde Bartimos Celtigar, da Ilha da Garra, senta no Conselho Negro (T1).</span><span class="nota-livro">Só nos livros: os Celtigar seguem Stannis e depois se curvam a Joffrey.</span></li>
+    <li><b>Lonmouth</b><span>Ser Joffrey Lonmouth, o Cavaleiro dos Beijos, amante de Laenor, morto por Criston no banquete de casamento de Rhaenyra (T1).</span><span class="nota-livro">Só nos livros: Richard Lonmouth é escudeiro de Robert Baratheon.</span></li>
+    <li><b>Marbrand</b><span>Ser Lorent Marbrand, Guarda Real de Rhaenyra (T2).</span><span class="nota-livro">Só nos livros: Addam Marbrand é vassalo de Tywin e amigo de Jaime.</span></li>
+  </ul>
+</section>
+
+<section class="secao" id="ausentes">
+  <div class="secao-cabecalho">
+    <h2>Casas grandes de GoT que ficam de fora</h2>
+    <p class="secao-intro">Três das casas mais importantes de <em>Game of Thrones</em> não aparecem na Dança, e cada uma tem um motivo.</p>
+  </div>
+  <ul class="menores">
+    <li><b>Greyjoy</b><span>Nenhum Greyjoy aparece na série. Nos livros, Dalton Greyjoy, o Kraken Vermelho, saqueia as terras Lannister pelos Negros.</span><span class="nota-livro">Em GoT: Balon, Theon, Yara e Euron.</span></li>
+    <li><b>Tyrell</b><span>Jardim de Cima fica de fora da guerra na série. Nos livros, o Senhor Tyrell é uma criança e a casa se mantém neutra.</span><span class="nota-livro">Em GoT: Olenna, Margaery, Loras e Mace.</span></li>
+    <li><b>Martell</b><span>Dorne é um reino independente nessa época. Só entra nos Sete Reinos pelo casamento de Daeron II com Myriah Martell, na linhagem acima.</span><span class="nota-livro">Em GoT: Oberyn, Doran, Ellaria e Elia, a esposa de Rhaegar.</span></li>
+  </ul>
+</section>
+
+<footer class="rodape">
+  <p class="lema">Fogo e Sangue</p>
+  <p>Fontes: as duas séries da HBO e <em>Fogo &amp; Sangue</em>, de George R. R. Martin. DC = depois da Conquista de Aegon. Dentro de cada cartão, “T1” e “T2” são temporadas da série daquela coluna. Onde a ligação só existe nos livros, o cartão diz isso.</p>
+</footer>
+
+</div>
+
+<script>
+// Dados das casas. Cores do escudo sao as heraldicas de cada casa e nao mudam com o tema.
+const casas = [
+  {
+    nome:"Targaryen", sede:"Pedra do Dragão e Porto Real", campo:"#17161c", carga:"#c8362b", sigilo:"🐉",
+    lado:"dividida", tipos:["linhagem","profecia","castelo"],
+    cdd:[
+      "Viserys I, o rei que divide o reino sem querer",
+      "Rhaenyra, herdeira escolhida, rainha dos Negros",
+      "Daemon, o Príncipe Rebelde, tio e marido de Rhaenyra",
+      "Rhaenys, a Rainha Que Nunca Foi, casada com Corlys Velaryon",
+      "Aegon II, Aemond e Helaena, filhos de Alicent (e Daeron, criado em Vilavelha, só citado)",
+      "Jacaerys, Lucerys, Joffrey, Aegon e Viserys, filhos de Rhaenyra",
+      "Baela e Rhaena, filhas de Daemon e Laena Velaryon",
+      "Jaehaerys I, o Velho Rei, no Grande Conselho que abre a série"
+    ],
+    got:[
+      "Daenerys, Mãe dos Dragões",
+      "Viserys III, irmão de Daenerys",
+      "Rhaegar e Aerys II, o Rei Louco, nas visões de Bran",
+      "Jon Snow, na verdade Aegon, filho de Rhaegar e Lyanna Stark",
+      "Meistre Aemon, da Patrulha da Noite"
+    ],
+    ligacao:"Daenerys, Viserys III, Rhaegar e Jon Snow descendem de Rhaenyra e Daemon pelo filho caçula dos dois, Viserys II (veja a linhagem acima). A profecia que Viserys I sussurra a Rhaenyra, o sonho de Aegon sobre a Canção de Gelo e Fogo, é a mesma que Melisandre persegue em GoT: o Príncipe Prometido contra o frio que vem do Norte. Do lado dos Verdes, Aegon II morre sem herdeiros e a linha de Alicent no trono acaba na própria Dança."
+  },
+  {
+    nome:"Hightower", sede:"Vilavelha, a Torre Alta · Campina", campo:"#d9d9d6", carga:"#b0332a", sigilo:"🔥",
+    lado:"verdes", tipos:["linhagem","castelo"],
+    cdd:[
+      "Otto Hightower, Mão do Rei de Jaehaerys, Viserys e Aegon II",
+      "Alicent, rainha de Viserys I e mãe de Aegon II",
+      "Gwayne, irmão de Alicent (T2)",
+      "Ser Hobert Hightower (T2) e Lorde Ormund, que marcha de Vilavelha, só citado"
+    ],
+    got:[
+      "Ser Gerold Hightower, o Touro Branco, Lorde Comandante da Guarda Real do Rei Louco: morre na Torre da Alegria lutando contra Ned Stark (T6)",
+      "Vilavelha e a Cidadela, onde Sam Tarly estuda para meistre (T6 e T7)"
+    ],
+    ligacao:"Mesma casa, 170 anos depois, ainda guardando reis Targaryen: Gerold Hightower morre defendendo o segredo de Lyanna e Rhaegar. A Cidadela dos meistres, que forma os Mellos e Orwyles da Dança e o Sam de GoT, fica em Vilavelha, cidade dos Hightower. O vestido verde de Alicent no torneio dá nome ao partido dos Verdes."
+  },
+  {
+    nome:"Velaryon", sede:"Driftmark, a Maré Alta · Baía da Água Negra", campo:"#2a7f7a", carga:"#9fc9c6", sigilo:"🌊",
+    lado:"negros", tipos:["livros","castelo"],
+    cdd:[
+      "Corlys, a Serpente do Mar, o homem mais rico de Westeros",
+      "Rhaenys Targaryen, sua esposa",
+      "Laenor, primeiro marido de Rhaenyra, e Laena, segunda esposa de Daemon",
+      "Vaemond, irmão de Corlys, decapitado por Daemon",
+      "Addam e Alyn de Hull, bastardos de Corlys (T2)"
+    ],
+    got:[
+      "Nenhum Velaryon aparece na série",
+      "Nos livros, Aurane Waters, bastardo de Driftmark, vira mestre dos navios de Cersei; Monford Velaryon segue Stannis",
+      "Pedra do Dragão, vizinha de Driftmark, é a sede de Stannis e depois de Daenerys"
+    ],
+    ligacao:"A casa sobrevive à Dança pela neta de Corlys: Baela Targaryen, filha de Daemon, casa com Alyn Velaryon, e os Velaryon da época de GoT descendem dos dois. Na TV, a ligação é só geográfica: a frota de Corlys domina o mesmo mar que Stannis e Daenerys cruzam para chegar a Porto Real."
+  },
+  {
+    nome:"Strong", sede:"Harrenhal · Terras Fluviais", campo:"#3b5aa6", carga:"#b33a2b", sigilo:"🏰",
+    lado:"dividida", tipos:["castelo","papel"],
+    cdd:[
+      "Lyonel Strong, Mão do Rei depois de Otto",
+      "Harwin Quebra-Ossos, pai verdadeiro de Jacaerys, Lucerys e Joffrey",
+      "Larys Pé-Torto, mestre dos sussurros dos Verdes",
+      "Ser Simon Strong, castelão de Harrenhal, e Alys Rivers (T2)"
+    ],
+    got:[
+      "A casa não existe mais em GoT",
+      "Harrenhal: Arya serve de copeira a Tywin Lannister (T2)",
+      "Mindinho recebe o título de Senhor de Harrenhal (T2); Roose Bolton ocupa o castelo depois (T3)"
+    ],
+    ligacao:"O castelo é o elo. A série abre com o Grande Conselho em Harrenhal, os Strong são os senhores do lugar e Daemon passa a T2 inteira lá dentro. Em GoT, o mesmo castelo arruinado e “amaldiçoado” é prêmio político. E Larys faz exatamente o trabalho de Varys: ouvir tudo e matar quando convém."
+  },
+  {
+    nome:"Lannister", sede:"Rochedo Casterly · Terras Ocidentais", campo:"#a3141c", carga:"#d9a52b", sigilo:"🦁",
+    lado:"verdes", tipos:["linhagem","papel"],
+    cdd:[
+      "Jason Lannister, Senhor do Rochedo, pretendente rejeitado por Rhaenyra; marcha com o exército dos Verdes (T2)",
+      "Tyland Lannister, gêmeo de Jason, mestre dos navios e depois da moeda de Aegon II"
+    ],
+    got:[
+      "Tywin, Cersei, Jaime e Tyrion",
+      "Kevan e Lancel Lannister"
+    ],
+    ligacao:"Tywin descende de Jason. Os gêmeos Jason e Tyland antecipam Jaime e Cersei, e a dupla ambição e dinheiro já está lá: Tyland cuida do ouro da coroa, como Tywin e Tyrion farão. Nos livros, Tyland acaba Mão do Rei de Aegon III, o filho de Rhaenyra."
+  },
+  {
+    nome:"Stark", sede:"Winterfell · O Norte", campo:"#8a8f99", carga:"#e6e8ec", sigilo:"🐺",
+    lado:"negros", tipos:["linhagem","castelo","profecia"],
+    cdd:[
+      "Lorde Rickon Stark, que jura lealdade a Rhaenyra como herdeira (T1)",
+      "Cregan Stark, Senhor de Winterfell, recebe Jacaerys e o leva ao topo da Muralha (T2)"
+    ],
+    got:[
+      "Ned, Catelyn, Robb, Sansa, Arya, Bran e Rickon",
+      "Jon Snow, criado como bastardo de Ned",
+      "Benjen, na Patrulha da Noite, e Lyanna, nas visões de Bran"
+    ],
+    ligacao:"Ned descende de Cregan, e o nome Rickon volta no caçula dele. Na T2, Jacaerys fecha o Pacto de Gelo e Fogo: uma princesa Targaryen casaria com um Stark. O pacto fica por cumprir até Rhaegar e Lyanna, cujo filho é Jon Snow, gelo e fogo na mesma pessoa. A Muralha e a Patrulha da Noite, cenário de Jon, já aparecem com Cregan e Jacaerys."
+  },
+  {
+    nome:"Baratheon", sede:"Ponta Tempestade · Terras da Tempestade", campo:"#d9a52b", carga:"#1b1a20", sigilo:"🦌",
+    lado:"verdes", tipos:["linhagem","castelo"],
+    cdd:[
+      "Lorde Boremund Baratheon, tio de Rhaenys, aliado dela no Grande Conselho (T1)",
+      "Lorde Borros Baratheon, Senhor de Ponta Tempestade, que recebe Aemond e Lucerys na noite em que Lucerys morre (T1), e suas quatro filhas"
+    ],
+    got:[
+      "Robert, Stannis e Renly",
+      "Shireen, filha de Stannis, e Gendry, bastardo de Robert",
+      "Joffrey, Tommen e Myrcella, Baratheon só no nome"
+    ],
+    ligacao:"Robert é bisneto de Aegon V, portanto descende de Rhaenyra e Daemon: é esse “sangue do dragão” que legitima a coroa dele depois da rebelião. Rhaenys, a Rainha Que Nunca Foi, é filha de uma Baratheon. E Ponta Tempestade, onde Lucerys cai, é o castelo que Renly cerca, onde Davos leva Melisandre para parir a sombra (T2) e que Gendry recebe de Daenerys (T8)."
+  },
+  {
+    nome:"Arryn", sede:"Ninho da Águia · O Vale", campo:"#7fb3e0", carga:"#f2f5f9", sigilo:"🦅",
+    lado:"negros", tipos:["linhagem","castelo"],
+    cdd:[
+      "Rainha Aemma Arryn, primeira esposa de Viserys I e mãe de Rhaenyra, morta no parto no primeiro episódio",
+      "Lady Jeyne Arryn, a Donzela do Vale, que abriga Rhaena e os filhos pequenos de Rhaenyra no Ninho da Águia (T2)"
+    ],
+    got:[
+      "Jon Arryn, a Mão do Rei cuja morte abre a série",
+      "Lysa Arryn, irmã de Catelyn, e Robin Arryn, o menino da Porta da Lua"
+    ],
+    ligacao:"Rhaenyra é meio-Arryn. Como Daenerys, Viserys, Rhaegar e Jon Snow descendem dela, todos carregam sangue Arryn. O Ninho da Águia, refúgio dos filhos de Rhaenyra na T2, volta como refúgio de Sansa e prisão de Tyrion em GoT."
+  },
+  {
+    nome:"Tully", sede:"Correrrio · Terras Fluviais", campo:"#2b5fa8", carga:"#b4432c", sigilo:"🐟",
+    lado:"negros", tipos:["linhagem"],
+    cdd:[
+      "Lorde Grover Tully, velho e acamado, Senhor de Correrrio (T2)",
+      "Ser Oscar Tully, bisneto de Grover, que assume Correrrio e leva os senhores do Tridente para o lado de Rhaenyra em Harrenhal (T2)"
+    ],
+    got:[
+      "Hoster Tully e os filhos Catelyn Stark, Lysa Arryn e Edmure",
+      "Brynden Tully, o Peixe Negro"
+    ],
+    ligacao:"Hoster descende de Oscar. Catelyn é Tully, então os filhos de Ned, de Robb a Rickon, são meio-Tully. As Terras Fluviais que Oscar reúne para Rhaenyra são as mesmas onde Robb vence batalhas e Edmure se casa no Casamento Vermelho."
+  },
+  {
+    nome:"Frey", sede:"As Gêmeas · Terras Fluviais", campo:"#4e6380", carga:"#c9d2de", sigilo:"🌉",
+    lado:"negros", tipos:["linhagem","papel","castelo"],
+    cdd:[
+      "Lorde Forrest e Lady Sabitha Frey, senhores das Gêmeas (T2)",
+      "Jacaerys negocia com eles a travessia do exército de Cregan Stark; os Frey exigem Harrenhal em troca"
+    ],
+    got:[
+      "Walder Frey e a prole numerosa",
+      "O Casamento Vermelho, onde morrem Robb, Catelyn e Talisa (T3)",
+      "Arya mata Walder e envenena os Frey (T6 e T7)"
+    ],
+    ligacao:"Walder descende de Forrest. O roteiro se repete quase igual: um Stark precisa cruzar as Gêmeas para ir à guerra e os Frey cobram caro. Jacaerys promete Harrenhal; Robb promete um casamento. O resultado da segunda promessa todo mundo conhece."
+  },
+  {
+    nome:"Royce", sede:"Runestone · O Vale", campo:"#9a6a2a", carga:"#d7b36b", sigilo:"🛡️",
+    lado:"neutra", tipos:["linhagem","castelo"],
+    cdd:[
+      "Lady Rhea Royce, de Runestone, primeira esposa de Daemon, que a chama de “vadia de bronze” e a mata no Vale (T1)",
+      "Ser Gerold Royce, primo de Rhea, que acusa Daemon"
+    ],
+    got:[
+      "Ser Waymar Royce, o patrulheiro morto por um Caminhante Branco na primeira cena da série (T1)",
+      "Lorde Yohn Royce, o Yohn Bronze, Senhor de Runestone, que treina Robin Arryn e senta no conselho que escolhe Bran rei (T8)"
+    ],
+    ligacao:"Mesma casa, mesmo castelo. Waymar é filho de Yohn Royce. O apelido de Rhea e o de Yohn vêm da mesma armadura de bronze com runas, símbolo da casa. A Daemon, os Royce devem uma esposa; a GoT, devem a primeira morte da série."
+  },
+  {
+    nome:"Blackwood e Bracken", sede:"Raventree Hall e Stone Hedge · Terras Fluviais", campo:"#1b1a20", carga:"#c99a2e", sigilo:"🌳",
+    lado:"dividida", tipos:["linhagem","livros"],
+    cdd:[
+      "Willem Blackwood mata Jerrel Bracken na apresentação dos pretendentes de Rhaenyra (T1)",
+      "A Batalha do Moinho em Chamas: Blackwood pelos Negros, Bracken pelos Verdes (T2)",
+      "Lorde Samwell Blackwood, Ser Amos Bracken e os homens que Daemon reúne em Harrenhal (T2)"
+    ],
+    got:[
+      "A rixa entre as duas casas quase não aparece na série",
+      "Nos livros, Aegon V casa com Betha Blackwood, e Brynden Rivers, o Corvo de Sangue, é filho de Aegon IV com uma Blackwood"
+    ],
+    ligacao:"Pela avó Betha Blackwood, Daenerys, Jon Snow e até Robert Baratheon têm sangue Blackwood (veja Aegon V na linhagem). Na série, o Corvo de Três Olhos que treina Bran nunca é nomeado; nos livros, é um meio-Blackwood. A briga de mil anos entre as duas casas é só pano de fundo em GoT."
+  },
+  {
+    nome:"Cole", sede:"Blackhaven · Marcas Dornesas", campo:"#3a3a40", carga:"#8c8c94", sigilo:"⚔️",
+    lado:"verdes", tipos:["castelo","papel"],
+    cdd:[
+      "Ser Criston Cole, o Fazedor de Reis: guarda pessoal de Rhaenyra, depois homem de Alicent, Lorde Comandante da Guarda Real e Mão de Aegon II",
+      "Filho do intendente do Senhor de Blackhaven, sem casa nobre própria"
+    ],
+    got:[
+      "Beric Dondarrion, Senhor de Blackhaven, líder da Irmandade sem Estandartes, morto e ressuscitado seis vezes",
+      "A Guarda Real de GoT: Jaime Lannister, o Regicida, e Barristan Selmy"
+    ],
+    ligacao:"Criston cresceu em Blackhaven, o castelo de Beric Dondarrion. E os dois cavaleiros brancos mais famosos de cada série quebram o mesmo juramento, em sentidos opostos: Criston coroa um rei que não deveria reinar; Jaime mata um rei que não deveria viver."
+  },
+  {
+    nome:"Darklyn", sede:"Duskendale (Valdocaso) · Terras da Coroa", campo:"#2c2c34", carga:"#b9b9c4", sigilo:"🔷",
+    lado:"negros", tipos:["livros","papel"],
+    cdd:[
+      "Ser Steffon Darklyn, Guarda Real fiel a Rhaenyra, que morre queimado tentando montar o dragão Seasmoke (T2)"
+    ],
+    got:[
+      "A casa já não existe em GoT",
+      "Nos livros: o Desafio de Duskendale. Lorde Denys Darklyn prende o Rei Louco; Ser Barristan Selmy, conselheiro de Daenerys em GoT, o resgata; Tywin executa a casa inteira"
+    ],
+    ligacao:"A família que morre por um Targaryen na Dança é a mesma que, um século depois, sequestra outro e é apagada do mapa. É a história que faz a fama de Barristan Selmy, o velho cavaleiro que Daenerys acolhe em GoT."
+  },
+  {
+    nome:"Westerling", sede:"O Penhasco · Terras Ocidentais", campo:"#c9b793", carga:"#f1ebdc", sigilo:"🐚",
+    lado:"neutra", tipos:["livros"],
+    cdd:[
+      "Ser Harrold Westerling, Lorde Comandante da Guarda Real de Viserys I, que renuncia quando Criston Cole é mandado matar Rhaenyra (T1)"
+    ],
+    got:[
+      "Nenhum Westerling aparece na série",
+      "Nos livros, Jeyne Westerling, do Penhasco, é a esposa de Robb Stark; a série a trocou por Talisa Maegyr, de Volantis"
+    ],
+    ligacao:"Ligação só literária. Nos livros, a esposa que custa a Robb a aliança com os Frey é da mesma casa do cavaleiro que se recusa a matar Rhaenyra."
+  }
+];
+
+const rotuloLado = {verdes:"Verdes", negros:"Negros", dividida:"Dividida", neutra:"Neutra"};
+const rotuloTipo = {linhagem:"Linhagem", castelo:"Mesmo castelo", papel:"Mesmo papel", profecia:"Profecia e objetos", livros:"Só nos livros", nenhuma:"Sem ligação"};
+
+function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+function lista(itens){ return "<ul>" + itens.map(i => "<li>" + esc(i) + "</li>").join("") + "</ul>"; }
+
+function render(){
+  const alvo = document.getElementById("lista-casas");
+  alvo.innerHTML = casas.map(c => `
+    <article class="casa" id="casa-${slug(c.nome)}" data-lado="${c.lado}" data-tipos="${c.tipos.join(" ")}">
+      <header class="casa-cabecalho">
+        <div class="escudo" style="--campo:${c.campo};--carga:${c.carga}" aria-hidden="true"><span>${c.sigilo}</span></div>
+        <div>
+          <h3>${esc(c.nome)}</h3>
+          <p class="sede">${esc(c.sede)}</p>
+        </div>
+        <span class="lado lado-${c.lado}">${rotuloLado[c.lado]}</span>
+      </header>
+      <div class="casa-corpo">
+        <section><h4 class="fogo">Em A Casa do Dragão</h4>${lista(c.cdd)}</section>
+        <section><h4 class="gelo">Em Game of Thrones</h4>${lista(c.got)}</section>
+      </div>
+      <footer class="ligacao">
+        <h4>A ligação</h4>
+        <p>${esc(c.ligacao)}</p>
+        <div class="chips">${c.tipos.map(t => `<span class="chip chip-${t}">${rotuloTipo[t]}</span>`).join("")}</div>
+      </footer>
+    </article>`).join("");
+}
+
+const estado = {lado:"todos", tipo:"todos"};
+
+function aplicarFiltro(){
+  const cartoes = document.querySelectorAll("#lista-casas .casa");
+  let visiveis = 0;
+  cartoes.forEach(el => {
+    const lado = el.dataset.lado;
+    const tipos = el.dataset.tipos.split(" ");
+    // "dividida" conta para Verdes e para Negros, porque tem gente dos dois lados
+    const okLado = estado.lado === "todos" || lado === estado.lado || (lado === "dividida" && (estado.lado === "verdes" || estado.lado === "negros"));
+    const okTipo = estado.tipo === "todos" || tipos.includes(estado.tipo);
+    const okBusca = el.dataset.busca !== "0";
+    const mostrar = okLado && okTipo && okBusca;
+    el.hidden = !mostrar;
+    if (mostrar) visiveis++;
+  });
+  const contagem = document.getElementById("contagem");
+  contagem.textContent = visiveis === cartoes.length
+    ? `${cartoes.length} casas`
+    : `${visiveis} de ${cartoes.length} casas`;
+  if (visiveis === 0) contagem.textContent = "Nenhuma casa com essa combinação";
+}
+
+function ligarFiltros(idGrupo, chave){
+  const grupo = document.getElementById(idGrupo);
+  grupo.querySelectorAll(".filtro").forEach(btn => {
+    btn.addEventListener("click", () => {
+      estado[chave] = btn.dataset[chave];
+      grupo.querySelectorAll(".filtro").forEach(b => b.setAttribute("aria-pressed", b === btn ? "true" : "false"));
+      aplicarFiltro();
+    });
+  });
+}
+
+render();
+ligarFiltros("filtro-lado", "lado");
+ligarFiltros("filtro-tipo", "tipo");
+aplicarFiltro();
+
+// Busca por personagem ou casa. Ignora acentos e maiusculas, destaca os trechos e lista onde o termo aparece.
+const sugestoes = [
+  "Targaryen","Hightower","Velaryon","Strong","Lannister","Stark","Baratheon","Arryn","Tully","Frey","Royce","Blackwood","Bracken","Cole","Darklyn","Westerling","Beesbury","Cargyll","Celtigar","Lonmouth","Marbrand","Greyjoy","Tyrell","Martell","Dondarrion",
+  "Rhaenyra","Daemon","Viserys I","Viserys II","Alicent","Otto Hightower","Gwayne","Aegon II","Aemond","Helaena","Daeron","Jaehaerys","Rhaenys","Corlys","Laenor","Laena","Vaemond","Addam de Hull","Alyn","Jacaerys","Lucerys","Joffrey","Baela","Rhaena","Aemma Arryn","Jeyne Arryn","Criston Cole","Harwin","Larys","Lyonel","Simon Strong","Alys Rivers","Jason Lannister","Tyland","Cregan Stark","Rickon Stark","Borros","Boremund","Grover Tully","Oscar Tully","Forrest Frey","Sabitha Frey","Rhea Royce","Gerold Royce","Steffon Darklyn","Harrold Westerling","Lyman Beesbury","Erryk","Arryk","Willem Blackwood","Samwell Blackwood","Amos Bracken","Mysaria","Seasmoke","Meleys","Vhagar","Caraxes",
+  "Daenerys","Jon Snow","Rhaegar","Aerys","Rei Louco","Lyanna","Elia Martell","Meistre Aemon","Aegon V","Egg","Betha Blackwood","Corvo de Sangue","Corvo de Três Olhos","Ned Stark","Catelyn","Robb","Sansa","Arya","Bran","Benjen","Tywin","Cersei","Jaime","Tyrion","Kevan","Lancel","Robert Baratheon","Stannis","Renly","Shireen","Gendry","Tommen","Myrcella","Jon Arryn","Lysa","Robin Arryn","Hoster Tully","Edmure","Peixe Negro","Walder Frey","Talisa","Yohn Royce","Waymar Royce","Beric Dondarrion","Barristan Selmy","Gerold Hightower","Sam Tarly","Varys","Mindinho","Melisandre","Davos","Qyburn","Oberyn","Doran","Ellaria","Theon","Yara","Euron","Balon","Olenna","Margaery","Loras","Rei da Noite","Caminhante Branco","Caminhantes Brancos","Longa Noite","Filhos da Floresta","Craster","Último Herói","Velha Nan","Bloodmoon","vidro de dragão","Outros",
+  "Harrenhal","Pedra do Dragão","Ponta Tempestade","Ninho da Águia","Correrrio","As Gêmeas","Runestone","Blackhaven","Vilavelha","Cidadela","Winterfell","Muralha","Porto Real","Driftmark","Fosso dos Dragões","Mesa Pintada","Trono de Ferro","Balerion","adaga","Patrulha da Noite","Guarda Real","Mão do Rei","Torre da Alegria","Casamento Vermelho","Pacto de Gelo e Fogo","Príncipe Prometido","Verdes","Negros"
+];
+document.getElementById("sugestoes").innerHTML = sugestoes.map(x => `<option value="${esc(x)}"></option>`).join("");
+
+function normalizar(t){ return String(t).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+
+function slug(t){ return normalizar(t).replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""); }
+
+// Envolve em <mark> cada ocorrencia do termo dentro dos nos de texto do elemento.
+function marcar(raiz, termo){
+  const andador = document.createTreeWalker(raiz, NodeFilter.SHOW_TEXT, {
+    acceptNode(n){
+      const pai = n.parentElement;
+      if (!pai || pai.closest("[aria-hidden], mark, option")) return NodeFilter.FILTER_REJECT;
+      return n.nodeValue.trim() ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+    }
+  });
+  const nos = [];
+  while (andador.nextNode()) nos.push(andador.currentNode);
+  let achou = false;
+  for (const no of nos){
+    const txt = no.nodeValue;
+    let norm = "";
+    const mapa = [];
+    for (let i = 0; i < txt.length; i++){
+      const n = normalizar(txt[i]);
+      for (let k = 0; k < n.length; k++){ norm += n[k]; mapa.push(i); }
+    }
+    let idx = norm.indexOf(termo);
+    if (idx < 0) continue;
+    achou = true;
+    const frag = document.createDocumentFragment();
+    let ultimo = 0;
+    while (idx >= 0){
+      const ini = mapa[idx], fim = mapa[idx + termo.length - 1] + 1;
+      frag.appendChild(document.createTextNode(txt.slice(ultimo, ini)));
+      const m = document.createElement("mark");
+      m.textContent = txt.slice(ini, fim);
+      frag.appendChild(m);
+      ultimo = fim;
+      idx = norm.indexOf(termo, idx + termo.length);
+    }
+    frag.appendChild(document.createTextNode(txt.slice(ultimo)));
+    no.parentNode.replaceChild(frag, no);
+  }
+  return achou;
+}
+
+// Elementos estaticos que a busca mexe: guarda o HTML original para restaurar a cada consulta.
+const alvosEstaticos = [];
+function registrar(seletor, tipo, onde, rotular){
+  document.querySelectorAll(seletor).forEach((el, i) => {
+    if (!el.id) el.id = `${tipo}-${i + 1}`;
+    alvosEstaticos.push({ el, tipo, onde, html: el.innerHTML, rotulo: rotular(el) });
+  });
+}
+registrar(".linhagem > li", "linhagem", "Linhagem", el => el.querySelector(".nome").firstChild.textContent.trim());
+registrar("#lugares .lugar", "lugar", "Lugar ou objeto", el => el.querySelector("h3").textContent.trim());
+registrar("#menores .menores li", "menor", "Casa menor", el => el.querySelector("b").textContent.trim());
+registrar("#ausentes .menores li", "ausente", "Fica de fora", el => el.querySelector("b").textContent.trim());
+
+const campo = document.getElementById("campo-busca");
+const resumo = document.getElementById("resumo-busca");
+const secoesAuxiliares = ["lugares", "menores", "ausentes"].map(id => document.getElementById(id));
+
+function restaurar(){
+  render();
+  for (const a of alvosEstaticos){
+    a.el.innerHTML = a.html;
+    a.el.classList.remove("apagado");
+    a.el.hidden = false;
+  }
+  secoesAuxiliares.forEach(sec => { sec.hidden = false; });
+}
+
+function resetarFiltros(){
+  estado.lado = "todos"; estado.tipo = "todos";
+  document.querySelectorAll("#filtro-lado .filtro, #filtro-tipo .filtro").forEach(b => {
+    const valor = b.dataset.lado || b.dataset.tipo;
+    b.setAttribute("aria-pressed", valor === "todos" ? "true" : "false");
+  });
+}
+
+function aplicarBusca(){
+  const termo = normalizar(campo.value).replace(/\s+/g, " ").trim();
+  restaurar();
+  if (!termo){
+    resumo.hidden = true;
+    resumo.innerHTML = "";
+    aplicarFiltro();
+    return;
+  }
+  resetarFiltros();
+  const acertos = [];
+
+  document.querySelectorAll("#lista-casas .casa").forEach(el => {
+    const bate = normalizar(el.textContent).includes(termo);
+    el.dataset.busca = bate ? "1" : "0";
+    if (bate){
+      marcar(el, termo);
+      acertos.push({ id: el.id, onde: "Casa", classe: "", rotulo: el.querySelector("h3").textContent });
+    }
+  });
+
+  let algumNo = false;
+  for (const a of alvosEstaticos){
+    const bate = normalizar(a.el.textContent).includes(termo);
+    if (bate){
+      marcar(a.el, termo);
+      acertos.push({ id: a.el.id, onde: a.onde, classe: a.tipo === "linhagem" ? "fogo" : "", rotulo: a.rotulo });
+      if (a.tipo === "linhagem") algumNo = true;
+    } else if (a.tipo === "linhagem"){
+      a.el.classList.add("apagado");
+    } else {
+      a.el.hidden = true;
+    }
+  }
+  // Se nenhum no da linhagem bate, nao apaga nenhum: a cadeia continua legivel
+  if (!algumNo) alvosEstaticos.filter(a => a.tipo === "linhagem").forEach(a => a.el.classList.remove("apagado"));
+  secoesAuxiliares.forEach(sec => { sec.hidden = !sec.querySelector(".lugar:not([hidden]), .menores li:not([hidden])"); });
+
+  resumo.hidden = false;
+  if (!acertos.length){
+    resumo.innerHTML = `<span>Nada encontrado para <strong>«${esc(campo.value.trim())}»</strong>. Tente só o primeiro nome, o nome da casa ou do castelo.</span>`;
+  } else {
+    const n = acertos.length;
+    resumo.innerHTML = `<span><strong>«${esc(campo.value.trim())}»</strong> aparece em ${n} ${n === 1 ? "lugar" : "lugares"}. Clique para ir até cada um:</span>
+      <div class="acertos">${acertos.map(a => `<button class="acerto-chip" type="button" data-alvo="${a.id}"><span class="onde ${a.classe}">${esc(a.onde)}</span>${esc(a.rotulo)}</button>`).join("")}</div>`;
+  }
+  aplicarFiltro();
+}
+
+resumo.addEventListener("click", ev => {
+  const chip = ev.target.closest(".acerto-chip");
+  if (!chip) return;
+  const alvo = document.getElementById(chip.dataset.alvo);
+  if (!alvo) return;
+  const suave = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  alvo.scrollIntoView({ behavior: suave ? "smooth" : "auto", block: "start" });
+  alvo.classList.remove("flash");
+  void alvo.offsetWidth;
+  alvo.classList.add("flash");
+  setTimeout(() => alvo.classList.remove("flash"), 1600);
+});
+
+let temporizador = null;
+campo.addEventListener("input", () => {
+  clearTimeout(temporizador);
+  temporizador = setTimeout(aplicarBusca, 140);
+});
+campo.addEventListener("keydown", ev => {
+  if (ev.key === "Escape"){ campo.value = ""; aplicarBusca(); }
+});
+document.getElementById("limpar-busca").addEventListener("click", () => {
+  campo.value = "";
+  aplicarBusca();
+  campo.focus();
+});
+// O navegador pode restaurar o valor do campo ao recarregar: aplica a busca se houver algo
+if (campo.value) aplicarBusca();
+
+// Brasas subindo no topo: atmosfera da serie. Respeita reducao de movimento e pausa fora de foco.
+(function(){
+  const tela = document.getElementById("brasas");
+  if (!tela || !tela.getContext) return;
+  const ctx = tela.getContext("2d");
+  const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let w = 0, h = 0, particulas = [], animando = false;
+  function medir(){
+    const r = tela.parentElement.getBoundingClientRect();
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = Math.max(1, Math.floor(r.width)); h = Math.max(1, Math.floor(r.height));
+    tela.width = Math.floor(w * dpr); tela.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  function nova(inicial){
+    return { x: Math.random() * w, y: inicial ? Math.random() * h : h + 6, r: 0.8 + Math.random() * 1.8,
+      vy: 0.15 + Math.random() * 0.35, vx: (Math.random() - 0.5) * 0.25, vida: Math.random(), fase: Math.random() * Math.PI * 2 };
+  }
+  function desenhar(t){
+    ctx.clearRect(0, 0, w, h);
+    for (const p of particulas){
+      const brilho = 0.35 + 0.65 * Math.abs(Math.sin(p.fase + t / 900));
+      const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.r * 4);
+      g.addColorStop(0, "rgba(255,180,120," + (0.9 * brilho) + ")");
+      g.addColorStop(0.4, "rgba(209,69,47," + (0.5 * brilho) + ")");
+      g.addColorStop(1, "rgba(209,69,47,0)");
+      ctx.fillStyle = g;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r * 4, 0, Math.PI * 2); ctx.fill();
+    }
+  }
+  function passo(t){
+    if (!animando) return;
+    for (let i = 0; i < particulas.length; i++){
+      const p = particulas[i];
+      p.y -= p.vy; p.x += p.vx + Math.sin(t / 1500 + p.fase) * 0.15;
+      if (p.y < -8 || p.x < -8 || p.x > w + 8) particulas[i] = nova(false);
+    }
+    desenhar(t);
+    requestAnimationFrame(passo);
+  }
+  function iniciar(){
+    medir();
+    const total = Math.round(Math.min(90, Math.max(30, w / 14)));
+    particulas = Array.from({length: total}, () => nova(true));
+    if (reduzir){ desenhar(0); return; }
+    if (!animando){ animando = true; requestAnimationFrame(passo); }
+  }
+  window.addEventListener("resize", () => { medir(); if (reduzir) desenhar(0); });
+  document.addEventListener("visibilitychange", () => {
+    if (reduzir) return;
+    if (document.hidden) animando = false;
+    else if (!animando){ animando = true; requestAnimationFrame(passo); }
+  });
+  iniciar();
+})();
+</script>
+</body>
+</html>
